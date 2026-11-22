@@ -1,10 +1,36 @@
-/* Scoped base — intentionally does NOT reset global html/body for GHL safety */
+/* Full-bleed dark page — removes default browser / GHL white frame around the homepage */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #1b2029 !important;
+  background: #1b2029 !important;
+}
+
+/* Neutralize common GHL wrappers that leave a white gutter around Custom Code */
+body .c-section:has(#ttf-app),
+body .c-row:has(#ttf-app),
+body .c-column:has(#ttf-app),
+body .c-wrapper:has(#ttf-app),
+body .c-custom-code:has(#ttf-app),
+body .custom-code-container:has(#ttf-app) {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
 #ttf-app {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: none;
+  min-height: 100vh;
   font-family: var(--ttf-font-body);
   background-color: var(--ttf-bg);
   color: var(--ttf-text);
@@ -43,11 +69,75 @@
   color: #fff;
 }
 
+/* Matches GHL heading-X8NpSmLvGH: Poppins 50/300 lime, left, fadeInDown on scroll */
 #ttf-app .ttf-social-proof-heading {
+  margin: 10px 0 20px;
+  padding: 0;
+  font-family: var(--ttf-font-body);
   font-size: 50px;
   font-weight: 300;
-  text-align: center;
-  margin: 48px 20px 24px;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+/* Matches GHL heading--Oif2KX2bp (Our Vlogs): same type + fadeInDown, 20px left pad */
+#ttf-app .ttf-vlogs-heading {
+  margin: 10px 0 0;
+  padding: 0 0 0 20px;
+  font-family: var(--ttf-font-body);
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+@keyframes ttf-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in) {
+  opacity: 0;
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-in,
+#ttf-app .ttf-vlogs-heading.ttf-anim-in,
+#ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+  animation-name: ttf-fadeInDown;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-social-proof-heading.ttf-anim-in,
+  #ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-vlogs-heading.ttf-anim-in,
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #ttf-app .ttf-vlogs-heading {
+    line-height: 1.2;
+    padding-bottom: 10px;
+  }
 }
 
 #ttf-app .ttf-sr-only {

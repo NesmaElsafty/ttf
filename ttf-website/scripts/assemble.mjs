@@ -49,12 +49,14 @@ const html = `<!DOCTYPE html>
     <title>Tech Titans Factory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <script>document.documentElement.setAttribute('data-ttf-owns-dir','1');</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/base.css" />
     <link rel="stylesheet" href="/styles/components.css" />
     <link rel="stylesheet" href="/styles/responsive.css" />
+    <link rel="stylesheet" href="/styles/rtl.css" />
     <style>
       /* Local preview only — does not ship into GHL scoped CSS */
       html, body { margin: 0; padding: 0; background: #1b2029; }

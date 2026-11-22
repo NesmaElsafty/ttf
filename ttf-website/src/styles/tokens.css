@@ -11,12 +11,15 @@
   --ttf-card: rgba(255, 255, 255, 0.06);
   --ttf-radius: 16px;
   --ttf-font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ttf-font-arabic: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
   --ttf-font-condensed: 'Roboto Condensed', 'Poppins', sans-serif;
   --ttf-font-script: 'Charlotte Southern', cursive;
   --ttf-font-display: 'Korolev Bold', 'Poppins', sans-serif;
   --ttf-font-heavy: 'Korolev Heavy', 'Poppins', sans-serif;
   --ttf-font-thin: 'Korolev Thin', 'Poppins', sans-serif;
   --ttf-max: 1200px;
+  /* Sticky navbar (~95px) + gap — keeps sticky side panels clear of the header */
+  --ttf-sticky-offset: 111px;
 
   /* Crystal / partners */
   --crystal-bg: rgba(255, 255, 255, 0.08);

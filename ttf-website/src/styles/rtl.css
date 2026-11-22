@@ -1,0 +1,120 @@
+/* Arabic / RTL overrides — activated via #ttf-app[dir="rtl"] */
+
+#ttf-app[dir="rtl"],
+#ttf-app[dir="rtl"] button,
+#ttf-app[dir="rtl"] input,
+#ttf-app[dir="rtl"] textarea,
+#ttf-app[dir="rtl"] select {
+  font-family: var(--ttf-font-arabic);
+}
+
+/* Hero stays English + LTR regardless of site language */
+#ttf-app[dir="rtl"] .ttf-hero,
+#ttf-app[dir="rtl"] .ttf-hero * {
+  font-family: inherit;
+  text-align: initial;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero {
+  direction: ltr;
+  text-align: left;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-name {
+  font-family: var(--ttf-font-script), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-decoding,
+#ttf-app[dir="rtl"] .ttf-hero-success {
+  font-family: var(--ttf-font-display), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-about-heading,
+#ttf-app[dir="rtl"] .ttf-partners-heading {
+  font-family: var(--ttf-font-display), var(--ttf-font-arabic);
+}
+
+#ttf-app[dir="rtl"] .ttf-social-proof-heading,
+#ttf-app[dir="rtl"] .ttf-vlogs-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-section-title {
+  font-family: var(--ttf-font-arabic);
+  letter-spacing: 0;
+}
+
+#ttf-app[dir="rtl"] {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-about-text,
+#ttf-app[dir="rtl"] .ghl-v-note,
+#ttf-app[dir="rtl"] .ttfns-form-note,
+#ttf-app[dir="rtl"] .ttfx-brand-desc {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* Marketing section: full RTL — copy on the right, pillars start from the right */
+#ttf-app[dir="rtl"] .ttf-marketing,
+#ttf-app[dir="rtl"] .ttf-marketing-copy {
+  direction: rtl;
+  text-align: right;
+}
+
+/* DOM order [image, copy] + dir=rtl → image right, content left */
+#ttf-app[dir="rtl"] .ttf-marketing-inner {
+  flex-direction: row;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-desc,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Checkmark at inline-start (right), then text flowing left */
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li::before {
+  margin-right: 0;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-btn {
+  direction: rtl;
+}
+
+/* Button hover fill: right → left in Arabic */
+#ttf-app[dir="rtl"] .ttf-marketing-btn::before {
+  transform-origin: right center;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-media img {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+#ttf-app[dir="rtl"] .ttf-btn,
+#ttf-app[dir="rtl"] .ttf-skin .ttf-btn,
+#ttf-app[dir="rtl"] .v-item-btn {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttfns-input {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-lang-btn {
+  font-family: var(--ttf-font-body);
+}
+
+@media (max-width: 992px) {
+  #ttf-app[dir="rtl"] .ttf-marketing-media img {
+    padding-left: 0;
+  }
+}

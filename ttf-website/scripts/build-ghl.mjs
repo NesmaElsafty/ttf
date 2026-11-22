@@ -59,11 +59,13 @@ const css = [
   'base.css',
   'components.css',
   'responsive.css',
+  'rtl.css',
 ]
   .map((f) => `/* ===== ${f} ===== */\n${read(path.join(stylesDir, f))}`)
   .join('\n\n');
 
 const js = [
+  'i18n.js',
   'navigation.js',
   'interactions.js',
   'main.js',
@@ -72,7 +74,7 @@ const js = [
   .join('\n\n');
 
 const googleFonts =
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap';
 const faCss =
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
 
@@ -82,6 +84,7 @@ function buildInlineBundle(label) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="${googleFonts}" rel="stylesheet" />
 <link rel="stylesheet" href="${faCss}" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>document.documentElement.setAttribute('data-ttf-owns-dir','1');</script>
 <style id="ttf-css">
 ${css}
 </style>

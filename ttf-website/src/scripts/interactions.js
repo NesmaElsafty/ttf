@@ -8,83 +8,167 @@
   var VERIFIED_TESTIMONIAL_MP4 =
     'https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/6950ace7ee1047793af668b6.mp4';
 
-  var TTF_DATA = {
-    people: {
-      title: 'What People Say About TTF',
-      tags: ['Training', 'Consulting', 'Business Solutions'],
-      items: [
-        {
-          type: 'text',
-          name: 'Sara Al-Mutairi',
-          role: 'HR Manager – FinTech Co.',
-          text: "TTF's training elevated our team's performance in just 30 days. Clear content, highly practical.",
-          rating: 5,
-          img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
-        },
-        {
-          type: 'text',
-          name: 'Mohamed El-Sayed',
-          role: 'Founder – StartHub',
-          text: 'Consulting was precise and realistic. We left with a roadmap that simplified decisions.',
-          rating: 5,
-          img: '',
-        },
-      ],
+  var TTF_DATA_I18N = {
+    en: {
+      people: {
+        title: 'What People Say About TTF',
+        tags: ['Training', 'Consulting', 'Business Solutions'],
+        items: [
+          {
+            type: 'text',
+            name: 'Sara Al-Mutairi',
+            role: 'HR Manager – FinTech Co.',
+            text: "TTF's training elevated our team's performance in just 30 days. Clear content, highly practical.",
+            rating: 5,
+            img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
+          },
+          {
+            type: 'text',
+            name: 'Mohamed El-Sayed',
+            role: 'Founder – StartHub',
+            text: 'Consulting was precise and realistic. We left with a roadmap that simplified decisions.',
+            rating: 5,
+            img: '',
+          },
+        ],
+      },
+      voices: {
+        title: 'Voices from Our Community',
+        tags: ['Community', 'Audio', 'TTF Family'],
+        items: [
+          {
+            type: 'audio',
+            name: 'Lina H.',
+            role: 'Product Manager',
+            text: 'Voice note about the weekly circles.',
+            img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'Rashid A.',
+            role: 'SMB Owner',
+            text: 'Quick testimonial.',
+            img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'Nour B.',
+            role: 'Team Lead',
+            text: 'On saving time via TTF.',
+            img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+        ],
+      },
+      real: {
+        title: 'Real Feedback, Real Impact',
+        tags: ['Impact', 'Videos', 'Case Studies'],
+        items: [
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: VERIFIED_TESTIMONIAL_MP4,
+            name: 'Case Study – Ops',
+            role: 'COO – Logistics',
+          },
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: '',
+            name: 'Customer Experience',
+            role: 'Head of CX',
+          },
+        ],
+      },
     },
-    voices: {
-      title: 'Voices from Our Community',
-      tags: ['Community', 'Audio', 'TTF Family'],
-      items: [
-        {
-          type: 'audio',
-          name: 'Lina H.',
-          role: 'Product Manager',
-          text: 'Voice note about the weekly circles.',
-          img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
-          // Reference used /media/voices/lina-note.mp3 — not hosted publicly; no verified URL.
-          src: '',
-        },
-        {
-          type: 'audio',
-          name: 'Rashid A.',
-          role: 'SMB Owner',
-          text: 'Quick testimonial.',
-          img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
-          src: '',
-        },
-        {
-          type: 'audio',
-          name: 'Nour B.',
-          role: 'Team Lead',
-          text: 'On saving time via TTF.',
-          img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
-          src: '',
-        },
-      ],
-    },
-    real: {
-      title: 'Real Feedback, Real Impact',
-      tags: ['Impact', 'Videos', 'Case Studies'],
-      items: [
-        {
-          type: 'video',
-          provider: 'mp4',
-          // Reference "youtube" card mapped to this verified msgsndr MP4 (not a YouTube embed).
-          src: VERIFIED_TESTIMONIAL_MP4,
-          name: 'Case Study – Ops',
-          role: 'COO – Logistics',
-        },
-        {
-          type: 'video',
-          provider: 'mp4',
-          // Reference path /media/videos/cx-drop-22.mp4 is not publicly hosted.
-          src: '',
-          name: 'Customer Experience',
-          role: 'Head of CX',
-        },
-      ],
+    ar: {
+      people: {
+        title: 'ماذا يقول الناس عن TTF',
+        tags: ['تدريب', 'استشارات', 'حلول أعمال'],
+        items: [
+          {
+            type: 'text',
+            name: 'سارة المطيري',
+            role: 'مديرة موارد بشرية – شركة تقنية مالية',
+            text: 'رفع تدريب TTF أداء فريقنا خلال 30 يومًا فقط. محتوى واضح وعملي جدًا.',
+            rating: 5,
+            img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
+          },
+          {
+            type: 'text',
+            name: 'محمد السيد',
+            role: 'مؤسس – StartHub',
+            text: 'الاستشارات كانت دقيقة وواقعية. خرجنا بخارطة طريق سهّلت قراراتنا.',
+            rating: 5,
+            img: '',
+          },
+        ],
+      },
+      voices: {
+        title: 'أصوات من مجتمعنا',
+        tags: ['المجتمع', 'صوتيات', 'عائلة TTF'],
+        items: [
+          {
+            type: 'audio',
+            name: 'لينا ح.',
+            role: 'مديرة منتج',
+            text: 'ملاحظة صوتية عن اللقاءات الأسبوعية.',
+            img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'راشد ع.',
+            role: 'صاحب منشأة صغيرة',
+            text: 'شهادة سريعة.',
+            img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'نور ب.',
+            role: 'قائدة فريق',
+            text: 'عن توفير الوقت عبر TTF.',
+            img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+        ],
+      },
+      real: {
+        title: 'ملاحظات حقيقية… أثر حقيقي',
+        tags: ['أثر', 'فيديوهات', 'دراسات حالة'],
+        items: [
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: VERIFIED_TESTIMONIAL_MP4,
+            name: 'دراسة حالة – العمليات',
+            role: 'مدير العمليات – لوجستيات',
+          },
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: '',
+            name: 'تجربة العملاء',
+            role: 'رئيس تجربة العملاء',
+          },
+        ],
+      },
     },
   };
+
+  function ttfT(key) {
+    return global.TTF && typeof global.TTF.t === 'function' ? global.TTF.t(key) : key;
+  }
+
+  function getTtfData() {
+    var lang = global.TTF && typeof global.TTF.getLang === 'function' ? global.TTF.getLang() : 'en';
+    return TTF_DATA_I18N[lang] || TTF_DATA_I18N.en;
+  }
+
+  var TTF_DATA = TTF_DATA_I18N.en;
 
   function isPlayableUrl(src) {
     return typeof src === 'string' && /^https?:\/\//i.test(src.trim());
@@ -94,12 +178,10 @@
     return (
       '<div class="ttf-media-fallback" role="status">' +
       '<span class="ttf-media-fallback-label">' +
-      (label || 'Media unavailable') +
+      (label || ttfT('media.unavailable')) +
       '</span>' +
       '<span class="ttf-media-fallback-hint">' +
-      (kind === 'audio'
-        ? 'Audio file is not hosted on a verified public URL.'
-        : 'Video file is not hosted on a verified public URL.') +
+      (kind === 'audio' ? ttfT('media.audioHint') : ttfT('media.videoHint')) +
       '</span></div>'
     );
   }
@@ -198,6 +280,45 @@
     );
   }
 
+  // GHL Animate.css fadeInDown — once when each marked heading scrolls into view
+  function initFadeInDownHeadings(root) {
+    var nodes = root.querySelectorAll(
+      '[data-ttf-fade-in-down], .ttf-social-proof-heading, .ttf-vlogs-heading',
+    );
+    if (!nodes.length) return;
+
+    var reduce =
+      global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    Array.prototype.forEach.call(nodes, function (title) {
+      if (title.__ttfHeadingAnim) return;
+      title.__ttfHeadingAnim = true;
+
+      if (reduce) {
+        title.classList.add('ttf-anim-in');
+        return;
+      }
+
+      title.classList.add('ttf-anim-ready');
+
+      if (typeof global.IntersectionObserver === 'function') {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              title.classList.add('ttf-anim-in');
+              io.disconnect();
+            });
+          },
+          { threshold: 0.35, rootMargin: '0px 0px -10% 0px' },
+        );
+        io.observe(title);
+      } else {
+        title.classList.add('ttf-anim-in');
+      }
+    });
+  }
+
   function initTestimonials(root) {
     var $c = root.querySelector('#ttf-component');
     if (!$c || $c.__ttfTestimonialsInit) return;
@@ -207,15 +328,22 @@
     var chips = $c.querySelector('#ttf-chips');
     var heading = $c.querySelector('#ttf-heading');
     var count = $c.querySelector('#ttf-count');
+    var scroller = $c.querySelector('.ttf-scroll');
     if (!grid || !chips || !heading || !count) return;
 
+    function activeKey() {
+      var active = $c.querySelector('.ttf-side .ttf-btn.ttf-active');
+      return (active && active.dataset.key) || 'people';
+    }
+
     function render(key) {
-      var set = TTF_DATA[key];
+      var data = getTtfData();
+      var set = data[key];
       if (!set) return;
       heading.textContent = set.title;
       chips.innerHTML = set.tags
-        .map(function (t) {
-          return '<span class="ttf-chip">' + t + '</span>';
+        .map(function (tag) {
+          return '<span class="ttf-chip">' + tag + '</span>';
         })
         .join('');
       grid.innerHTML = set.items
@@ -226,6 +354,7 @@
         })
         .join('');
       count.textContent = '(' + set.items.length + ')';
+      if (scroller) scroller.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     render('people');
@@ -244,6 +373,10 @@
           btn.click();
         }
       });
+    });
+
+    root.addEventListener('ttf:langchange', function () {
+      render(activeKey());
     });
   }
 
@@ -333,16 +466,12 @@
       var whatsapp = (form.whatsapp && form.whatsapp.value ? form.whatsapp.value : '').trim();
 
       if (!name || !email || !whatsapp) {
-        setFormStatus(statusEl, 'Please fill in all required fields.', 'error');
+        setFormStatus(statusEl, ttfT('cta.errRequired'), 'error');
         return;
       }
 
       if (!webhook) {
-        setFormStatus(
-          statusEl,
-          'Form is not connected. Set data-ghl-webhook or paste a native GHL form embed.',
-          'error',
-        );
+        setFormStatus(statusEl, ttfT('cta.errWebhook'), 'error');
         return;
       }
 
@@ -354,7 +483,7 @@
       };
 
       if (submitBtn) submitBtn.disabled = true;
-      setFormStatus(statusEl, 'Submitting…', 'pending');
+      setFormStatus(statusEl, ttfT('cta.pending'), 'pending');
 
       fetch(webhook, {
         method: 'POST',
@@ -365,16 +494,12 @@
           if (!res.ok) {
             throw new Error('HTTP ' + res.status);
           }
-          setFormStatus(statusEl, 'Thank you! Your info has been sent successfully.', 'success');
+          setFormStatus(statusEl, ttfT('cta.success'), 'success');
           form.reset();
         })
         .catch(function (err) {
           console.error('[TTF] Registration submit failed', err);
-          setFormStatus(
-            statusEl,
-            'Submission failed. Please try again or contact support.',
-            'error',
-          );
+          setFormStatus(statusEl, ttfT('cta.fail'), 'error');
         })
         .then(function () {
           if (submitBtn) submitBtn.disabled = false;
@@ -386,6 +511,7 @@
     if (!root) return;
     initTestimonials(root);
     initVlogs(root);
+    initFadeInDownHeadings(root);
     initRegistration(root);
     root.__ttfInteractionsInit = true;
   }
@@ -393,5 +519,7 @@
   global.TTF = global.TTF || {};
   global.TTF.initInteractions = initInteractions;
   global.TTF.TTF_DATA = TTF_DATA;
+  global.TTF.TTF_DATA_I18N = TTF_DATA_I18N;
+  global.TTF.getTtfData = getTtfData;
   global.TTF.VERIFIED_TESTIMONIAL_MP4 = VERIFIED_TESTIMONIAL_MP4;
 })(typeof window !== 'undefined' ? window : globalThis);

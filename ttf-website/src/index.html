@@ -6,12 +6,14 @@
     <title>Tech Titans Factory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <script>document.documentElement.setAttribute('data-ttf-owns-dir','1');</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/base.css" />
     <link rel="stylesheet" href="/styles/components.css" />
     <link rel="stylesheet" href="/styles/responsive.css" />
+    <link rel="stylesheet" href="/styles/rtl.css" />
     <style>
       /* Local preview only — does not ship into GHL scoped CSS */
       html, body { margin: 0; padding: 0; background: #1b2029; }
@@ -29,25 +31,14 @@
     />
   </a>
 
-  <button
-    class="burger"
-    type="button"
-    aria-label="Open menu"
-    aria-controls="menu"
-    aria-expanded="false"
-    data-ttf-burger
-  >
-    ☰
-  </button>
-
-  <nav aria-label="Primary">
+  <nav data-i18n-aria="nav.primary" aria-label="Primary">
     <ul class="menu" id="menu">
       <li class="ttf-menu-close">
-        <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+        <button class="close-btn" type="button" aria-label="Close menu" data-i18n-aria="nav.closeMenu" data-ttf-close-menu>✖</button>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home">Home Page</a>
+        <a href="https://techtitansfactory.com/home" data-i18n="nav.home">Home Page</a>
       </li>
 
       <li>
@@ -56,13 +47,14 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.about"
         >About Us ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh" data-i18n="nav.aboutTtf">About TTF</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8" data-i18n="nav.aboutWael">About Eng. Wael Fathy</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-" data-i18n="nav.coreValues">Core Values</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.vision">Our Vision</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.mission">Our Mission</a></li>
         </ul>
       </li>
 
@@ -72,30 +64,54 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.services"
         >Services ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv" data-i18n="nav.training">Training Programs</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X" data-i18n="nav.consulting">Consulting Services</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x" data-i18n="nav.content">Content Creation</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A" data-i18n="nav.setup">All-in-One Business Setup</a></li>
         </ul>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
+        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp" data-i18n="nav.vlog">Vlog</a>
       </li>
       <li>
-        <a href="https://portal.techtitansfactory.com/">Members Area</a>
+        <a href="https://portal.techtitansfactory.com/" data-i18n="nav.members">Members Area</a>
       </li>
       <li>
-        <a href="https://techtitansfactory.com/contactus">Contact Us</a>
+        <a href="https://techtitansfactory.com/contactus" data-i18n="nav.contact">Contact Us</a>
       </li>
     </ul>
   </nav>
+
+  <div class="ttf-nav-tools">
+    <div class="ttf-lang" role="group" data-i18n-aria="lang.group" aria-label="Language">
+      <button type="button" class="ttf-lang-btn is-active" data-ttf-lang="en" aria-pressed="true" data-i18n="lang.en">
+        EN
+      </button>
+      <button type="button" class="ttf-lang-btn" data-ttf-lang="ar" aria-pressed="false" data-i18n="lang.ar">
+        ع
+      </button>
+    </div>
+
+    <button
+      class="burger"
+      type="button"
+      aria-label="Open menu"
+      data-i18n-aria="nav.openMenu"
+      aria-controls="menu"
+      aria-expanded="false"
+      data-ttf-burger
+    >
+      ☰
+    </button>
+  </div>
 </header>
 
     <!-- hero -->
-<section class="ttf-hero" aria-label="Hero" data-ttf-hero>
+<section class="ttf-hero" aria-label="Hero" data-ttf-hero dir="ltr" lang="en">
   <div class="ttf-hero-row">
     <div class="ttf-hero-copy">
       <h1 class="ttf-hero-name ttf-hero-anim">Wael Fathy</h1>
@@ -119,17 +135,17 @@
     <!-- about -->
 <section class="ttf-about" aria-label="About">
   <div class="ttf-about-inner">
-    <h2 class="ttf-about-heading">ABOUT</h2>
+    <h2 class="ttf-about-heading" data-i18n="about.label">ABOUT</h2>
     <div class="ttf-about-text">
       <p>
-        <strong>Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
+        <strong data-i18n="about.p1">Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
       </p>
       <p>
-        <strong>Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and</strong>
+        <strong data-i18n="about.p2">Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and</strong>
       </p>
       <p>
-        <strong>achieving excellence in every part of your career. We’re here to equip you ...</strong>
-        <a class="ttf-about-more" href="https://techtitansfactory.com/AboutUs"><strong>Read More</strong></a>
+        <strong data-i18n="about.p3">achieving excellence in every part of your career. We’re here to equip you ...</strong>
+        <a class="ttf-about-more" href="https://techtitansfactory.com/AboutUs"><strong data-i18n="about.more">Read More</strong></a>
       </p>
     </div>
   </div>
@@ -138,8 +154,8 @@
     <!-- partners -->
 <section class="ttf-partners-section" aria-label="Partners">
   <div class="ttf-partners-intro">
-    <h2 class="ttf-partners-label">PARTNERS</h2>
-    <p class="ttf-partners-heading">WHO WE WORK WITH</p>
+    <h2 class="ttf-partners-label" data-i18n="partners.label">PARTNERS</h2>
+    <p class="ttf-partners-heading" data-i18n="partners.heading">WHO WE WORK WITH</p>
   </div>
 
   <!-- Desktop: glass partners (5 logos) — matches GHL desktop custom code -->
@@ -195,37 +211,37 @@
 
     <!-- testimonials -->
 <section class="ttf-testimonials-section" aria-labelledby="ttf-social-proof-heading">
-  <h2 class="ttf-section-title ttf-social-proof-heading" id="ttf-social-proof-heading">
+  <h2 class="ttf-social-proof-heading" id="ttf-social-proof-heading" data-ttf-fade-in-down data-i18n="social.heading">
     Testimonials &amp; Social Proof
   </h2>
 
-  <div class="ttf-testimonials" dir="ltr" id="ttf-component">
+  <div class="ttf-testimonials" id="ttf-component">
     <aside class="ttf-side">
       <div class="ttf-brand">
         <span class="ttf-dot"></span>
-        <h2>Testimonials</h2>
+        <h2 data-i18n="testimonials.brand">Testimonials</h2>
       </div>
-      <p class="ttf-note">Pick a heading to view matching testimonials.</p>
+      <p class="ttf-note" data-i18n="testimonials.note">Pick a heading to view matching testimonials.</p>
 
       <button class="ttf-btn ttf-active" data-key="people" type="button">
         <div>
-          <div>What People Say About TTF</div>
-          <span class="ttf-sub">General praise &amp; highlights</span>
+          <div data-i18n="testimonials.people">What People Say About TTF</div>
+          <span class="ttf-sub" data-i18n="testimonials.peopleSub">General praise &amp; highlights</span>
         </div>
-        <span class="ttf-tag">NEW</span>
+        <span class="ttf-tag" data-i18n="testimonials.new">NEW</span>
       </button>
 
       <button class="ttf-btn" data-key="voices" type="button">
         <div>
-          <div>Voices from Our Community</div>
-          <span class="ttf-sub">Uploadable voice notes</span>
+          <div data-i18n="testimonials.voices">Voices from Our Community</div>
+          <span class="ttf-sub" data-i18n="testimonials.voicesSub">Uploadable voice notes</span>
         </div>
       </button>
 
       <button class="ttf-btn" data-key="real" type="button">
         <div>
-          <div>Real Feedback, Real Impact</div>
-          <span class="ttf-sub">Videos / case studies</span>
+          <div data-i18n="testimonials.real">Real Feedback, Real Impact</div>
+          <span class="ttf-sub" data-i18n="testimonials.realSub">Videos / case studies</span>
         </div>
       </button>
     </aside>
@@ -247,29 +263,29 @@
 
     <!-- vlogs -->
 <section class="ttf-vlogs-section" id="heading--Oif2KX2bp" aria-labelledby="ttf-vlogs-heading">
-  <h2 class="ttf-section-title" id="ttf-vlogs-heading">Our Vlogs</h2>
+  <h2 class="ttf-vlogs-heading" id="ttf-vlogs-heading" data-ttf-fade-in-down data-i18n="vlogs.heading">Our Vlogs</h2>
 
   <div class="ghl-vlogs ttf-skin">
     <div class="ghl-v-wrap">
       <aside class="ghl-v-left">
-        <h2 class="ghl-v-heading">Latest Vlogs</h2>
+        <h2 class="ghl-v-heading" data-i18n="vlogs.latest">Latest Vlogs</h2>
 
         <div class="ghl-v-list">
           <button class="v-item-btn ttf-btn ttf-active" type="button" data-index="0">
-            <span>Video One</span>
+            <span data-i18n="vlogs.v1">Video One</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="1">
-            <span>Video Two</span>
+            <span data-i18n="vlogs.v2">Video Two</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="2">
-            <span>Video Three</span>
+            <span data-i18n="vlogs.v3">Video Three</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="3">
-            <span>Video Four</span>
+            <span data-i18n="vlogs.v4">Video Four</span>
           </button>
         </div>
 
-        <p class="ghl-v-note">
+        <p class="ghl-v-note" data-i18n="vlogs.note">
           Exclusive vlogs covering travels, behind-the-scenes, and life hacks.
           Click a title to jump or scroll the videos.
         </p>
@@ -284,8 +300,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video One</h3>
-            <p class="ghl-v-text">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v1">Video One</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v1Text">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
           </div>
         </article>
 
@@ -297,8 +313,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Two</h3>
-            <p class="ghl-v-text">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v2">Video Two</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v2Text">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
           </div>
         </article>
 
@@ -310,8 +326,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Three</h3>
-            <p class="ghl-v-text">Practical tips and tricks that make everyday life easier and more efficient.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v3">Video Three</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v3Text">Practical tips and tricks that make everyday life easier and more efficient.</p>
           </div>
         </article>
 
@@ -323,8 +339,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Four</h3>
-            <p class="ghl-v-text">Start your day right with this complete guide to a productive routine.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v4">Video Four</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v4Text">Start your day right with this complete guide to a productive routine.</p>
           </div>
         </article>
       </section>
@@ -335,63 +351,79 @@
     <!-- marketing-team -->
 <section class="ttf-marketing" aria-label="Marketing Team">
   <div class="ttf-marketing-inner">
-    <h2 class="ttf-marketing-heading">OUR EXCEPTIONAL MARKETING TEAM</h2>
-    <p class="ttf-marketing-desc">
-      Our team consists of highly skilled professionals with deep expertise in web design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering exceptional results for our clients.
-    </p>
-    <ul class="ttf-marketing-pillars">
-      <li>Expertise</li>
-      <li>Collaboration</li>
-      <li>Results-Driven</li>
-    </ul>
-    <a
-      class="ttf-marketing-btn"
-      href="https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA"
-      aria-label="OUR SERVICES"
-    >
-      OUR SERVICES
-    </a>
+    <figure class="ttf-marketing-media">
+      <img
+        src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68d032da155259f31ca9a794.png"
+        alt="Tech Titans Factory marketing team"
+        loading="lazy"
+        width="1024"
+        height="819"
+      />
+    </figure>
+
+    <div class="ttf-marketing-copy">
+      <h2 class="ttf-marketing-heading" data-i18n="marketing.heading">OUR EXCEPTIONAL MARKETING TEAM</h2>
+      <p class="ttf-marketing-desc" data-i18n="marketing.desc">
+        Our team consists of highly skilled professionals with deep expertise in web
+        design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering
+        exceptional results for our clients.
+      </p>
+      <ul class="ttf-marketing-pillars">
+        <li data-i18n="marketing.expertise">Expertise</li>
+        <li data-i18n="marketing.collab">Collaboration</li>
+        <li data-i18n="marketing.results">Results-Driven</li>
+      </ul>
+      <a
+        class="ttf-marketing-btn"
+        href="https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA"
+        aria-label="OUR SERVICES"
+        data-i18n="marketing.btn"
+        data-i18n-aria="marketing.btn"
+      >
+        OUR SERVICES
+      </a>
+    </div>
   </div>
 </section>
 
     <!-- programs -->
 <section class="ttf-programs-section" aria-labelledby="ttf-programs-heading">
-  <h2 class="ttf-section-title" id="ttf-programs-heading">Our Programs</h2>
+  <h2 class="ttf-section-title" id="ttf-programs-heading" data-i18n="programs.heading">Our Programs</h2>
 
   <div class="ttf-programs">
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800" alt="Business Information Systems" />
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800" alt="Business Information Systems" data-i18n-alt="programs.p1Title" />
       <div class="ttf-program-body">
-        <h3>Business Information Systems</h3>
-        <p>From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p1Title">Business Information Systems</h3>
+        <p data-i18n="programs.p1Text">From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&amp;w=800" alt="The Smart Customer Service" />
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&amp;w=800" alt="The Smart Customer Service" data-i18n-alt="programs.p2Title" />
       <div class="ttf-program-body">
-        <h3>The Smart Customer Service</h3>
-        <p>Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p2Title">The Smart Customer Service</h3>
+        <p data-i18n="programs.p2Text">Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=800" alt="From Trainer to Business Leader" />
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=800" alt="From Trainer to Business Leader" data-i18n-alt="programs.p3Title" />
       <div class="ttf-program-body">
-        <h3>From Trainer to Business Leader</h3>
-        <p>Transition your training expertise into business leadership and strategic influence within your industry.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p3Title">From Trainer to Business Leader</h3>
+        <p data-i18n="programs.p3Text">Transition your training expertise into business leadership and strategic influence within your industry.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&amp;w=800" alt="The Golden Nuggets in the IT World" />
+      <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&amp;w=800" alt="The Golden Nuggets in the IT World" data-i18n-alt="programs.p4Title" />
       <div class="ttf-program-body">
-        <h3>The Golden Nuggets in the IT World</h3>
-        <p>Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p4Title">The Golden Nuggets in the IT World</h3>
+        <p data-i18n="programs.p4Text">Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
   </div>
@@ -401,9 +433,9 @@
 <section class="ttf-cta" aria-labelledby="ttf-cta-title">
   <div class="ttf-cta-box">
     <div class="ttf-cta-text">
-      <span>Stay in the loop</span>
-      <h2 id="ttf-cta-title">Join our Newsletter</h2>
-      <p>
+      <span data-i18n="newsletter.eyebrow">Stay in the loop</span>
+      <h2 id="ttf-cta-title" data-i18n="newsletter.title">Join our Newsletter</h2>
+      <p data-i18n="newsletter.text">
         Short, valuable updates from TTF — insights, tips, and hand-picked videos that truly help you grow.
       </p>
     </div>
@@ -422,37 +454,20 @@
 <section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
   <div class="ttfns-wrap">
     <div class="ttfns-left">
-      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
+      <h2 class="ttfns-title" id="ttfns-title" data-i18n="cta.title">Take Action with TTF</h2>
       <div class="ttfns-links">
         <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
+          <i class="fab fa-instagram" aria-hidden="true"></i> <span data-i18n="cta.ig">Get daily motivation</span>
         </a>
         <a href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-youtube" aria-hidden="true"></i> Watch TTF Show
+          <i class="fab fa-youtube" aria-hidden="true"></i> <span data-i18n="cta.yt">Watch TTF Show</span>
         </a>
         <a href="#ttfns-form" class="ttfns-link">
-          <i class="fa-regular fa-envelope" aria-hidden="true"></i> Video to your email
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i> <span data-i18n="cta.email">Video to your email</span>
         </a>
       </div>
     </div>
 
-    <!--
-      GoHighLevel registration form
-      --------------------------------
-      Default: posts JSON to the Lead Connector webhook copied from the
-      reference funnel (reference/assembled/registration.js).
-
-      GHL configuration checklist:
-      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
-         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
-         a different trigger.
-      2. Optional: replace the entire <form> with a native GHL Form embed
-         inside [data-ghl-form="registration"] — then remove/disable the
-         JS submit handler (it skips native embeds automatically).
-      3. Map fields: name, email, whatsapp (and optional source).
-      4. Test on a published GHL page (CORS + workflow). Local preview cannot
-         verify CRM contact creation.
-    -->
     <div class="ttfns-form-slot" data-ghl-form="registration">
       <form
         id="ttfns-form"
@@ -461,20 +476,20 @@
         data-ttf-registration-form
         data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
       >
-        <p class="ttfns-form-note">
+        <p class="ttfns-form-note" data-i18n="cta.note">
           Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
         </p>
 
-        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
-        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+        <label class="ttf-sr-only" for="ttfns-name" data-i18n="cta.name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" data-i18n-placeholder="cta.name" />
 
-        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
-        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+        <label class="ttf-sr-only" for="ttfns-email" data-i18n="cta.emailPh">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" data-i18n-placeholder="cta.emailPh" />
 
-        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
-        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+        <label class="ttf-sr-only" for="ttfns-whatsapp" data-i18n="cta.whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" data-i18n-placeholder="cta.whatsapp" />
 
-        <button type="submit" class="ttfns-btn">Register Now</button>
+        <button type="submit" class="ttfns-btn" data-i18n="cta.submit">Register Now</button>
         <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
       </form>
     </div>
@@ -486,11 +501,11 @@
   <div class="ttfx-wrap">
     <section class="ttfx-brand">
       <h3 class="ttfx-brand-title">Tech Titans Factory</h3>
-      <p class="ttfx-brand-desc">
+      <p class="ttfx-brand-desc" data-i18n="footer.desc">
         Empowering businesses with cutting-edge training, consulting, and digital solutions.
         Stay ahead with TTF insights and innovation.
       </p>
-      <nav class="ttfx-social" aria-label="Social media">
+      <nav class="ttfx-social" data-i18n-aria="footer.social" aria-label="Social media">
         <a class="ttfx-social-link" href="https://www.facebook.com/profile.php?id=61568805620771" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <i class="fab fa-facebook-f" aria-hidden="true"></i>
         </a>
@@ -508,27 +523,27 @@
 
     <nav class="ttfx-links" aria-label="Footer">
       <div>
-        <h4 class="ttfx-links-title">Explore</h4>
+        <h4 class="ttfx-links-title" data-i18n="footer.explore">Explore</h4>
         <ul class="ttfx-list">
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home">Home</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/AboutUs">About Us</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/services">Services</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home" data-i18n="footer.home">Home</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/AboutUs" data-i18n="footer.about">About Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/services" data-i18n="footer.services">Services</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home#heading--Oif2KX2bp" data-i18n="footer.vlog">Vlog</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="ttfx-links-title">Support</h4>
+        <h4 class="ttfx-links-title" data-i18n="footer.support">Support</h4>
         <ul class="ttfx-list">
-          <li class="ttfx-item"><a class="ttfx-link" href="https://portal.techtitansfactory.com/">Members Area</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/contactus">Contact Us</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/privacypolicy">Privacy Policy</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/refundpolicy">Refund Policy</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://portal.techtitansfactory.com/" data-i18n="footer.members">Members Area</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/contactus" data-i18n="footer.contact">Contact Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/privacypolicy" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/refundpolicy" data-i18n="footer.refund">Refund Policy</a></li>
         </ul>
       </div>
     </nav>
   </div>
 
-  <div class="ttfx-bottom">© 2025 Tech Titans Factory. All rights reserved.</div>
+  <div class="ttfx-bottom" data-i18n="footer.copy">© 2025 Tech Titans Factory. All rights reserved.</div>
 </footer>
 
     <!-- ziko -->

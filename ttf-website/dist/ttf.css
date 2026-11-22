@@ -12,12 +12,15 @@
   --ttf-card: rgba(255, 255, 255, 0.06);
   --ttf-radius: 16px;
   --ttf-font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ttf-font-arabic: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
   --ttf-font-condensed: 'Roboto Condensed', 'Poppins', sans-serif;
   --ttf-font-script: 'Charlotte Southern', cursive;
   --ttf-font-display: 'Korolev Bold', 'Poppins', sans-serif;
   --ttf-font-heavy: 'Korolev Heavy', 'Poppins', sans-serif;
   --ttf-font-thin: 'Korolev Thin', 'Poppins', sans-serif;
   --ttf-max: 1200px;
+  /* Sticky navbar (~95px) + gap — keeps sticky side panels clear of the header */
+  --ttf-sticky-offset: 111px;
 
   /* Crystal / partners */
   --crystal-bg: rgba(255, 255, 255, 0.08);
@@ -68,13 +71,39 @@
 
 
 /* ===== base.css ===== */
-/* Scoped base — intentionally does NOT reset global html/body for GHL safety */
+/* Full-bleed dark page — removes default browser / GHL white frame around the homepage */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #1b2029 !important;
+  background: #1b2029 !important;
+}
+
+/* Neutralize common GHL wrappers that leave a white gutter around Custom Code */
+body .c-section:has(#ttf-app),
+body .c-row:has(#ttf-app),
+body .c-column:has(#ttf-app),
+body .c-wrapper:has(#ttf-app),
+body .c-custom-code:has(#ttf-app),
+body .custom-code-container:has(#ttf-app) {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
 #ttf-app {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: none;
+  min-height: 100vh;
   font-family: var(--ttf-font-body);
   background-color: var(--ttf-bg);
   color: var(--ttf-text);
@@ -113,11 +142,75 @@
   color: #fff;
 }
 
+/* Matches GHL heading-X8NpSmLvGH: Poppins 50/300 lime, left, fadeInDown on scroll */
 #ttf-app .ttf-social-proof-heading {
+  margin: 10px 0 20px;
+  padding: 0;
+  font-family: var(--ttf-font-body);
   font-size: 50px;
   font-weight: 300;
-  text-align: center;
-  margin: 48px 20px 24px;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+/* Matches GHL heading--Oif2KX2bp (Our Vlogs): same type + fadeInDown, 20px left pad */
+#ttf-app .ttf-vlogs-heading {
+  margin: 10px 0 0;
+  padding: 0 0 0 20px;
+  font-family: var(--ttf-font-body);
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+@keyframes ttf-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in) {
+  opacity: 0;
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-in,
+#ttf-app .ttf-vlogs-heading.ttf-anim-in,
+#ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+  animation-name: ttf-fadeInDown;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-social-proof-heading.ttf-anim-in,
+  #ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-vlogs-heading.ttf-anim-in,
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #ttf-app .ttf-vlogs-heading {
+    line-height: 1.2;
+    padding-bottom: 10px;
+  }
 }
 
 #ttf-app .ttf-sr-only {
@@ -144,6 +237,54 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  gap: 16px;
+}
+
+#ttf-app .navbar > nav {
+  margin-inline-start: auto;
+}
+
+#ttf-app .ttf-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: 16px;
+  flex-shrink: 0;
+}
+
+#ttf-app .ttf-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--ttf-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#ttf-app .ttf-lang-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ttf-muted);
+  font-family: var(--ttf-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 8px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#ttf-app .ttf-lang-btn:hover {
+  color: #fff;
+}
+
+#ttf-app .ttf-lang-btn.is-active {
+  background: var(--ttf-brand);
+  color: #1b2029;
 }
 
 #ttf-app .navbar img.logo {
@@ -407,7 +548,10 @@
 #ttf-app .ttf-about-partners-band {
   position: relative;
   background-color: var(--ttf-bg);
+  /* Reference desktop: hero→about gap is 0; section--CHrNfd6Co height ~989px */
+  margin-top: 0;
   padding: 0 0 20px;
+  min-height: 989px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -417,9 +561,11 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Same asset as reference section BG (filesafe / LeadConnector source) */
   background-image: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccddce253906462602ff38.png');
+  /* GHL .full-center: cover + 50% center — needs tall band so head is not cropped */
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% center;
   background-repeat: no-repeat;
   opacity: 0.3;
   pointer-events: none;
@@ -430,20 +576,30 @@
   z-index: 1;
 }
 
+/* About copy block mirrors GHL row-Zk-ytamOS7 + col-dkc2XWt9sw
+   (each margin-top 60px + padding 10px 5px → ABOUT heading ~150px from section top) */
 #ttf-app .ttf-about {
   position: relative;
-  padding: 0 10px 0;
+  max-width: 1170px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 10px 5px 0;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-about-inner {
   max-width: 1170px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 10px 5px;
   text-align: center;
-  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-about-heading {
-  margin: 10px 0 20px;
+  /* padding-bottom avoids collapse with paragraph margin-top (ref gap ~40px) */
+  margin: 10px 0 0;
+  padding-bottom: 20px;
   font-family: var(--ttf-font-display);
   font-size: 40px;
   font-weight: 700;
@@ -498,12 +654,15 @@
 }
 
 #ttf-app .ttf-partners-section {
-  padding: 0 20px 40px;
+  /* Reference measured gap: About paragraph → PARTNERS label ≈ 175px
+     (GHL row margin 100px + padding 20px + nested offsets). */
+  margin: 0 0 20px;
+  padding: 165px 20px 0;
 }
 
 #ttf-app .ttf-partners-intro {
   max-width: 1080px;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -562,7 +721,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* Match reference: content-sized ~172×182 (img max 130px + padding), not stretched */
+  width: auto;
+  max-width: 172px;
+  min-height: 182px;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-partner-card:hover {
@@ -648,11 +811,13 @@
   transform: scale(0.98);
 }
 
-/* ===== Testimonials (style-15) ===== */
+/* ===== Testimonials (style-15 / GHL section-JJBgAEjUuX) ===== */
 #ttf-app .ttf-testimonials-section {
-  padding: 20px;
-  max-width: 1280px;
+  padding: 20px 0;
+  max-width: 1170px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-testimonials {
@@ -675,7 +840,7 @@
 
 #ttf-app .ttf-side {
   position: sticky;
-  top: 0;
+  top: var(--ttf-sticky-offset);
   align-self: start;
   display: flex;
   flex-direction: column;
@@ -813,6 +978,26 @@
 #ttf-app .ttf-scroll {
   overflow: auto;
   padding: 10px;
+  flex: 1 1 auto;
+  min-height: 0;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(211, 253, 4, 0.45) rgba(255, 255, 255, 0.06);
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar-thumb {
+  background: rgba(211, 253, 4, 0.45);
+  border-radius: 999px;
 }
 
 #ttf-app .ttf-grid {
@@ -867,7 +1052,7 @@
 
 #ttf-app .ttf-rating {
   margin-top: 10px;
-  color: var(--ttf-brand);
+  color: #fff;
 }
 
 #ttf-app .ttf-audio {
@@ -963,7 +1148,7 @@
 
 #ttf-app .ttf-skin .ghl-v-left {
   position: sticky;
-  top: 16px;
+  top: var(--ttf-sticky-offset);
   align-self: start;
   background: linear-gradient(180deg, var(--glass), transparent);
   padding: 14px;
@@ -1042,6 +1227,7 @@
   border-radius: 12px;
   padding: 14px;
   transition: 0.25s ease;
+  scroll-margin-top: var(--ttf-sticky-offset);
 }
 
 #ttf-app .ttf-skin .ghl-v-card:hover {
@@ -1112,60 +1298,144 @@
   color: var(--fg);
 }
 
-/* ===== Marketing Team ===== */
+/* ===== Marketing Team — matches GHL row-20cYCxWzkF ===== */
 #ttf-app .ttf-marketing {
-  padding: 60px 20px;
-  max-width: 900px;
+  padding: 20px 0 40px;
+  margin: 0;
+  width: 100%;
+}
+
+#ttf-app .ttf-marketing-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1170px;
   margin: 0 auto;
+  width: 100%;
+}
+
+#ttf-app .ttf-marketing-media {
+  flex: 1 1 50%;
+  margin: 0;
+  padding: 10px 20px;
+  min-width: 0;
+}
+
+#ttf-app .ttf-marketing-media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  padding-right: 10px;
+}
+
+#ttf-app .ttf-marketing-copy {
+  flex: 1 1 50%;
+  padding: 10px 40px;
+  min-width: 0;
 }
 
 #ttf-app .ttf-marketing-heading {
-  margin: 0 0 18px;
+  margin: 10px 0 0;
+  padding: 0;
   font-family: var(--ttf-font-body);
   font-size: 40px;
   font-weight: 700;
   color: #fff;
-  line-height: 1.2;
+  line-height: 1.1;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 #ttf-app .ttf-marketing-desc {
-  margin: 0 0 28px;
-  font-size: 16px;
-  line-height: 1.7;
+  margin: 20px 0 0;
+  padding: 0;
+  font-family: var(--ttf-font-condensed);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
   color: #fff;
-  opacity: 0.92;
+  text-align: left;
 }
 
 #ttf-app .ttf-marketing-pillars {
   list-style: none;
-  margin: 0 0 32px;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 #ttf-app .ttf-marketing-pillars li {
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: var(--ttf-font-condensed);
   font-size: 18px;
   font-weight: 400;
+  line-height: 1.5;
   color: #fff;
+  text-align: left;
+}
+
+#ttf-app .ttf-marketing-pillars li:first-child {
+  margin-top: 20px;
+}
+
+#ttf-app .ttf-marketing-pillars li:last-child {
+  margin-bottom: 30px;
+}
+
+/* GHL Font Awesome check-circle (lime) before each pillar */
+#ttf-app .ttf-marketing-pillars li::before {
+  content: "\f058";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--ttf-brand);
+  margin-right: 5px;
+  -webkit-font-smoothing: antialiased;
 }
 
 #ttf-app .ttf-marketing-btn {
+  position: relative;
   display: inline-block;
+  overflow: hidden;
+  z-index: 0;
   background: #fff;
   color: #000;
   text-decoration: none;
-  padding: 20px 30px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--ttf-font-body);
-  transition: opacity 0.25s ease;
+  padding: 10px 18px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  font-family: var(--ttf-font-condensed);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.45s ease, border-color 0.45s ease;
+}
+
+#ttf-app .ttf-marketing-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ttf-brand);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.65s ease;
+  z-index: -1;
 }
 
 #ttf-app .ttf-marketing-btn:hover {
-  opacity: 0.9;
+  color: #1b2029;
+  border-color: #000;
+}
+
+#ttf-app .ttf-marketing-btn:hover::before {
+  transform: scaleX(1);
 }
 
 /* ===== Programs (style-17) ===== */
@@ -1697,10 +1967,17 @@
 }
 
 @media (max-width: 900px) {
+  #ttf-app .navbar > nav {
+    margin-inline-start: 0;
+  }
+
+  #ttf-app .ttf-nav-tools {
+    margin-inline-start: auto;
+  }
+
   #ttf-app .burger {
     display: block;
     margin: 0;
-    margin-left: auto;
   }
 
   #ttf-app .menu {
@@ -1708,6 +1985,7 @@
     gap: 15px;
     position: fixed;
     top: 0;
+    inset-inline-end: -100%;
     right: -100%;
     height: 100%;
     width: 280px;
@@ -1715,12 +1993,23 @@
     backdrop-filter: blur(16px);
     padding: 80px 20px;
     transition: 0.4s;
-    border-left: 2px solid rgba(211, 253, 4, 0.25);
+    border-inline-start: 2px solid rgba(211, 253, 4, 0.25);
     z-index: 1000;
   }
 
   #ttf-app .menu.open {
+    inset-inline-end: 0;
     right: 0;
+  }
+
+  #ttf-app[dir="rtl"] .menu {
+    right: auto;
+    left: -100%;
+  }
+
+  #ttf-app[dir="rtl"] .menu.open {
+    right: auto;
+    left: 0;
   }
 
   #ttf-app .menu > .ttf-menu-close {
@@ -1784,10 +2073,36 @@
 
   #ttf-app .ttf-social-proof-heading {
     font-size: 32px;
+    text-align: left;
+    margin: 10px 16px 20px;
+  }
+
+  #ttf-app .ttf-testimonials-section {
+    padding: 20px 16px;
+  }
+
+  #ttf-app .ttf-marketing-inner {
+    flex-direction: column;
+  }
+
+  #ttf-app .ttf-marketing-media {
+    padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  #ttf-app .ttf-marketing-media img {
+    padding-right: 0;
+  }
+
+  #ttf-app .ttf-marketing-copy {
+    padding: 0;
+    width: 100%;
   }
 
   #ttf-app .ttf-marketing-heading {
     font-size: 28px;
+    line-height: 1.2;
   }
 }
 
@@ -1862,16 +2177,32 @@
   }
 
   #ttf-app .ttf-about-partners-band {
-    padding: 80px 0 20px;
+    /* Reference mobile section-ZPj-jc3mjg: margin 60px 0 0; padding 40px 0 0 */
+    margin-top: 60px;
+    padding: 40px 0 20px;
+    min-height: 0;
   }
 
   #ttf-app .ttf-about-partners-band::before {
+    /* Reference mobile .bgCover100 */
     background-size: 100%;
     background-position: 0% 0%;
+    background-repeat: no-repeat;
   }
 
   #ttf-app .ttf-about {
+    margin: 0 auto;
     padding: 0 20px;
+  }
+
+  #ttf-app .ttf-about-inner {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  #ttf-app .ttf-partners-section {
+    margin: 60px 0 20px;
+    padding: 20px 20px 0;
   }
 
   #ttf-app .ttf-about-text,
@@ -1898,5 +2229,128 @@
 
   #ttf-app .navbar {
     padding: 12px 16px;
+  }
+}
+
+
+/* ===== rtl.css ===== */
+/* Arabic / RTL overrides — activated via #ttf-app[dir="rtl"] */
+
+#ttf-app[dir="rtl"],
+#ttf-app[dir="rtl"] button,
+#ttf-app[dir="rtl"] input,
+#ttf-app[dir="rtl"] textarea,
+#ttf-app[dir="rtl"] select {
+  font-family: var(--ttf-font-arabic);
+}
+
+/* Hero stays English + LTR regardless of site language */
+#ttf-app[dir="rtl"] .ttf-hero,
+#ttf-app[dir="rtl"] .ttf-hero * {
+  font-family: inherit;
+  text-align: initial;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero {
+  direction: ltr;
+  text-align: left;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-name {
+  font-family: var(--ttf-font-script), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-decoding,
+#ttf-app[dir="rtl"] .ttf-hero-success {
+  font-family: var(--ttf-font-display), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-about-heading,
+#ttf-app[dir="rtl"] .ttf-partners-heading {
+  font-family: var(--ttf-font-display), var(--ttf-font-arabic);
+}
+
+#ttf-app[dir="rtl"] .ttf-social-proof-heading,
+#ttf-app[dir="rtl"] .ttf-vlogs-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-section-title {
+  font-family: var(--ttf-font-arabic);
+  letter-spacing: 0;
+}
+
+#ttf-app[dir="rtl"] {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-about-text,
+#ttf-app[dir="rtl"] .ghl-v-note,
+#ttf-app[dir="rtl"] .ttfns-form-note,
+#ttf-app[dir="rtl"] .ttfx-brand-desc {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* Marketing section: full RTL — copy on the right, pillars start from the right */
+#ttf-app[dir="rtl"] .ttf-marketing,
+#ttf-app[dir="rtl"] .ttf-marketing-copy {
+  direction: rtl;
+  text-align: right;
+}
+
+/* DOM order [image, copy] + dir=rtl → image right, content left */
+#ttf-app[dir="rtl"] .ttf-marketing-inner {
+  flex-direction: row;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-desc,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Checkmark at inline-start (right), then text flowing left */
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li::before {
+  margin-right: 0;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-btn {
+  direction: rtl;
+}
+
+/* Button hover fill: right → left in Arabic */
+#ttf-app[dir="rtl"] .ttf-marketing-btn::before {
+  transform-origin: right center;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-media img {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+#ttf-app[dir="rtl"] .ttf-btn,
+#ttf-app[dir="rtl"] .ttf-skin .ttf-btn,
+#ttf-app[dir="rtl"] .v-item-btn {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttfns-input {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-lang-btn {
+  font-family: var(--ttf-font-body);
+}
+
+@media (max-width: 992px) {
+  #ttf-app[dir="rtl"] .ttf-marketing-media img {
+    padding-left: 0;
   }
 }

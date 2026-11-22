@@ -92,10 +92,17 @@
 }
 
 @media (max-width: 900px) {
+  #ttf-app .navbar > nav {
+    margin-inline-start: 0;
+  }
+
+  #ttf-app .ttf-nav-tools {
+    margin-inline-start: auto;
+  }
+
   #ttf-app .burger {
     display: block;
     margin: 0;
-    margin-left: auto;
   }
 
   #ttf-app .menu {
@@ -103,6 +110,7 @@
     gap: 15px;
     position: fixed;
     top: 0;
+    inset-inline-end: -100%;
     right: -100%;
     height: 100%;
     width: 280px;
@@ -110,12 +118,23 @@
     backdrop-filter: blur(16px);
     padding: 80px 20px;
     transition: 0.4s;
-    border-left: 2px solid rgba(211, 253, 4, 0.25);
+    border-inline-start: 2px solid rgba(211, 253, 4, 0.25);
     z-index: 1000;
   }
 
   #ttf-app .menu.open {
+    inset-inline-end: 0;
     right: 0;
+  }
+
+  #ttf-app[dir="rtl"] .menu {
+    right: auto;
+    left: -100%;
+  }
+
+  #ttf-app[dir="rtl"] .menu.open {
+    right: auto;
+    left: 0;
   }
 
   #ttf-app .menu > .ttf-menu-close {
@@ -179,10 +198,36 @@
 
   #ttf-app .ttf-social-proof-heading {
     font-size: 32px;
+    text-align: left;
+    margin: 10px 16px 20px;
+  }
+
+  #ttf-app .ttf-testimonials-section {
+    padding: 20px 16px;
+  }
+
+  #ttf-app .ttf-marketing-inner {
+    flex-direction: column;
+  }
+
+  #ttf-app .ttf-marketing-media {
+    padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  #ttf-app .ttf-marketing-media img {
+    padding-right: 0;
+  }
+
+  #ttf-app .ttf-marketing-copy {
+    padding: 0;
+    width: 100%;
   }
 
   #ttf-app .ttf-marketing-heading {
     font-size: 28px;
+    line-height: 1.2;
   }
 }
 
@@ -257,16 +302,32 @@
   }
 
   #ttf-app .ttf-about-partners-band {
-    padding: 80px 0 20px;
+    /* Reference mobile section-ZPj-jc3mjg: margin 60px 0 0; padding 40px 0 0 */
+    margin-top: 60px;
+    padding: 40px 0 20px;
+    min-height: 0;
   }
 
   #ttf-app .ttf-about-partners-band::before {
+    /* Reference mobile .bgCover100 */
     background-size: 100%;
     background-position: 0% 0%;
+    background-repeat: no-repeat;
   }
 
   #ttf-app .ttf-about {
+    margin: 0 auto;
     padding: 0 20px;
+  }
+
+  #ttf-app .ttf-about-inner {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  #ttf-app .ttf-partners-section {
+    margin: 60px 0 20px;
+    padding: 20px 20px 0;
   }
 
   #ttf-app .ttf-about-text,

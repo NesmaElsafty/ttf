@@ -1,37 +1,20 @@
 <section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
   <div class="ttfns-wrap">
     <div class="ttfns-left">
-      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
+      <h2 class="ttfns-title" id="ttfns-title" data-i18n="cta.title">Take Action with TTF</h2>
       <div class="ttfns-links">
         <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
+          <i class="fab fa-instagram" aria-hidden="true"></i> <span data-i18n="cta.ig">Get daily motivation</span>
         </a>
         <a href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-youtube" aria-hidden="true"></i> Watch TTF Show
+          <i class="fab fa-youtube" aria-hidden="true"></i> <span data-i18n="cta.yt">Watch TTF Show</span>
         </a>
         <a href="#ttfns-form" class="ttfns-link">
-          <i class="fa-regular fa-envelope" aria-hidden="true"></i> Video to your email
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i> <span data-i18n="cta.email">Video to your email</span>
         </a>
       </div>
     </div>
 
-    <!--
-      GoHighLevel registration form
-      --------------------------------
-      Default: posts JSON to the Lead Connector webhook copied from the
-      reference funnel (reference/assembled/registration.js).
-
-      GHL configuration checklist:
-      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
-         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
-         a different trigger.
-      2. Optional: replace the entire <form> with a native GHL Form embed
-         inside [data-ghl-form="registration"] — then remove/disable the
-         JS submit handler (it skips native embeds automatically).
-      3. Map fields: name, email, whatsapp (and optional source).
-      4. Test on a published GHL page (CORS + workflow). Local preview cannot
-         verify CRM contact creation.
-    -->
     <div class="ttfns-form-slot" data-ghl-form="registration">
       <form
         id="ttfns-form"
@@ -40,20 +23,20 @@
         data-ttf-registration-form
         data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
       >
-        <p class="ttfns-form-note">
+        <p class="ttfns-form-note" data-i18n="cta.note">
           Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
         </p>
 
-        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
-        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+        <label class="ttf-sr-only" for="ttfns-name" data-i18n="cta.name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" data-i18n-placeholder="cta.name" />
 
-        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
-        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+        <label class="ttf-sr-only" for="ttfns-email" data-i18n="cta.emailPh">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" data-i18n-placeholder="cta.emailPh" />
 
-        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
-        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+        <label class="ttf-sr-only" for="ttfns-whatsapp" data-i18n="cta.whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" data-i18n-placeholder="cta.whatsapp" />
 
-        <button type="submit" class="ttfns-btn">Register Now</button>
+        <button type="submit" class="ttfns-btn" data-i18n="cta.submit">Register Now</button>
         <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
       </form>
     </div>

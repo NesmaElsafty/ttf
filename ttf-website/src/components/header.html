@@ -7,25 +7,14 @@
     />
   </a>
 
-  <button
-    class="burger"
-    type="button"
-    aria-label="Open menu"
-    aria-controls="menu"
-    aria-expanded="false"
-    data-ttf-burger
-  >
-    ☰
-  </button>
-
-  <nav aria-label="Primary">
+  <nav data-i18n-aria="nav.primary" aria-label="Primary">
     <ul class="menu" id="menu">
       <li class="ttf-menu-close">
-        <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+        <button class="close-btn" type="button" aria-label="Close menu" data-i18n-aria="nav.closeMenu" data-ttf-close-menu>✖</button>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home">Home Page</a>
+        <a href="https://techtitansfactory.com/home" data-i18n="nav.home">Home Page</a>
       </li>
 
       <li>
@@ -34,13 +23,14 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.about"
         >About Us ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh" data-i18n="nav.aboutTtf">About TTF</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8" data-i18n="nav.aboutWael">About Eng. Wael Fathy</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-" data-i18n="nav.coreValues">Core Values</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.vision">Our Vision</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.mission">Our Mission</a></li>
         </ul>
       </li>
 
@@ -50,24 +40,48 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.services"
         >Services ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv" data-i18n="nav.training">Training Programs</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X" data-i18n="nav.consulting">Consulting Services</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x" data-i18n="nav.content">Content Creation</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A" data-i18n="nav.setup">All-in-One Business Setup</a></li>
         </ul>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
+        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp" data-i18n="nav.vlog">Vlog</a>
       </li>
       <li>
-        <a href="https://portal.techtitansfactory.com/">Members Area</a>
+        <a href="https://portal.techtitansfactory.com/" data-i18n="nav.members">Members Area</a>
       </li>
       <li>
-        <a href="https://techtitansfactory.com/contactus">Contact Us</a>
+        <a href="https://techtitansfactory.com/contactus" data-i18n="nav.contact">Contact Us</a>
       </li>
     </ul>
   </nav>
+
+  <div class="ttf-nav-tools">
+    <div class="ttf-lang" role="group" data-i18n-aria="lang.group" aria-label="Language">
+      <button type="button" class="ttf-lang-btn is-active" data-ttf-lang="en" aria-pressed="true" data-i18n="lang.en">
+        EN
+      </button>
+      <button type="button" class="ttf-lang-btn" data-ttf-lang="ar" aria-pressed="false" data-i18n="lang.ar">
+        ع
+      </button>
+    </div>
+
+    <button
+      class="burger"
+      type="button"
+      aria-label="Open menu"
+      data-i18n-aria="nav.openMenu"
+      aria-controls="menu"
+      aria-expanded="false"
+      data-ttf-burger
+    >
+      ☰
+    </button>
+  </div>
 </header>

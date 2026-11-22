@@ -268,6 +268,9 @@
     if (!root || root.__ttfBootstrapped) return false;
     root.__ttfBootstrapped = true;
 
+    if (global.TTF && typeof global.TTF.initI18n === 'function') {
+      global.TTF.initI18n(root);
+    }
     if (global.TTF && typeof global.TTF.initNavigation === 'function') {
       global.TTF.initNavigation(root);
     }

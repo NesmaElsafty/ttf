@@ -1,8 +1,9 @@
 <!-- Tech Titans Factory — paste-ready GoHighLevel Custom Code (TTF-HOMEPAGE-GHL) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>document.documentElement.setAttribute('data-ttf-owns-dir','1');</script>
 <style id="ttf-css">
 /* ===== tokens.css ===== */
 /* Tech Titans Factory design tokens — scoped to #ttf-app */
@@ -18,12 +19,15 @@
   --ttf-card: rgba(255, 255, 255, 0.06);
   --ttf-radius: 16px;
   --ttf-font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ttf-font-arabic: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
   --ttf-font-condensed: 'Roboto Condensed', 'Poppins', sans-serif;
   --ttf-font-script: 'Charlotte Southern', cursive;
   --ttf-font-display: 'Korolev Bold', 'Poppins', sans-serif;
   --ttf-font-heavy: 'Korolev Heavy', 'Poppins', sans-serif;
   --ttf-font-thin: 'Korolev Thin', 'Poppins', sans-serif;
   --ttf-max: 1200px;
+  /* Sticky navbar (~95px) + gap — keeps sticky side panels clear of the header */
+  --ttf-sticky-offset: 111px;
 
   /* Crystal / partners */
   --crystal-bg: rgba(255, 255, 255, 0.08);
@@ -74,13 +78,39 @@
 
 
 /* ===== base.css ===== */
-/* Scoped base — intentionally does NOT reset global html/body for GHL safety */
+/* Full-bleed dark page — removes default browser / GHL white frame around the homepage */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #1b2029 !important;
+  background: #1b2029 !important;
+}
+
+/* Neutralize common GHL wrappers that leave a white gutter around Custom Code */
+body .c-section:has(#ttf-app),
+body .c-row:has(#ttf-app),
+body .c-column:has(#ttf-app),
+body .c-wrapper:has(#ttf-app),
+body .c-custom-code:has(#ttf-app),
+body .custom-code-container:has(#ttf-app) {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
 #ttf-app {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: none;
+  min-height: 100vh;
   font-family: var(--ttf-font-body);
   background-color: var(--ttf-bg);
   color: var(--ttf-text);
@@ -119,11 +149,75 @@
   color: #fff;
 }
 
+/* Matches GHL heading-X8NpSmLvGH: Poppins 50/300 lime, left, fadeInDown on scroll */
 #ttf-app .ttf-social-proof-heading {
+  margin: 10px 0 20px;
+  padding: 0;
+  font-family: var(--ttf-font-body);
   font-size: 50px;
   font-weight: 300;
-  text-align: center;
-  margin: 48px 20px 24px;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+/* Matches GHL heading--Oif2KX2bp (Our Vlogs): same type + fadeInDown, 20px left pad */
+#ttf-app .ttf-vlogs-heading {
+  margin: 10px 0 0;
+  padding: 0 0 0 20px;
+  font-family: var(--ttf-font-body);
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--ttf-brand);
+}
+
+@keyframes ttf-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+#ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in) {
+  opacity: 0;
+}
+
+#ttf-app .ttf-social-proof-heading.ttf-anim-in,
+#ttf-app .ttf-vlogs-heading.ttf-anim-in,
+#ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+  animation-name: ttf-fadeInDown;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ttf-app .ttf-social-proof-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-social-proof-heading.ttf-anim-in,
+  #ttf-app .ttf-vlogs-heading.ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app .ttf-vlogs-heading.ttf-anim-in,
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-ready:not(.ttf-anim-in),
+  #ttf-app [data-ttf-fade-in-down].ttf-anim-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #ttf-app .ttf-vlogs-heading {
+    line-height: 1.2;
+    padding-bottom: 10px;
+  }
 }
 
 #ttf-app .ttf-sr-only {
@@ -150,6 +244,54 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  gap: 16px;
+}
+
+#ttf-app .navbar > nav {
+  margin-inline-start: auto;
+}
+
+#ttf-app .ttf-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: 16px;
+  flex-shrink: 0;
+}
+
+#ttf-app .ttf-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--ttf-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#ttf-app .ttf-lang-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ttf-muted);
+  font-family: var(--ttf-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 8px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#ttf-app .ttf-lang-btn:hover {
+  color: #fff;
+}
+
+#ttf-app .ttf-lang-btn.is-active {
+  background: var(--ttf-brand);
+  color: #1b2029;
 }
 
 #ttf-app .navbar img.logo {
@@ -413,7 +555,10 @@
 #ttf-app .ttf-about-partners-band {
   position: relative;
   background-color: var(--ttf-bg);
+  /* Reference desktop: hero→about gap is 0; section--CHrNfd6Co height ~989px */
+  margin-top: 0;
   padding: 0 0 20px;
+  min-height: 989px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -423,9 +568,11 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Same asset as reference section BG (filesafe / LeadConnector source) */
   background-image: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccddce253906462602ff38.png');
+  /* GHL .full-center: cover + 50% center — needs tall band so head is not cropped */
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% center;
   background-repeat: no-repeat;
   opacity: 0.3;
   pointer-events: none;
@@ -436,20 +583,30 @@
   z-index: 1;
 }
 
+/* About copy block mirrors GHL row-Zk-ytamOS7 + col-dkc2XWt9sw
+   (each margin-top 60px + padding 10px 5px → ABOUT heading ~150px from section top) */
 #ttf-app .ttf-about {
   position: relative;
-  padding: 0 10px 0;
+  max-width: 1170px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 10px 5px 0;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-about-inner {
   max-width: 1170px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 10px 5px;
   text-align: center;
-  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-about-heading {
-  margin: 10px 0 20px;
+  /* padding-bottom avoids collapse with paragraph margin-top (ref gap ~40px) */
+  margin: 10px 0 0;
+  padding-bottom: 20px;
   font-family: var(--ttf-font-display);
   font-size: 40px;
   font-weight: 700;
@@ -504,12 +661,15 @@
 }
 
 #ttf-app .ttf-partners-section {
-  padding: 0 20px 40px;
+  /* Reference measured gap: About paragraph → PARTNERS label ≈ 175px
+     (GHL row margin 100px + padding 20px + nested offsets). */
+  margin: 0 0 20px;
+  padding: 165px 20px 0;
 }
 
 #ttf-app .ttf-partners-intro {
   max-width: 1080px;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -568,7 +728,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* Match reference: content-sized ~172×182 (img max 130px + padding), not stretched */
+  width: auto;
+  max-width: 172px;
+  min-height: 182px;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-partner-card:hover {
@@ -654,11 +818,13 @@
   transform: scale(0.98);
 }
 
-/* ===== Testimonials (style-15) ===== */
+/* ===== Testimonials (style-15 / GHL section-JJBgAEjUuX) ===== */
 #ttf-app .ttf-testimonials-section {
-  padding: 20px;
-  max-width: 1280px;
+  padding: 20px 0;
+  max-width: 1170px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #ttf-app .ttf-testimonials {
@@ -681,7 +847,7 @@
 
 #ttf-app .ttf-side {
   position: sticky;
-  top: 0;
+  top: var(--ttf-sticky-offset);
   align-self: start;
   display: flex;
   flex-direction: column;
@@ -819,6 +985,26 @@
 #ttf-app .ttf-scroll {
   overflow: auto;
   padding: 10px;
+  flex: 1 1 auto;
+  min-height: 0;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(211, 253, 4, 0.45) rgba(255, 255, 255, 0.06);
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+#ttf-app .ttf-scroll::-webkit-scrollbar-thumb {
+  background: rgba(211, 253, 4, 0.45);
+  border-radius: 999px;
 }
 
 #ttf-app .ttf-grid {
@@ -873,7 +1059,7 @@
 
 #ttf-app .ttf-rating {
   margin-top: 10px;
-  color: var(--ttf-brand);
+  color: #fff;
 }
 
 #ttf-app .ttf-audio {
@@ -969,7 +1155,7 @@
 
 #ttf-app .ttf-skin .ghl-v-left {
   position: sticky;
-  top: 16px;
+  top: var(--ttf-sticky-offset);
   align-self: start;
   background: linear-gradient(180deg, var(--glass), transparent);
   padding: 14px;
@@ -1048,6 +1234,7 @@
   border-radius: 12px;
   padding: 14px;
   transition: 0.25s ease;
+  scroll-margin-top: var(--ttf-sticky-offset);
 }
 
 #ttf-app .ttf-skin .ghl-v-card:hover {
@@ -1118,60 +1305,144 @@
   color: var(--fg);
 }
 
-/* ===== Marketing Team ===== */
+/* ===== Marketing Team — matches GHL row-20cYCxWzkF ===== */
 #ttf-app .ttf-marketing {
-  padding: 60px 20px;
-  max-width: 900px;
+  padding: 20px 0 40px;
+  margin: 0;
+  width: 100%;
+}
+
+#ttf-app .ttf-marketing-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1170px;
   margin: 0 auto;
+  width: 100%;
+}
+
+#ttf-app .ttf-marketing-media {
+  flex: 1 1 50%;
+  margin: 0;
+  padding: 10px 20px;
+  min-width: 0;
+}
+
+#ttf-app .ttf-marketing-media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  padding-right: 10px;
+}
+
+#ttf-app .ttf-marketing-copy {
+  flex: 1 1 50%;
+  padding: 10px 40px;
+  min-width: 0;
 }
 
 #ttf-app .ttf-marketing-heading {
-  margin: 0 0 18px;
+  margin: 10px 0 0;
+  padding: 0;
   font-family: var(--ttf-font-body);
   font-size: 40px;
   font-weight: 700;
   color: #fff;
-  line-height: 1.2;
+  line-height: 1.1;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 #ttf-app .ttf-marketing-desc {
-  margin: 0 0 28px;
-  font-size: 16px;
-  line-height: 1.7;
+  margin: 20px 0 0;
+  padding: 0;
+  font-family: var(--ttf-font-condensed);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
   color: #fff;
-  opacity: 0.92;
+  text-align: left;
 }
 
 #ttf-app .ttf-marketing-pillars {
   list-style: none;
-  margin: 0 0 32px;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 #ttf-app .ttf-marketing-pillars li {
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: var(--ttf-font-condensed);
   font-size: 18px;
   font-weight: 400;
+  line-height: 1.5;
   color: #fff;
+  text-align: left;
+}
+
+#ttf-app .ttf-marketing-pillars li:first-child {
+  margin-top: 20px;
+}
+
+#ttf-app .ttf-marketing-pillars li:last-child {
+  margin-bottom: 30px;
+}
+
+/* GHL Font Awesome check-circle (lime) before each pillar */
+#ttf-app .ttf-marketing-pillars li::before {
+  content: "\f058";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--ttf-brand);
+  margin-right: 5px;
+  -webkit-font-smoothing: antialiased;
 }
 
 #ttf-app .ttf-marketing-btn {
+  position: relative;
   display: inline-block;
+  overflow: hidden;
+  z-index: 0;
   background: #fff;
   color: #000;
   text-decoration: none;
-  padding: 20px 30px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--ttf-font-body);
-  transition: opacity 0.25s ease;
+  padding: 10px 18px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  font-family: var(--ttf-font-condensed);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.45s ease, border-color 0.45s ease;
+}
+
+#ttf-app .ttf-marketing-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ttf-brand);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.65s ease;
+  z-index: -1;
 }
 
 #ttf-app .ttf-marketing-btn:hover {
-  opacity: 0.9;
+  color: #1b2029;
+  border-color: #000;
+}
+
+#ttf-app .ttf-marketing-btn:hover::before {
+  transform: scaleX(1);
 }
 
 /* ===== Programs (style-17) ===== */
@@ -1703,10 +1974,17 @@
 }
 
 @media (max-width: 900px) {
+  #ttf-app .navbar > nav {
+    margin-inline-start: 0;
+  }
+
+  #ttf-app .ttf-nav-tools {
+    margin-inline-start: auto;
+  }
+
   #ttf-app .burger {
     display: block;
     margin: 0;
-    margin-left: auto;
   }
 
   #ttf-app .menu {
@@ -1714,6 +1992,7 @@
     gap: 15px;
     position: fixed;
     top: 0;
+    inset-inline-end: -100%;
     right: -100%;
     height: 100%;
     width: 280px;
@@ -1721,12 +2000,23 @@
     backdrop-filter: blur(16px);
     padding: 80px 20px;
     transition: 0.4s;
-    border-left: 2px solid rgba(211, 253, 4, 0.25);
+    border-inline-start: 2px solid rgba(211, 253, 4, 0.25);
     z-index: 1000;
   }
 
   #ttf-app .menu.open {
+    inset-inline-end: 0;
     right: 0;
+  }
+
+  #ttf-app[dir="rtl"] .menu {
+    right: auto;
+    left: -100%;
+  }
+
+  #ttf-app[dir="rtl"] .menu.open {
+    right: auto;
+    left: 0;
   }
 
   #ttf-app .menu > .ttf-menu-close {
@@ -1790,10 +2080,36 @@
 
   #ttf-app .ttf-social-proof-heading {
     font-size: 32px;
+    text-align: left;
+    margin: 10px 16px 20px;
+  }
+
+  #ttf-app .ttf-testimonials-section {
+    padding: 20px 16px;
+  }
+
+  #ttf-app .ttf-marketing-inner {
+    flex-direction: column;
+  }
+
+  #ttf-app .ttf-marketing-media {
+    padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  #ttf-app .ttf-marketing-media img {
+    padding-right: 0;
+  }
+
+  #ttf-app .ttf-marketing-copy {
+    padding: 0;
+    width: 100%;
   }
 
   #ttf-app .ttf-marketing-heading {
     font-size: 28px;
+    line-height: 1.2;
   }
 }
 
@@ -1868,16 +2184,32 @@
   }
 
   #ttf-app .ttf-about-partners-band {
-    padding: 80px 0 20px;
+    /* Reference mobile section-ZPj-jc3mjg: margin 60px 0 0; padding 40px 0 0 */
+    margin-top: 60px;
+    padding: 40px 0 20px;
+    min-height: 0;
   }
 
   #ttf-app .ttf-about-partners-band::before {
+    /* Reference mobile .bgCover100 */
     background-size: 100%;
     background-position: 0% 0%;
+    background-repeat: no-repeat;
   }
 
   #ttf-app .ttf-about {
+    margin: 0 auto;
     padding: 0 20px;
+  }
+
+  #ttf-app .ttf-about-inner {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  #ttf-app .ttf-partners-section {
+    margin: 60px 0 20px;
+    padding: 20px 20px 0;
   }
 
   #ttf-app .ttf-about-text,
@@ -1907,6 +2239,129 @@
   }
 }
 
+
+/* ===== rtl.css ===== */
+/* Arabic / RTL overrides — activated via #ttf-app[dir="rtl"] */
+
+#ttf-app[dir="rtl"],
+#ttf-app[dir="rtl"] button,
+#ttf-app[dir="rtl"] input,
+#ttf-app[dir="rtl"] textarea,
+#ttf-app[dir="rtl"] select {
+  font-family: var(--ttf-font-arabic);
+}
+
+/* Hero stays English + LTR regardless of site language */
+#ttf-app[dir="rtl"] .ttf-hero,
+#ttf-app[dir="rtl"] .ttf-hero * {
+  font-family: inherit;
+  text-align: initial;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero {
+  direction: ltr;
+  text-align: left;
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-name {
+  font-family: var(--ttf-font-script), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-hero-decoding,
+#ttf-app[dir="rtl"] .ttf-hero-success {
+  font-family: var(--ttf-font-display), var(--ttf-font-body);
+}
+
+#ttf-app[dir="rtl"] .ttf-about-heading,
+#ttf-app[dir="rtl"] .ttf-partners-heading {
+  font-family: var(--ttf-font-display), var(--ttf-font-arabic);
+}
+
+#ttf-app[dir="rtl"] .ttf-social-proof-heading,
+#ttf-app[dir="rtl"] .ttf-vlogs-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-section-title {
+  font-family: var(--ttf-font-arabic);
+  letter-spacing: 0;
+}
+
+#ttf-app[dir="rtl"] {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-about-text,
+#ttf-app[dir="rtl"] .ghl-v-note,
+#ttf-app[dir="rtl"] .ttfns-form-note,
+#ttf-app[dir="rtl"] .ttfx-brand-desc {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* Marketing section: full RTL — copy on the right, pillars start from the right */
+#ttf-app[dir="rtl"] .ttf-marketing,
+#ttf-app[dir="rtl"] .ttf-marketing-copy {
+  direction: rtl;
+  text-align: right;
+}
+
+/* DOM order [image, copy] + dir=rtl → image right, content left */
+#ttf-app[dir="rtl"] .ttf-marketing-inner {
+  flex-direction: row;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-heading,
+#ttf-app[dir="rtl"] .ttf-marketing-desc,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars,
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Checkmark at inline-start (right), then text flowing left */
+#ttf-app[dir="rtl"] .ttf-marketing-pillars li::before {
+  margin-right: 0;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-btn {
+  direction: rtl;
+}
+
+/* Button hover fill: right → left in Arabic */
+#ttf-app[dir="rtl"] .ttf-marketing-btn::before {
+  transform-origin: right center;
+}
+
+#ttf-app[dir="rtl"] .ttf-marketing-media img {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+#ttf-app[dir="rtl"] .ttf-btn,
+#ttf-app[dir="rtl"] .ttf-skin .ttf-btn,
+#ttf-app[dir="rtl"] .v-item-btn {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttfns-input {
+  text-align: right;
+}
+
+#ttf-app[dir="rtl"] .ttf-lang-btn {
+  font-family: var(--ttf-font-body);
+}
+
+@media (max-width: 992px) {
+  #ttf-app[dir="rtl"] .ttf-marketing-media img {
+    padding-left: 0;
+  }
+}
+
 </style>
 <div id="ttf-app">
   <!-- header -->
@@ -1919,25 +2374,14 @@
     />
   </a>
 
-  <button
-    class="burger"
-    type="button"
-    aria-label="Open menu"
-    aria-controls="menu"
-    aria-expanded="false"
-    data-ttf-burger
-  >
-    ☰
-  </button>
-
-  <nav aria-label="Primary">
+  <nav data-i18n-aria="nav.primary" aria-label="Primary">
     <ul class="menu" id="menu">
       <li class="ttf-menu-close">
-        <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+        <button class="close-btn" type="button" aria-label="Close menu" data-i18n-aria="nav.closeMenu" data-ttf-close-menu>✖</button>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home">Home Page</a>
+        <a href="https://techtitansfactory.com/home" data-i18n="nav.home">Home Page</a>
       </li>
 
       <li>
@@ -1946,13 +2390,14 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.about"
         >About Us ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
-          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh" data-i18n="nav.aboutTtf">About TTF</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8" data-i18n="nav.aboutWael">About Eng. Wael Fathy</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-" data-i18n="nav.coreValues">Core Values</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.vision">Our Vision</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf" data-i18n="nav.mission">Our Mission</a></li>
         </ul>
       </li>
 
@@ -1962,30 +2407,54 @@
           data-ttf-dropdown-toggle
           aria-haspopup="true"
           aria-expanded="false"
+          data-i18n="nav.services"
         >Services ▾</a>
         <ul class="dropdown" role="list">
-          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
-          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv" data-i18n="nav.training">Training Programs</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X" data-i18n="nav.consulting">Consulting Services</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x" data-i18n="nav.content">Content Creation</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A" data-i18n="nav.setup">All-in-One Business Setup</a></li>
         </ul>
       </li>
 
       <li>
-        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
+        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp" data-i18n="nav.vlog">Vlog</a>
       </li>
       <li>
-        <a href="https://portal.techtitansfactory.com/">Members Area</a>
+        <a href="https://portal.techtitansfactory.com/" data-i18n="nav.members">Members Area</a>
       </li>
       <li>
-        <a href="https://techtitansfactory.com/contactus">Contact Us</a>
+        <a href="https://techtitansfactory.com/contactus" data-i18n="nav.contact">Contact Us</a>
       </li>
     </ul>
   </nav>
+
+  <div class="ttf-nav-tools">
+    <div class="ttf-lang" role="group" data-i18n-aria="lang.group" aria-label="Language">
+      <button type="button" class="ttf-lang-btn is-active" data-ttf-lang="en" aria-pressed="true" data-i18n="lang.en">
+        EN
+      </button>
+      <button type="button" class="ttf-lang-btn" data-ttf-lang="ar" aria-pressed="false" data-i18n="lang.ar">
+        ع
+      </button>
+    </div>
+
+    <button
+      class="burger"
+      type="button"
+      aria-label="Open menu"
+      data-i18n-aria="nav.openMenu"
+      aria-controls="menu"
+      aria-expanded="false"
+      data-ttf-burger
+    >
+      ☰
+    </button>
+  </div>
 </header>
 
   <!-- hero -->
-<section class="ttf-hero" aria-label="Hero" data-ttf-hero>
+<section class="ttf-hero" aria-label="Hero" data-ttf-hero dir="ltr" lang="en">
   <div class="ttf-hero-row">
     <div class="ttf-hero-copy">
       <h1 class="ttf-hero-name ttf-hero-anim">Wael Fathy</h1>
@@ -2009,17 +2478,17 @@
   <!-- about -->
 <section class="ttf-about" aria-label="About">
   <div class="ttf-about-inner">
-    <h2 class="ttf-about-heading">ABOUT</h2>
+    <h2 class="ttf-about-heading" data-i18n="about.label">ABOUT</h2>
     <div class="ttf-about-text">
       <p>
-        <strong>Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
+        <strong data-i18n="about.p1">Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
       </p>
       <p>
-        <strong>Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and</strong>
+        <strong data-i18n="about.p2">Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and</strong>
       </p>
       <p>
-        <strong>achieving excellence in every part of your career. We’re here to equip you ...</strong>
-        <a class="ttf-about-more" href="https://techtitansfactory.com/AboutUs"><strong>Read More</strong></a>
+        <strong data-i18n="about.p3">achieving excellence in every part of your career. We’re here to equip you ...</strong>
+        <a class="ttf-about-more" href="https://techtitansfactory.com/AboutUs"><strong data-i18n="about.more">Read More</strong></a>
       </p>
     </div>
   </div>
@@ -2028,8 +2497,8 @@
   <!-- partners -->
 <section class="ttf-partners-section" aria-label="Partners">
   <div class="ttf-partners-intro">
-    <h2 class="ttf-partners-label">PARTNERS</h2>
-    <p class="ttf-partners-heading">WHO WE WORK WITH</p>
+    <h2 class="ttf-partners-label" data-i18n="partners.label">PARTNERS</h2>
+    <p class="ttf-partners-heading" data-i18n="partners.heading">WHO WE WORK WITH</p>
   </div>
 
   <!-- Desktop: glass partners (5 logos) — matches GHL desktop custom code -->
@@ -2085,37 +2554,37 @@
 
   <!-- testimonials -->
 <section class="ttf-testimonials-section" aria-labelledby="ttf-social-proof-heading">
-  <h2 class="ttf-section-title ttf-social-proof-heading" id="ttf-social-proof-heading">
+  <h2 class="ttf-social-proof-heading" id="ttf-social-proof-heading" data-ttf-fade-in-down data-i18n="social.heading">
     Testimonials &amp; Social Proof
   </h2>
 
-  <div class="ttf-testimonials" dir="ltr" id="ttf-component">
+  <div class="ttf-testimonials" id="ttf-component">
     <aside class="ttf-side">
       <div class="ttf-brand">
         <span class="ttf-dot"></span>
-        <h2>Testimonials</h2>
+        <h2 data-i18n="testimonials.brand">Testimonials</h2>
       </div>
-      <p class="ttf-note">Pick a heading to view matching testimonials.</p>
+      <p class="ttf-note" data-i18n="testimonials.note">Pick a heading to view matching testimonials.</p>
 
       <button class="ttf-btn ttf-active" data-key="people" type="button">
         <div>
-          <div>What People Say About TTF</div>
-          <span class="ttf-sub">General praise &amp; highlights</span>
+          <div data-i18n="testimonials.people">What People Say About TTF</div>
+          <span class="ttf-sub" data-i18n="testimonials.peopleSub">General praise &amp; highlights</span>
         </div>
-        <span class="ttf-tag">NEW</span>
+        <span class="ttf-tag" data-i18n="testimonials.new">NEW</span>
       </button>
 
       <button class="ttf-btn" data-key="voices" type="button">
         <div>
-          <div>Voices from Our Community</div>
-          <span class="ttf-sub">Uploadable voice notes</span>
+          <div data-i18n="testimonials.voices">Voices from Our Community</div>
+          <span class="ttf-sub" data-i18n="testimonials.voicesSub">Uploadable voice notes</span>
         </div>
       </button>
 
       <button class="ttf-btn" data-key="real" type="button">
         <div>
-          <div>Real Feedback, Real Impact</div>
-          <span class="ttf-sub">Videos / case studies</span>
+          <div data-i18n="testimonials.real">Real Feedback, Real Impact</div>
+          <span class="ttf-sub" data-i18n="testimonials.realSub">Videos / case studies</span>
         </div>
       </button>
     </aside>
@@ -2137,29 +2606,29 @@
 
   <!-- vlogs -->
 <section class="ttf-vlogs-section" id="heading--Oif2KX2bp" aria-labelledby="ttf-vlogs-heading">
-  <h2 class="ttf-section-title" id="ttf-vlogs-heading">Our Vlogs</h2>
+  <h2 class="ttf-vlogs-heading" id="ttf-vlogs-heading" data-ttf-fade-in-down data-i18n="vlogs.heading">Our Vlogs</h2>
 
   <div class="ghl-vlogs ttf-skin">
     <div class="ghl-v-wrap">
       <aside class="ghl-v-left">
-        <h2 class="ghl-v-heading">Latest Vlogs</h2>
+        <h2 class="ghl-v-heading" data-i18n="vlogs.latest">Latest Vlogs</h2>
 
         <div class="ghl-v-list">
           <button class="v-item-btn ttf-btn ttf-active" type="button" data-index="0">
-            <span>Video One</span>
+            <span data-i18n="vlogs.v1">Video One</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="1">
-            <span>Video Two</span>
+            <span data-i18n="vlogs.v2">Video Two</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="2">
-            <span>Video Three</span>
+            <span data-i18n="vlogs.v3">Video Three</span>
           </button>
           <button class="v-item-btn ttf-btn" type="button" data-index="3">
-            <span>Video Four</span>
+            <span data-i18n="vlogs.v4">Video Four</span>
           </button>
         </div>
 
-        <p class="ghl-v-note">
+        <p class="ghl-v-note" data-i18n="vlogs.note">
           Exclusive vlogs covering travels, behind-the-scenes, and life hacks.
           Click a title to jump or scroll the videos.
         </p>
@@ -2174,8 +2643,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video One</h3>
-            <p class="ghl-v-text">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v1">Video One</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v1Text">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
           </div>
         </article>
 
@@ -2187,8 +2656,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Two</h3>
-            <p class="ghl-v-text">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v2">Video Two</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v2Text">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
           </div>
         </article>
 
@@ -2200,8 +2669,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Three</h3>
-            <p class="ghl-v-text">Practical tips and tricks that make everyday life easier and more efficient.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v3">Video Three</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v3Text">Practical tips and tricks that make everyday life easier and more efficient.</p>
           </div>
         </article>
 
@@ -2213,8 +2682,8 @@
             </div>
           </div>
           <div class="ghl-v-content">
-            <h3 class="ghl-v-title">Video Four</h3>
-            <p class="ghl-v-text">Start your day right with this complete guide to a productive routine.</p>
+            <h3 class="ghl-v-title" data-i18n="vlogs.v4">Video Four</h3>
+            <p class="ghl-v-text" data-i18n="vlogs.v4Text">Start your day right with this complete guide to a productive routine.</p>
           </div>
         </article>
       </section>
@@ -2225,63 +2694,79 @@
   <!-- marketing-team -->
 <section class="ttf-marketing" aria-label="Marketing Team">
   <div class="ttf-marketing-inner">
-    <h2 class="ttf-marketing-heading">OUR EXCEPTIONAL MARKETING TEAM</h2>
-    <p class="ttf-marketing-desc">
-      Our team consists of highly skilled professionals with deep expertise in web design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering exceptional results for our clients.
-    </p>
-    <ul class="ttf-marketing-pillars">
-      <li>Expertise</li>
-      <li>Collaboration</li>
-      <li>Results-Driven</li>
-    </ul>
-    <a
-      class="ttf-marketing-btn"
-      href="https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA"
-      aria-label="OUR SERVICES"
-    >
-      OUR SERVICES
-    </a>
+    <figure class="ttf-marketing-media">
+      <img
+        src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68d032da155259f31ca9a794.png"
+        alt="Tech Titans Factory marketing team"
+        loading="lazy"
+        width="1024"
+        height="819"
+      />
+    </figure>
+
+    <div class="ttf-marketing-copy">
+      <h2 class="ttf-marketing-heading" data-i18n="marketing.heading">OUR EXCEPTIONAL MARKETING TEAM</h2>
+      <p class="ttf-marketing-desc" data-i18n="marketing.desc">
+        Our team consists of highly skilled professionals with deep expertise in web
+        design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering
+        exceptional results for our clients.
+      </p>
+      <ul class="ttf-marketing-pillars">
+        <li data-i18n="marketing.expertise">Expertise</li>
+        <li data-i18n="marketing.collab">Collaboration</li>
+        <li data-i18n="marketing.results">Results-Driven</li>
+      </ul>
+      <a
+        class="ttf-marketing-btn"
+        href="https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA"
+        aria-label="OUR SERVICES"
+        data-i18n="marketing.btn"
+        data-i18n-aria="marketing.btn"
+      >
+        OUR SERVICES
+      </a>
+    </div>
   </div>
 </section>
 
   <!-- programs -->
 <section class="ttf-programs-section" aria-labelledby="ttf-programs-heading">
-  <h2 class="ttf-section-title" id="ttf-programs-heading">Our Programs</h2>
+  <h2 class="ttf-section-title" id="ttf-programs-heading" data-i18n="programs.heading">Our Programs</h2>
 
   <div class="ttf-programs">
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800" alt="Business Information Systems" />
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800" alt="Business Information Systems" data-i18n-alt="programs.p1Title" />
       <div class="ttf-program-body">
-        <h3>Business Information Systems</h3>
-        <p>From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p1Title">Business Information Systems</h3>
+        <p data-i18n="programs.p1Text">From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&amp;w=800" alt="The Smart Customer Service" />
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&amp;w=800" alt="The Smart Customer Service" data-i18n-alt="programs.p2Title" />
       <div class="ttf-program-body">
-        <h3>The Smart Customer Service</h3>
-        <p>Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p2Title">The Smart Customer Service</h3>
+        <p data-i18n="programs.p2Text">Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=800" alt="From Trainer to Business Leader" />
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=800" alt="From Trainer to Business Leader" data-i18n-alt="programs.p3Title" />
       <div class="ttf-program-body">
-        <h3>From Trainer to Business Leader</h3>
-        <p>Transition your training expertise into business leadership and strategic influence within your industry.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p3Title">From Trainer to Business Leader</h3>
+        <p data-i18n="programs.p3Text">Transition your training expertise into business leadership and strategic influence within your industry.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
 
     <div class="ttf-program-card">
-      <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&amp;w=800" alt="The Golden Nuggets in the IT World" />
+      <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&amp;w=800" alt="The Golden Nuggets in the IT World" data-i18n-alt="programs.p4Title" />
       <div class="ttf-program-body">
-        <h3>The Golden Nuggets in the IT World</h3>
-        <p>Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.</p>
-        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+        <h3 data-i18n="programs.p4Title">The Golden Nuggets in the IT World</h3>
+        <p data-i18n="programs.p4Text">Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn" data-i18n="programs.more">Read More</a>
       </div>
     </div>
   </div>
@@ -2291,9 +2776,9 @@
 <section class="ttf-cta" aria-labelledby="ttf-cta-title">
   <div class="ttf-cta-box">
     <div class="ttf-cta-text">
-      <span>Stay in the loop</span>
-      <h2 id="ttf-cta-title">Join our Newsletter</h2>
-      <p>
+      <span data-i18n="newsletter.eyebrow">Stay in the loop</span>
+      <h2 id="ttf-cta-title" data-i18n="newsletter.title">Join our Newsletter</h2>
+      <p data-i18n="newsletter.text">
         Short, valuable updates from TTF — insights, tips, and hand-picked videos that truly help you grow.
       </p>
     </div>
@@ -2312,37 +2797,20 @@
 <section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
   <div class="ttfns-wrap">
     <div class="ttfns-left">
-      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
+      <h2 class="ttfns-title" id="ttfns-title" data-i18n="cta.title">Take Action with TTF</h2>
       <div class="ttfns-links">
         <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
+          <i class="fab fa-instagram" aria-hidden="true"></i> <span data-i18n="cta.ig">Get daily motivation</span>
         </a>
         <a href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" rel="noopener noreferrer" class="ttfns-link">
-          <i class="fab fa-youtube" aria-hidden="true"></i> Watch TTF Show
+          <i class="fab fa-youtube" aria-hidden="true"></i> <span data-i18n="cta.yt">Watch TTF Show</span>
         </a>
         <a href="#ttfns-form" class="ttfns-link">
-          <i class="fa-regular fa-envelope" aria-hidden="true"></i> Video to your email
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i> <span data-i18n="cta.email">Video to your email</span>
         </a>
       </div>
     </div>
 
-    <!--
-      GoHighLevel registration form
-      --------------------------------
-      Default: posts JSON to the Lead Connector webhook copied from the
-      reference funnel (reference/assembled/registration.js).
-
-      GHL configuration checklist:
-      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
-         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
-         a different trigger.
-      2. Optional: replace the entire <form> with a native GHL Form embed
-         inside [data-ghl-form="registration"] — then remove/disable the
-         JS submit handler (it skips native embeds automatically).
-      3. Map fields: name, email, whatsapp (and optional source).
-      4. Test on a published GHL page (CORS + workflow). Local preview cannot
-         verify CRM contact creation.
-    -->
     <div class="ttfns-form-slot" data-ghl-form="registration">
       <form
         id="ttfns-form"
@@ -2351,20 +2819,20 @@
         data-ttf-registration-form
         data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
       >
-        <p class="ttfns-form-note">
+        <p class="ttfns-form-note" data-i18n="cta.note">
           Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
         </p>
 
-        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
-        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+        <label class="ttf-sr-only" for="ttfns-name" data-i18n="cta.name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" data-i18n-placeholder="cta.name" />
 
-        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
-        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+        <label class="ttf-sr-only" for="ttfns-email" data-i18n="cta.emailPh">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" data-i18n-placeholder="cta.emailPh" />
 
-        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
-        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+        <label class="ttf-sr-only" for="ttfns-whatsapp" data-i18n="cta.whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" data-i18n-placeholder="cta.whatsapp" />
 
-        <button type="submit" class="ttfns-btn">Register Now</button>
+        <button type="submit" class="ttfns-btn" data-i18n="cta.submit">Register Now</button>
         <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
       </form>
     </div>
@@ -2376,11 +2844,11 @@
   <div class="ttfx-wrap">
     <section class="ttfx-brand">
       <h3 class="ttfx-brand-title">Tech Titans Factory</h3>
-      <p class="ttfx-brand-desc">
+      <p class="ttfx-brand-desc" data-i18n="footer.desc">
         Empowering businesses with cutting-edge training, consulting, and digital solutions.
         Stay ahead with TTF insights and innovation.
       </p>
-      <nav class="ttfx-social" aria-label="Social media">
+      <nav class="ttfx-social" data-i18n-aria="footer.social" aria-label="Social media">
         <a class="ttfx-social-link" href="https://www.facebook.com/profile.php?id=61568805620771" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <i class="fab fa-facebook-f" aria-hidden="true"></i>
         </a>
@@ -2398,27 +2866,27 @@
 
     <nav class="ttfx-links" aria-label="Footer">
       <div>
-        <h4 class="ttfx-links-title">Explore</h4>
+        <h4 class="ttfx-links-title" data-i18n="footer.explore">Explore</h4>
         <ul class="ttfx-list">
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home">Home</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/AboutUs">About Us</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/services">Services</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home" data-i18n="footer.home">Home</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/AboutUs" data-i18n="footer.about">About Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/services" data-i18n="footer.services">Services</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home#heading--Oif2KX2bp" data-i18n="footer.vlog">Vlog</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="ttfx-links-title">Support</h4>
+        <h4 class="ttfx-links-title" data-i18n="footer.support">Support</h4>
         <ul class="ttfx-list">
-          <li class="ttfx-item"><a class="ttfx-link" href="https://portal.techtitansfactory.com/">Members Area</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/contactus">Contact Us</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/privacypolicy">Privacy Policy</a></li>
-          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/refundpolicy">Refund Policy</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://portal.techtitansfactory.com/" data-i18n="footer.members">Members Area</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/contactus" data-i18n="footer.contact">Contact Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/privacypolicy" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/refundpolicy" data-i18n="footer.refund">Refund Policy</a></li>
         </ul>
       </div>
     </nav>
   </div>
 
-  <div class="ttfx-bottom">© 2025 Tech Titans Factory. All rights reserved.</div>
+  <div class="ttfx-bottom" data-i18n="footer.copy">© 2025 Tech Titans Factory. All rights reserved.</div>
 </footer>
 
   <!-- ziko -->
@@ -2427,6 +2895,413 @@
 </div>
 
 <script id="ttf-js">
+/* ===== i18n.js ===== */
+/**
+ * EN / AR i18n + RTL switcher for #ttf-app
+ */
+(function (global) {
+  'use strict';
+
+  var STORAGE_KEY = 'ttf-lang';
+  var DEFAULT_LANG = 'en';
+
+  var STRINGS = {
+    en: {
+      'nav.home': 'Home Page',
+      'nav.about': 'About Us ▾',
+      'nav.aboutTtf': 'About TTF',
+      'nav.aboutWael': 'About Eng. Wael Fathy',
+      'nav.coreValues': 'Core Values',
+      'nav.vision': 'Our Vision',
+      'nav.mission': 'Our Mission',
+      'nav.services': 'Services ▾',
+      'nav.training': 'Training Programs',
+      'nav.consulting': 'Consulting Services',
+      'nav.content': 'Content Creation',
+      'nav.setup': 'All-in-One Business Setup',
+      'nav.vlog': 'Vlog',
+      'nav.members': 'Members Area',
+      'nav.contact': 'Contact Us',
+      'nav.openMenu': 'Open menu',
+      'nav.closeMenu': 'Close menu',
+      'nav.primary': 'Primary',
+      'lang.group': 'Language',
+      'lang.en': 'EN',
+      'lang.ar': 'AR',
+
+      'hero.decoding': 'DECODING',
+      'hero.success': 'SUCCESS',
+      'hero.alt': 'Wael Fathy',
+
+      'about.label': 'ABOUT',
+      'about.p1':
+        'Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and',
+      'about.p2':
+        'Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and',
+      'about.p3': 'achieving excellence in every part of your career. We’re here to equip you ...',
+      'about.more': 'Read More',
+
+      'partners.label': 'PARTNERS',
+      'partners.heading': 'WHO WE WORK WITH',
+
+      'social.heading': 'Testimonials & Social Proof',
+      'testimonials.brand': 'Testimonials',
+      'testimonials.note': 'Pick a heading to view matching testimonials.',
+      'testimonials.people': 'What People Say About TTF',
+      'testimonials.peopleSub': 'General praise & highlights',
+      'testimonials.voices': 'Voices from Our Community',
+      'testimonials.voicesSub': 'Uploadable voice notes',
+      'testimonials.real': 'Real Feedback, Real Impact',
+      'testimonials.realSub': 'Videos / case studies',
+      'testimonials.new': 'NEW',
+      'media.unavailable': 'Media unavailable',
+      'media.audioHint': 'Audio file is not hosted on a verified public URL.',
+      'media.videoHint': 'Video file is not hosted on a verified public URL.',
+
+      'vlogs.heading': 'Our Vlogs',
+      'vlogs.latest': 'Latest Vlogs',
+      'vlogs.note':
+        'Exclusive vlogs covering travels, behind-the-scenes, and life hacks. Click a title to jump or scroll the videos.',
+      'vlogs.v1': 'Video One',
+      'vlogs.v2': 'Video Two',
+      'vlogs.v3': 'Video Three',
+      'vlogs.v4': 'Video Four',
+      'vlogs.v1Text':
+        'Join me on an incredible journey through breathtaking landscapes and hidden gems.',
+      'vlogs.v2Text':
+        'An exclusive look at how ideas turn into content, from sketches to final edits.',
+      'vlogs.v3Text':
+        'Practical tips and tricks that make everyday life easier and more efficient.',
+      'vlogs.v4Text': 'Start your day right with this complete guide to a productive routine.',
+
+      'marketing.heading': 'OUR EXCEPTIONAL MARKETING TEAM',
+      'marketing.desc':
+        'Our team consists of highly skilled professionals with deep expertise in web design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering exceptional results for our clients.',
+      'marketing.expertise': 'Expertise',
+      'marketing.collab': 'Collaboration',
+      'marketing.results': 'Results-Driven',
+      'marketing.btn': 'OUR SERVICES',
+
+      'programs.heading': 'Our Programs',
+      'programs.p1Title': 'Business Information Systems',
+      'programs.p1Text':
+        'From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.',
+      'programs.p2Title': 'The Smart Customer Service',
+      'programs.p2Text':
+        'Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.',
+      'programs.p3Title': 'From Trainer to Business Leader',
+      'programs.p3Text':
+        'Transition your training expertise into business leadership and strategic influence within your industry.',
+      'programs.p4Title': 'The Golden Nuggets in the IT World',
+      'programs.p4Text':
+        'Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.',
+      'programs.more': 'Read More',
+
+      'newsletter.eyebrow': 'Stay in the loop',
+      'newsletter.title': 'Join our Newsletter',
+      'newsletter.text':
+        'Short, valuable updates from TTF — insights, tips, and hand-picked videos that truly help you grow.',
+
+      'cta.title': 'Take Action with TTF',
+      'cta.ig': 'Get daily motivation',
+      'cta.yt': 'Watch TTF Show',
+      'cta.email': 'Video to your email',
+      'cta.note':
+        'Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.',
+      'cta.name': 'Full Name',
+      'cta.emailPh': 'Email Address',
+      'cta.whatsapp': 'WhatsApp Number (with country code)',
+      'cta.submit': 'Register Now',
+      'cta.errRequired': 'Please fill in all required fields.',
+      'cta.errWebhook':
+        'Form is not connected. Set data-ghl-webhook or paste a native GHL form embed.',
+      'cta.pending': 'Submitting…',
+      'cta.success': 'Thank you! Your info has been sent successfully.',
+      'cta.fail': 'Submission failed. Please try again or contact support.',
+
+      'footer.desc':
+        'Empowering businesses with cutting-edge training, consulting, and digital solutions. Stay ahead with TTF insights and innovation.',
+      'footer.explore': 'Explore',
+      'footer.support': 'Support',
+      'footer.home': 'Home',
+      'footer.about': 'About Us',
+      'footer.services': 'Services',
+      'footer.vlog': 'Vlog',
+      'footer.members': 'Members Area',
+      'footer.contact': 'Contact Us',
+      'footer.privacy': 'Privacy Policy',
+      'footer.refund': 'Refund Policy',
+      'footer.copy': '© 2025 Tech Titans Factory. All rights reserved.',
+      'footer.social': 'Social media',
+    },
+    ar: {
+      'nav.home': 'الصفحة الرئيسية',
+      'nav.about': 'من نحن ▾',
+      'nav.aboutTtf': 'عن تي تك تيتانز',
+      'nav.aboutWael': 'عن م. وائل فتحي',
+      'nav.coreValues': 'قيمنا الأساسية',
+      'nav.vision': 'رؤيتنا',
+      'nav.mission': 'رسالتنا',
+      'nav.services': 'خدماتنا ▾',
+      'nav.training': 'برامج التدريب',
+      'nav.consulting': 'خدمات الاستشارات',
+      'nav.content': 'صناعة المحتوى',
+      'nav.setup': 'تأسيس الأعمال المتكامل',
+      'nav.vlog': 'الفلوغ',
+      'nav.members': 'منطقة الأعضاء',
+      'nav.contact': 'تواصل معنا',
+      'nav.openMenu': 'فتح القائمة',
+      'nav.closeMenu': 'إغلاق القائمة',
+      'nav.primary': 'القائمة الرئيسية',
+      'lang.group': 'اللغة',
+      'lang.en': 'EN',
+      'lang.ar': 'ع',
+
+      'hero.decoding': 'فك شفرة',
+      'hero.success': 'النجاح',
+      'hero.alt': 'وائل فتحي',
+
+      'about.label': 'من نحن',
+      'about.p1':
+        'تأسست على يد خبير تقنية المعلومات وائل فتحي. وُلدت Tech Titans Factory من إيماننا بأن تقنية المعلومات و',
+      'about.p2':
+        'نظم معلومات الأعمال أكثر من مجرد تفاصيل تقنية؛ إنها نمو شخصي متكامل وتطوير و',
+      'about.p3': 'تحقيق التميّز في كل جانب من مسارك المهني. نحن هنا لنجهّزك ...',
+      'about.more': 'اقرأ المزيد',
+
+      'partners.label': 'شركاؤنا',
+      'partners.heading': 'من نعمل معهم',
+
+      'social.heading': 'آراء العملاء والإثبات الاجتماعي',
+      'testimonials.brand': 'الشهادات',
+      'testimonials.note': 'اختر عنوانًا لعرض الشهادات المطابقة.',
+      'testimonials.people': 'ماذا يقول الناس عن TTF',
+      'testimonials.peopleSub': 'إشادات عامة وأبرز النقاط',
+      'testimonials.voices': 'أصوات من مجتمعنا',
+      'testimonials.voicesSub': 'ملاحظات صوتية قابلة للرفع',
+      'testimonials.real': 'ملاحظات حقيقية… أثر حقيقي',
+      'testimonials.realSub': 'فيديوهات / دراسات حالة',
+      'testimonials.new': 'جديد',
+      'media.unavailable': 'الوسائط غير متاحة',
+      'media.audioHint': 'ملف الصوت غير مستضاف على رابط عام موثّق.',
+      'media.videoHint': 'ملف الفيديو غير مستضاف على رابط عام موثّق.',
+
+      'vlogs.heading': 'فلوغاتنا',
+      'vlogs.latest': 'أحدث الفلوغات',
+      'vlogs.note':
+        'فلوغات حصرية تغطي السفر وكواليس العمل ونصائح الحياة. انقر عنوانًا للانتقال أو مرّر بين الفيديوهات.',
+      'vlogs.v1': 'الفيديو الأول',
+      'vlogs.v2': 'الفيديو الثاني',
+      'vlogs.v3': 'الفيديو الثالث',
+      'vlogs.v4': 'الفيديو الرابع',
+      'vlogs.v1Text': 'انضم إليّ في رحلة مذهلة عبر مناظر خلّابة وجواهر مخفية.',
+      'vlogs.v2Text': 'نظرة حصرية على تحوّل الأفكار إلى محتوى، من المسودات إلى التعديل النهائي.',
+      'vlogs.v3Text': 'نصائح عملية تجعل حياتك اليومية أسهل وأكثر كفاءة.',
+      'vlogs.v4Text': 'ابدأ يومك بالطريقة الصحيحة مع هذا الدليل الكامل لروتين إنتاجي.',
+
+      'marketing.heading': 'فريق التسويق الاستثنائي لدينا',
+      'marketing.desc':
+        'يتألف فريقنا من محترفين ذوي مهارات عالية وخبرة عميقة في تصميم المواقع والتجارة الإلكترونية وتحليلات الويب وتحسين محركات البحث والإعلانات المدفوعة. نلتزم بتقديم نتائج استثنائية لعملائنا.',
+      'marketing.expertise': 'الخبرة',
+      'marketing.collab': 'التعاون',
+      'marketing.results': 'التركيز على النتائج',
+      'marketing.btn': 'خدماتنا',
+
+      'programs.heading': 'برامجنا',
+      'programs.p1Title': 'نظم معلومات الأعمال',
+      'programs.p1Text':
+        'من الإتقان التقني إلى الأثر الاستراتيجي. تعلّم مواءمة التقنية مع أهداف الأعمال لتحقيق نتائج قوية.',
+      'programs.p2Title': 'خدمة العملاء الذكية',
+      'programs.p2Text':
+        'طوّر استراتيجيات لتجارب عملاء استثنائية وابنِ الولاء عبر أنظمة ذكية.',
+      'programs.p3Title': 'من مدرّب إلى قائد أعمال',
+      'programs.p3Text':
+        'حوّل خبرتك التدريبية إلى قيادة أعمال وتأثير استراتيجي داخل قطاعك.',
+      'programs.p4Title': 'كنوز ذهبية في عالم تقنية المعلومات',
+      'programs.p4Text':
+        'اكتشف رؤى وأساليب وممارسات أساسية تشكّل النجاح في منظومة تقنية المعلومات الحديثة.',
+      'programs.more': 'اقرأ المزيد',
+
+      'newsletter.eyebrow': 'ابقَ على اطلاع',
+      'newsletter.title': 'انضم إلى نشرتنا البريدية',
+      'newsletter.text':
+        'تحديثات قصيرة وقيمة من TTF — رؤى ونصائح وفيديوهات مختارة تساعدك على النمو حقًا.',
+
+      'cta.title': 'اتخذ خطوة مع TTF',
+      'cta.ig': 'احصل على تحفيز يومي',
+      'cta.yt': 'شاهد عرض TTF',
+      'cta.email': 'فيديو إلى بريدك',
+      'cta.note':
+        'أدخل بيانات التواصل أدناه لتصلك أحدث تحديثات TTF ورؤاها القيّمة فورًا.',
+      'cta.name': 'الاسم الكامل',
+      'cta.emailPh': 'البريد الإلكتروني',
+      'cta.whatsapp': 'رقم واتساب (مع رمز الدولة)',
+      'cta.submit': 'سجّل الآن',
+      'cta.errRequired': 'يرجى تعبئة جميع الحقول المطلوبة.',
+      'cta.errWebhook':
+        'النموذج غير متصل. اضبط data-ghl-webhook أو الصق نموذج GHL الأصلي.',
+      'cta.pending': 'جارٍ الإرسال…',
+      'cta.success': 'شكرًا لك! تم إرسال بياناتك بنجاح.',
+      'cta.fail': 'فشل الإرسال. حاول مرة أخرى أو تواصل مع الدعم.',
+
+      'footer.desc':
+        'نمكّن الشركات عبر تدريب واستشارات وحلول رقمية متقدمة. ابقَ في الصدارة مع رؤى وابتكار TTF.',
+      'footer.explore': 'استكشف',
+      'footer.support': 'الدعم',
+      'footer.home': 'الرئيسية',
+      'footer.about': 'من نحن',
+      'footer.services': 'الخدمات',
+      'footer.vlog': 'الفلوغ',
+      'footer.members': 'منطقة الأعضاء',
+      'footer.contact': 'تواصل معنا',
+      'footer.privacy': 'سياسة الخصوصية',
+      'footer.refund': 'سياسة الاسترجاع',
+      'footer.copy': '© 2025 Tech Titans Factory. جميع الحقوق محفوظة.',
+      'footer.social': 'وسائل التواصل',
+    },
+  };
+
+  var currentLang = DEFAULT_LANG;
+
+  function normalizeLang(lang) {
+    return lang === 'ar' ? 'ar' : 'en';
+  }
+
+  function getLang() {
+    return currentLang;
+  }
+
+  function t(key) {
+    var pack = STRINGS[currentLang] || STRINGS.en;
+    if (pack[key] != null) return pack[key];
+    if (STRINGS.en[key] != null) return STRINGS.en[key];
+    return key;
+  }
+
+  function readStoredLang() {
+    try {
+      return normalizeLang(global.localStorage && global.localStorage.getItem(STORAGE_KEY));
+    } catch (e) {
+      return DEFAULT_LANG;
+    }
+  }
+
+  function storeLang(lang) {
+    try {
+      if (global.localStorage) global.localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function applyAttributes(root, lang) {
+    var nodes = root.querySelectorAll(
+      '[data-i18n], [data-i18n-html], [data-i18n-placeholder], [data-i18n-aria], [data-i18n-alt], [data-i18n-title]',
+    );
+    Array.prototype.forEach.call(nodes, function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (key) {
+        var value = t(key);
+        if (el.childElementCount === 0) {
+          el.textContent = value;
+        } else {
+          var textTarget = el.querySelector('[data-i18n-text]');
+          if (textTarget) textTarget.textContent = value;
+        }
+      }
+
+      var htmlKey = el.getAttribute('data-i18n-html');
+      if (htmlKey) el.innerHTML = t(htmlKey);
+
+      var ph = el.getAttribute('data-i18n-placeholder');
+      if (ph) el.setAttribute('placeholder', t(ph));
+
+      var aria = el.getAttribute('data-i18n-aria');
+      if (aria) el.setAttribute('aria-label', t(aria));
+
+      var alt = el.getAttribute('data-i18n-alt');
+      if (alt) el.setAttribute('alt', t(alt));
+
+      var title = el.getAttribute('data-i18n-title');
+      if (title) el.setAttribute('title', t(title));
+    });
+
+    // Keep switcher pressed state in sync
+    Array.prototype.forEach.call(root.querySelectorAll('[data-ttf-lang]'), function (btn) {
+      var active = btn.getAttribute('data-ttf-lang') === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  function applyDocumentDirection(lang) {
+    var dir = lang === 'ar' ? 'rtl' : 'ltr';
+    var root = document.getElementById('ttf-app');
+    if (root) {
+      root.setAttribute('dir', dir);
+      root.setAttribute('lang', lang);
+      root.classList.toggle('ttf-lang-ar', lang === 'ar');
+      root.classList.toggle('ttf-lang-en', lang === 'en');
+    }
+
+    // Standalone / local file preview: also flip the document
+    if (document.body && document.body.querySelector('#ttf-app')) {
+      var onlyApp =
+        document.body.children.length === 1 ||
+        !!document.querySelector('.ghl-sim-shell') ||
+        document.documentElement.getAttribute('data-ttf-owns-dir') === '1';
+      if (onlyApp || document.documentElement.getAttribute('data-ttf-owns-dir') === '1') {
+        document.documentElement.setAttribute('dir', dir);
+        document.documentElement.setAttribute('lang', lang);
+      }
+    }
+  }
+
+  function setLang(lang, root) {
+    currentLang = normalizeLang(lang);
+    storeLang(currentLang);
+    root = root || document.getElementById('ttf-app');
+    if (!root) return currentLang;
+
+    applyDocumentDirection(currentLang);
+    applyAttributes(root, currentLang);
+
+    try {
+      root.dispatchEvent(
+        new CustomEvent('ttf:langchange', { detail: { lang: currentLang }, bubbles: true }),
+      );
+    } catch (e) {
+      /* IE-safe ignore */
+    }
+
+    return currentLang;
+  }
+
+  function initI18n(root) {
+    if (!root || root.__ttfI18nInit) return;
+    root.__ttfI18nInit = true;
+
+    currentLang = readStoredLang();
+    applyDocumentDirection(currentLang);
+    applyAttributes(root, currentLang);
+
+    root.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('[data-ttf-lang]') : null;
+      if (!btn || !root.contains(btn)) return;
+      e.preventDefault();
+      setLang(btn.getAttribute('data-ttf-lang'), root);
+    });
+  }
+
+  global.TTF = global.TTF || {};
+  global.TTF.STRINGS = STRINGS;
+  global.TTF.t = t;
+  global.TTF.getLang = getLang;
+  global.TTF.setLang = setLang;
+  global.TTF.initI18n = initI18n;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+
 /* ===== navigation.js ===== */
 /**
  * Sticky header / burger menu / mobile dropdowns
@@ -2502,83 +3377,167 @@
   var VERIFIED_TESTIMONIAL_MP4 =
     'https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/6950ace7ee1047793af668b6.mp4';
 
-  var TTF_DATA = {
-    people: {
-      title: 'What People Say About TTF',
-      tags: ['Training', 'Consulting', 'Business Solutions'],
-      items: [
-        {
-          type: 'text',
-          name: 'Sara Al-Mutairi',
-          role: 'HR Manager – FinTech Co.',
-          text: "TTF's training elevated our team's performance in just 30 days. Clear content, highly practical.",
-          rating: 5,
-          img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
-        },
-        {
-          type: 'text',
-          name: 'Mohamed El-Sayed',
-          role: 'Founder – StartHub',
-          text: 'Consulting was precise and realistic. We left with a roadmap that simplified decisions.',
-          rating: 5,
-          img: '',
-        },
-      ],
+  var TTF_DATA_I18N = {
+    en: {
+      people: {
+        title: 'What People Say About TTF',
+        tags: ['Training', 'Consulting', 'Business Solutions'],
+        items: [
+          {
+            type: 'text',
+            name: 'Sara Al-Mutairi',
+            role: 'HR Manager – FinTech Co.',
+            text: "TTF's training elevated our team's performance in just 30 days. Clear content, highly practical.",
+            rating: 5,
+            img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
+          },
+          {
+            type: 'text',
+            name: 'Mohamed El-Sayed',
+            role: 'Founder – StartHub',
+            text: 'Consulting was precise and realistic. We left with a roadmap that simplified decisions.',
+            rating: 5,
+            img: '',
+          },
+        ],
+      },
+      voices: {
+        title: 'Voices from Our Community',
+        tags: ['Community', 'Audio', 'TTF Family'],
+        items: [
+          {
+            type: 'audio',
+            name: 'Lina H.',
+            role: 'Product Manager',
+            text: 'Voice note about the weekly circles.',
+            img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'Rashid A.',
+            role: 'SMB Owner',
+            text: 'Quick testimonial.',
+            img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'Nour B.',
+            role: 'Team Lead',
+            text: 'On saving time via TTF.',
+            img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+        ],
+      },
+      real: {
+        title: 'Real Feedback, Real Impact',
+        tags: ['Impact', 'Videos', 'Case Studies'],
+        items: [
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: VERIFIED_TESTIMONIAL_MP4,
+            name: 'Case Study – Ops',
+            role: 'COO – Logistics',
+          },
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: '',
+            name: 'Customer Experience',
+            role: 'Head of CX',
+          },
+        ],
+      },
     },
-    voices: {
-      title: 'Voices from Our Community',
-      tags: ['Community', 'Audio', 'TTF Family'],
-      items: [
-        {
-          type: 'audio',
-          name: 'Lina H.',
-          role: 'Product Manager',
-          text: 'Voice note about the weekly circles.',
-          img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
-          // Reference used /media/voices/lina-note.mp3 — not hosted publicly; no verified URL.
-          src: '',
-        },
-        {
-          type: 'audio',
-          name: 'Rashid A.',
-          role: 'SMB Owner',
-          text: 'Quick testimonial.',
-          img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
-          src: '',
-        },
-        {
-          type: 'audio',
-          name: 'Nour B.',
-          role: 'Team Lead',
-          text: 'On saving time via TTF.',
-          img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
-          src: '',
-        },
-      ],
-    },
-    real: {
-      title: 'Real Feedback, Real Impact',
-      tags: ['Impact', 'Videos', 'Case Studies'],
-      items: [
-        {
-          type: 'video',
-          provider: 'mp4',
-          // Reference "youtube" card mapped to this verified msgsndr MP4 (not a YouTube embed).
-          src: VERIFIED_TESTIMONIAL_MP4,
-          name: 'Case Study – Ops',
-          role: 'COO – Logistics',
-        },
-        {
-          type: 'video',
-          provider: 'mp4',
-          // Reference path /media/videos/cx-drop-22.mp4 is not publicly hosted.
-          src: '',
-          name: 'Customer Experience',
-          role: 'Head of CX',
-        },
-      ],
+    ar: {
+      people: {
+        title: 'ماذا يقول الناس عن TTF',
+        tags: ['تدريب', 'استشارات', 'حلول أعمال'],
+        items: [
+          {
+            type: 'text',
+            name: 'سارة المطيري',
+            role: 'مديرة موارد بشرية – شركة تقنية مالية',
+            text: 'رفع تدريب TTF أداء فريقنا خلال 30 يومًا فقط. محتوى واضح وعملي جدًا.',
+            rating: 5,
+            img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
+          },
+          {
+            type: 'text',
+            name: 'محمد السيد',
+            role: 'مؤسس – StartHub',
+            text: 'الاستشارات كانت دقيقة وواقعية. خرجنا بخارطة طريق سهّلت قراراتنا.',
+            rating: 5,
+            img: '',
+          },
+        ],
+      },
+      voices: {
+        title: 'أصوات من مجتمعنا',
+        tags: ['المجتمع', 'صوتيات', 'عائلة TTF'],
+        items: [
+          {
+            type: 'audio',
+            name: 'لينا ح.',
+            role: 'مديرة منتج',
+            text: 'ملاحظة صوتية عن اللقاءات الأسبوعية.',
+            img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'راشد ع.',
+            role: 'صاحب منشأة صغيرة',
+            text: 'شهادة سريعة.',
+            img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+          {
+            type: 'audio',
+            name: 'نور ب.',
+            role: 'قائدة فريق',
+            text: 'عن توفير الوقت عبر TTF.',
+            img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
+            src: '',
+          },
+        ],
+      },
+      real: {
+        title: 'ملاحظات حقيقية… أثر حقيقي',
+        tags: ['أثر', 'فيديوهات', 'دراسات حالة'],
+        items: [
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: VERIFIED_TESTIMONIAL_MP4,
+            name: 'دراسة حالة – العمليات',
+            role: 'مدير العمليات – لوجستيات',
+          },
+          {
+            type: 'video',
+            provider: 'mp4',
+            src: '',
+            name: 'تجربة العملاء',
+            role: 'رئيس تجربة العملاء',
+          },
+        ],
+      },
     },
   };
+
+  function ttfT(key) {
+    return global.TTF && typeof global.TTF.t === 'function' ? global.TTF.t(key) : key;
+  }
+
+  function getTtfData() {
+    var lang = global.TTF && typeof global.TTF.getLang === 'function' ? global.TTF.getLang() : 'en';
+    return TTF_DATA_I18N[lang] || TTF_DATA_I18N.en;
+  }
+
+  var TTF_DATA = TTF_DATA_I18N.en;
 
   function isPlayableUrl(src) {
     return typeof src === 'string' && /^https?:\/\//i.test(src.trim());
@@ -2588,12 +3547,10 @@
     return (
       '<div class="ttf-media-fallback" role="status">' +
       '<span class="ttf-media-fallback-label">' +
-      (label || 'Media unavailable') +
+      (label || ttfT('media.unavailable')) +
       '</span>' +
       '<span class="ttf-media-fallback-hint">' +
-      (kind === 'audio'
-        ? 'Audio file is not hosted on a verified public URL.'
-        : 'Video file is not hosted on a verified public URL.') +
+      (kind === 'audio' ? ttfT('media.audioHint') : ttfT('media.videoHint')) +
       '</span></div>'
     );
   }
@@ -2692,6 +3649,45 @@
     );
   }
 
+  // GHL Animate.css fadeInDown — once when each marked heading scrolls into view
+  function initFadeInDownHeadings(root) {
+    var nodes = root.querySelectorAll(
+      '[data-ttf-fade-in-down], .ttf-social-proof-heading, .ttf-vlogs-heading',
+    );
+    if (!nodes.length) return;
+
+    var reduce =
+      global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    Array.prototype.forEach.call(nodes, function (title) {
+      if (title.__ttfHeadingAnim) return;
+      title.__ttfHeadingAnim = true;
+
+      if (reduce) {
+        title.classList.add('ttf-anim-in');
+        return;
+      }
+
+      title.classList.add('ttf-anim-ready');
+
+      if (typeof global.IntersectionObserver === 'function') {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              title.classList.add('ttf-anim-in');
+              io.disconnect();
+            });
+          },
+          { threshold: 0.35, rootMargin: '0px 0px -10% 0px' },
+        );
+        io.observe(title);
+      } else {
+        title.classList.add('ttf-anim-in');
+      }
+    });
+  }
+
   function initTestimonials(root) {
     var $c = root.querySelector('#ttf-component');
     if (!$c || $c.__ttfTestimonialsInit) return;
@@ -2701,15 +3697,22 @@
     var chips = $c.querySelector('#ttf-chips');
     var heading = $c.querySelector('#ttf-heading');
     var count = $c.querySelector('#ttf-count');
+    var scroller = $c.querySelector('.ttf-scroll');
     if (!grid || !chips || !heading || !count) return;
 
+    function activeKey() {
+      var active = $c.querySelector('.ttf-side .ttf-btn.ttf-active');
+      return (active && active.dataset.key) || 'people';
+    }
+
     function render(key) {
-      var set = TTF_DATA[key];
+      var data = getTtfData();
+      var set = data[key];
       if (!set) return;
       heading.textContent = set.title;
       chips.innerHTML = set.tags
-        .map(function (t) {
-          return '<span class="ttf-chip">' + t + '</span>';
+        .map(function (tag) {
+          return '<span class="ttf-chip">' + tag + '</span>';
         })
         .join('');
       grid.innerHTML = set.items
@@ -2720,6 +3723,7 @@
         })
         .join('');
       count.textContent = '(' + set.items.length + ')';
+      if (scroller) scroller.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     render('people');
@@ -2738,6 +3742,10 @@
           btn.click();
         }
       });
+    });
+
+    root.addEventListener('ttf:langchange', function () {
+      render(activeKey());
     });
   }
 
@@ -2827,16 +3835,12 @@
       var whatsapp = (form.whatsapp && form.whatsapp.value ? form.whatsapp.value : '').trim();
 
       if (!name || !email || !whatsapp) {
-        setFormStatus(statusEl, 'Please fill in all required fields.', 'error');
+        setFormStatus(statusEl, ttfT('cta.errRequired'), 'error');
         return;
       }
 
       if (!webhook) {
-        setFormStatus(
-          statusEl,
-          'Form is not connected. Set data-ghl-webhook or paste a native GHL form embed.',
-          'error',
-        );
+        setFormStatus(statusEl, ttfT('cta.errWebhook'), 'error');
         return;
       }
 
@@ -2848,7 +3852,7 @@
       };
 
       if (submitBtn) submitBtn.disabled = true;
-      setFormStatus(statusEl, 'Submitting…', 'pending');
+      setFormStatus(statusEl, ttfT('cta.pending'), 'pending');
 
       fetch(webhook, {
         method: 'POST',
@@ -2859,16 +3863,12 @@
           if (!res.ok) {
             throw new Error('HTTP ' + res.status);
           }
-          setFormStatus(statusEl, 'Thank you! Your info has been sent successfully.', 'success');
+          setFormStatus(statusEl, ttfT('cta.success'), 'success');
           form.reset();
         })
         .catch(function (err) {
           console.error('[TTF] Registration submit failed', err);
-          setFormStatus(
-            statusEl,
-            'Submission failed. Please try again or contact support.',
-            'error',
-          );
+          setFormStatus(statusEl, ttfT('cta.fail'), 'error');
         })
         .then(function () {
           if (submitBtn) submitBtn.disabled = false;
@@ -2880,6 +3880,7 @@
     if (!root) return;
     initTestimonials(root);
     initVlogs(root);
+    initFadeInDownHeadings(root);
     initRegistration(root);
     root.__ttfInteractionsInit = true;
   }
@@ -2887,6 +3888,8 @@
   global.TTF = global.TTF || {};
   global.TTF.initInteractions = initInteractions;
   global.TTF.TTF_DATA = TTF_DATA;
+  global.TTF.TTF_DATA_I18N = TTF_DATA_I18N;
+  global.TTF.getTtfData = getTtfData;
   global.TTF.VERIFIED_TESTIMONIAL_MP4 = VERIFIED_TESTIMONIAL_MP4;
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -3162,6 +4165,9 @@
     if (!root || root.__ttfBootstrapped) return false;
     root.__ttfBootstrapped = true;
 
+    if (global.TTF && typeof global.TTF.initI18n === 'function') {
+      global.TTF.initI18n(root);
+    }
     if (global.TTF && typeof global.TTF.initNavigation === 'function') {
       global.TTF.initNavigation(root);
     }
