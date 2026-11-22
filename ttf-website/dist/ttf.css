@@ -245,6 +245,17 @@
   border: none;
 }
 
+#ttf-app .menu > .ttf-menu-close {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  width: 0;
+  overflow: visible;
+  position: static;
+}
+
 #ttf-app .close-btn {
   display: none;
   font-size: 28px;
@@ -255,6 +266,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 2;
 }
 
 /* ===== Hero (matches GHL section-dYIsxZLYd) ===== */
@@ -652,10 +664,11 @@
   box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.4), 0 0 22px rgba(211, 253, 4, 0.25);
 }
 
-#ttf-app .ttf-brand h1 {
+#ttf-app .ttf-brand h2 {
   margin: 0;
   font-size: 16px;
   font-family: var(--ttf-font-body);
+  font-weight: 700;
 }
 
 #ttf-app .ttf-note {
@@ -731,7 +744,7 @@
   margin: 0 6px 6px;
 }
 
-#ttf-app .ttf-title h2 {
+#ttf-app .ttf-title h3 {
   margin: 0;
   font-size: 22px;
   font-family: var(--ttf-font-body);
@@ -843,6 +856,43 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  border: 0;
+  object-fit: contain;
+  background: #000;
+}
+
+#ttf-app .ttf-media-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-height: 72px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+#ttf-app .ttf-video .ttf-media-fallback {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border: 0;
+  min-height: 0;
+}
+
+#ttf-app .ttf-media-fallback-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ttf-text);
+}
+
+#ttf-app .ttf-media-fallback-hint {
+  font-size: 11px;
+  opacity: 0.65;
+  max-width: 28ch;
 }
 
 /* ===== Vlogs (style-16) ===== */
@@ -1350,15 +1400,27 @@
   opacity: 0.9;
 }
 
-#ttf-app .ttfns-ghl-hint {
-  margin-top: 10px;
+#ttf-app .ttfns-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#ttf-app .ttfns-form-status {
+  margin: 10px 0 0;
   font-size: 12px;
   color: var(--muted);
 }
 
-#ttf-app .ttfns-ghl-hint code {
+#ttf-app .ttfns-form-status[data-kind="success"] {
   color: var(--brand);
-  font-size: 11px;
+}
+
+#ttf-app .ttfns-form-status[data-kind="error"] {
+  color: #ff8e8e;
+}
+
+#ttf-app .ttfns-form-status[data-kind="pending"] {
+  color: var(--muted);
 }
 
 /* ===== Footer (style-20) ===== */
@@ -1619,6 +1681,10 @@
 
   #ttf-app .menu.open {
     right: 0;
+  }
+
+  #ttf-app .menu > .ttf-menu-close {
+    display: list-item;
   }
 
   #ttf-app .close-btn {

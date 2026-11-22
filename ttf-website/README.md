@@ -1,6 +1,6 @@
 # Tech Titans Factory — GHL Website
 
-Pixel-faithful recreation of the [Tech Titans Factory](https://techtitansfactory.com/home) home page for GoHighLevel Custom HTML / Custom Code deployment.
+Pixel-faithful recreation of the Tech Titans Factory home page for GoHighLevel Custom HTML / Custom Code deployment.
 
 ## Stack
 
@@ -9,14 +9,24 @@ Pixel-faithful recreation of the [Tech Titans Factory](https://techtitansfactory
 - `#ttf-app` wrapper with CSS scoped under `#ttf-app`
 - Browser IIFE-compatible JS for GHL paste
 
-## Quick start
+## Install & build
 
 ```bash
+cd ttf-website
 npm install
 npm run assemble   # builds src/index.html from components
 npm run dev        # local preview at http://localhost:5173
 npm run build      # Vite build + GHL artifacts in dist/
 ```
+
+| Command | Output |
+|---------|--------|
+| `npm run assemble` | `src/index.html` |
+| `npm run build` | Vite `dist/` + `ghl-home.html`, `ghl-home-inline.html`, `ttf.css`, `ttf.js` |
+| `npm run build:ghl` | GHL artifacts only (no Vite bundle) |
+| `npm run preview` | Preview Vite production build |
+
+Requires Node.js 18+.
 
 ## Project layout
 
@@ -50,19 +60,24 @@ ttf-website/
 3. Add `dist/ttf.js` in a footer Custom Code `<script>` block
 4. Ensure Google Fonts (Poppins + Roboto Condensed) and Font Awesome 6 are loaded on the page
 
-### Form insertion point
+### Registration form
 
-The Take Action registration UI is a **layout placeholder**:
+The Take Action form posts JSON to the Lead Connector webhook taken from the
+reference funnel (`reference/assembled/registration.js`):
 
-```html
-<div class="ttfns-form-slot" data-ghl-form="registration">
-```
+- Fields: `name`, `email`, `whatsapp`, `source`
+- Webhook attribute: `data-ghl-webhook` on `#ttfns-form`
+- Success copy is shown **only** after `fetch` returns OK
 
-Replace the inner `<form id="ttfns-form">…</form>` with a **native GoHighLevel form embed**. Do not invent form IDs or webhook endpoints. Client-side required-field checks remain for UX only until the GHL form is inserted.
+**GHL checklist**
+
+1. Confirm the webhook still exists under Automations / Webhooks for location `9LHVl0sw8gABEkuoMC1s`.
+2. Optionally replace the whole `<form>` with a native GHL Form embed inside `[data-ghl-form="registration"]`.
+3. Test on a **published** GHL page (CRM creation is not verified from local preview).
 
 ### Ziko chatbot
 
-Ziko initializes once from `ttf.js` using the reference n8n Chat UI config. Double-init is guarded via `__ttfZikoInit` / `__ttfZikoStarted`.
+Ziko initializes once from `ttf.js` after `#ttf-app` mounts. Double-init is guarded via `__ttfZikoInit` / `__ttfZikoStarted`. Boot waits up to ~5s for delayed Custom Code injection.
 
 ## Integration checklist
 
@@ -72,33 +87,17 @@ Ziko initializes once from `ttf.js` using the reference n8n Chat UI config. Doub
 - [ ] Sticky header + burger ≤900px works
 - [ ] Testimonials tabs (people / voices / real) switch content
 - [ ] Vlog thumbnails play video on click
-- [ ] Replace `[data-ghl-form="registration"]` with native GHL form
+- [ ] Confirm registration webhook / or paste native GHL form
 - [ ] Ziko button appears once (no duplicate widgets)
 - [ ] Nav links match production URLs
 - [ ] OUR SERVICES → `https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA`
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `npm run assemble` | Rebuild `src/index.html` from components |
-| `npm run build` | Vite build + `dist/` GHL files |
-| `npm run build:ghl` | Assemble + GHL artifacts only |
-| `npm run generate-from-reference` | Re-extract reference pieces (optional) |
-
-Add to `package.json` if needed:
-
-```json
-"generate-from-reference": "node scripts/generate-from-reference.mjs"
-```
-
-## Brand tokens
-
-| Token | Value |
-|-------|-------|
-| Background | `#1b2029` |
-| Brand lime | `#d3fd04` |
-| Script name | `#4d525d` |
-| Fonts | Poppins, Roboto Condensed, Charlotte Southern, Korolev Bold |
-
-See also: `../docs/DEPLOYMENT.md` and `../docs/QA-REPORT.md`.
+| Script | Purpose |
+|--------|---------|
+| `assemble` | Concatenate component HTML → `src/index.html` |
+| `build` | Vite production build + GHL artifacts |
+| `build:ghl` | Assemble + GHL artifacts only |
+| `generate-from-reference` | Helper to pull reference custom-code snippets |
+| `dev` / `preview` | Local Vite server |

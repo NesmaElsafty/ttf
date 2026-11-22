@@ -118,6 +118,10 @@
     right: 0;
   }
 
+  #ttf-app .menu > .ttf-menu-close {
+    display: list-item;
+  }
+
   #ttf-app .close-btn {
     display: block;
   }

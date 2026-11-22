@@ -1,7 +1,7 @@
-<section class="ttfns" id="ttfns-cta">
+<section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
   <div class="ttfns-wrap">
     <div class="ttfns-left">
-      <h3 class="ttfns-title">Take Action with TTF</h3>
+      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
       <div class="ttfns-links">
         <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
           <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
@@ -16,25 +16,45 @@
     </div>
 
     <!--
-      GHL FORM INSERTION POINT
-      Replace the placeholder form below with a native GoHighLevel form embed.
-      Keep data-ghl-form="registration" on the wrapper for deployment docs / QA.
+      GoHighLevel registration form
+      --------------------------------
+      Default: posts JSON to the Lead Connector webhook copied from the
+      reference funnel (reference/assembled/registration.js).
+
+      GHL configuration checklist:
+      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
+         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
+         a different trigger.
+      2. Optional: replace the entire <form> with a native GHL Form embed
+         inside [data-ghl-form="registration"] — then remove/disable the
+         JS submit handler (it skips native embeds automatically).
+      3. Map fields: name, email, whatsapp (and optional source).
+      4. Test on a published GHL page (CORS + workflow). Local preview cannot
+         verify CRM contact creation.
     -->
     <div class="ttfns-form-slot" data-ghl-form="registration">
-      <form id="ttfns-form" class="ttfns-form" novalidate data-ttf-registration-form>
+      <form
+        id="ttfns-form"
+        class="ttfns-form"
+        novalidate
+        data-ttf-registration-form
+        data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
+      >
         <p class="ttfns-form-note">
           Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
         </p>
 
-        <input type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
-        <input type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
-        <input type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+
+        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+
+        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
 
         <button type="submit" class="ttfns-btn">Register Now</button>
-        <p class="ttfns-ghl-hint" hidden>
-          This form is a layout placeholder. Paste the native GHL form embed into
-          <code>[data-ghl-form="registration"]</code> for production submissions.
-        </p>
+        <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </div>

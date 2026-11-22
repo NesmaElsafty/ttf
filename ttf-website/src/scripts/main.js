@@ -1,5 +1,6 @@
 /**
  * TTF app bootstrap — safe for Vite ESM and GHL classic IIFE paste.
+ * Waits for #ttf-app (supports delayed GHL Custom Code mount).
  * Initializes once; guards Ziko chatbot against double init.
  */
 (function (global) {
@@ -115,6 +116,10 @@
     },
   };
 
+  var BOOT_INTERVAL_MS = 100;
+  var BOOT_MAX_ATTEMPTS = 50; // ~5s for delayed GHL mount
+  var ZIKO_RTL_MAX_ATTEMPTS = 40; // ~20s then stop
+
   /** Safe dynamic import that does not break classic-script parsers */
   function dynamicImport(url) {
     try {
@@ -130,6 +135,7 @@
 
     var RTL_REGEX = /[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
     var WIDGET_SELECTOR = 'n8nchatui-popup';
+    var attempts = 0;
 
     function applyShadowStyles(shadowRoot, direction) {
       var styleTag = shadowRoot.getElementById('dynamic-rtl-styles');
@@ -148,11 +154,16 @@
     }
 
     function initWidgetObserver() {
+      if (global.__ttfZikoRtlReady) return;
       var widgetHost = document.querySelector(WIDGET_SELECTOR);
       if (!widgetHost || !widgetHost.shadowRoot) {
+        attempts += 1;
+        if (attempts >= ZIKO_RTL_MAX_ATTEMPTS) return;
         setTimeout(initWidgetObserver, 500);
         return;
       }
+
+      global.__ttfZikoRtlReady = true;
       var shadow = widgetHost.shadowRoot;
       var shadowObserver = new MutationObserver(function () {
         var textarea = shadow.querySelector('textarea');
@@ -182,6 +193,11 @@
   function runChatbotInit(Chatbot) {
     if (!Chatbot || typeof Chatbot.init !== 'function') return;
     if (global.__ttfZikoStarted) return;
+    if (document.querySelector('n8nchatui-popup')) {
+      global.__ttfZikoStarted = true;
+      initZikoRtlGuard();
+      return;
+    }
     global.__ttfZikoStarted = true;
     try {
       Chatbot.init(ZIKO_CONFIG);
@@ -201,7 +217,16 @@
         runChatbotInit(mod && (mod.default || mod));
       })
       .catch(function () {
-        if (document.querySelector('script[data-ttf-ziko-cdn]')) return;
+        if (document.querySelector('script[data-ttf-ziko-cdn]')) {
+          dynamicImport(ZIKO_CDN)
+            .then(function (mod) {
+              runChatbotInit(mod && (mod.default || mod));
+            })
+            .catch(function () {
+              runChatbotInit(global.Chatbot);
+            });
+          return;
+        }
         var s = document.createElement('script');
         s.src = ZIKO_CDN;
         s.type = 'module';
@@ -219,15 +244,9 @@
       });
   }
 
-  function initApp() {
-    if (global.__ttfAppInit) return;
-    global.__ttfAppInit = true;
-
-    var root = document.getElementById('ttf-app');
-    if (!root) {
-      console.warn('[TTF] #ttf-app not found');
-      return;
-    }
+  function bootstrapRoot(root) {
+    if (!root || root.__ttfBootstrapped) return false;
+    root.__ttfBootstrapped = true;
 
     if (global.TTF && typeof global.TTF.initNavigation === 'function') {
       global.TTF.initNavigation(root);
@@ -237,6 +256,35 @@
     }
 
     initZiko();
+    return true;
+  }
+
+  function tryInitApp() {
+    var root = document.getElementById('ttf-app');
+    if (!root) return false;
+    return bootstrapRoot(root);
+  }
+
+  function scheduleInit() {
+    if (global.__ttfBootScheduled) return;
+    global.__ttfBootScheduled = true;
+
+    if (tryInitApp()) return;
+
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts += 1;
+      if (tryInitApp() || attempts >= BOOT_MAX_ATTEMPTS) {
+        clearInterval(timer);
+        if (!document.getElementById('ttf-app')) {
+          console.warn('[TTF] #ttf-app not found after delayed wait');
+        }
+      }
+    }, BOOT_INTERVAL_MS);
+  }
+
+  function initApp() {
+    scheduleInit();
   }
 
   global.TTF = global.TTF || {};
@@ -244,8 +292,8 @@
   global.TTF.initZiko = initZiko;
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
+    document.addEventListener('DOMContentLoaded', scheduleInit, { once: true });
   } else {
-    initApp();
+    scheduleInit();
   }
 })(typeof window !== 'undefined' ? window : globalThis);

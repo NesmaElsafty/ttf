@@ -28,7 +28,9 @@
         if (window.innerWidth <= 900) {
           e.preventDefault();
           const li = link.parentElement;
-          if (li) li.classList.toggle('open');
+          if (!li) return;
+          const open = li.classList.toggle('open');
+          link.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
       });
     });
@@ -62,12 +64,16 @@
 
 /* ===== interactions.js ===== */
 /**
- * Testimonials tabs, vlogs play/scroll, registration UX validation
+ * Testimonials tabs, vlogs play/scroll, GHL registration webhook submit
  */
 (function (global) {
   'use strict';
 
-  const TTF_DATA = {
+  /** Only absolute https URLs verified on the reference funnel / CDN. */
+  var VERIFIED_TESTIMONIAL_MP4 =
+    'https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/6950ace7ee1047793af668b6.mp4';
+
+  var TTF_DATA = {
     people: {
       title: 'What People Say About TTF',
       tags: ['Training', 'Consulting', 'Business Solutions'],
@@ -100,7 +106,8 @@
           role: 'Product Manager',
           text: 'Voice note about the weekly circles.',
           img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
-          src: '/media/voices/lina-note.mp3',
+          // Reference used /media/voices/lina-note.mp3 — not hosted publicly; no verified URL.
+          src: '',
         },
         {
           type: 'audio',
@@ -108,7 +115,7 @@
           role: 'SMB Owner',
           text: 'Quick testimonial.',
           img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
-          src: '/media/voices/rashid-short.m4a',
+          src: '',
         },
         {
           type: 'audio',
@@ -116,7 +123,7 @@
           role: 'Team Lead',
           text: 'On saving time via TTF.',
           img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
-          src: '/media/voices/nour-feedback.ogg',
+          src: '',
         },
       ],
     },
@@ -126,21 +133,41 @@
       items: [
         {
           type: 'video',
-          provider: 'youtube',
-          youtubeId: 'dQw4w9WgXcQ',
+          provider: 'mp4',
+          // Reference "youtube" card mapped to this verified msgsndr MP4 (not a YouTube embed).
+          src: VERIFIED_TESTIMONIAL_MP4,
           name: 'Case Study – Ops',
           role: 'COO – Logistics',
         },
         {
           type: 'video',
           provider: 'mp4',
-          src: '/media/videos/cx-drop-22.mp4',
+          // Reference path /media/videos/cx-drop-22.mp4 is not publicly hosted.
+          src: '',
           name: 'Customer Experience',
           role: 'Head of CX',
         },
       ],
     },
   };
+
+  function isPlayableUrl(src) {
+    return typeof src === 'string' && /^https?:\/\//i.test(src.trim());
+  }
+
+  function mediaFallback(kind, label) {
+    return (
+      '<div class="ttf-media-fallback" role="status">' +
+      '<span class="ttf-media-fallback-label">' +
+      (label || 'Media unavailable') +
+      '</span>' +
+      '<span class="ttf-media-fallback-hint">' +
+      (kind === 'audio'
+        ? 'Audio file is not hosted on a verified public URL.'
+        : 'Video file is not hosted on a verified public URL.') +
+      '</span></div>'
+    );
+  }
 
   function stars(n) {
     return '★★★★★'
@@ -177,6 +204,12 @@
   }
 
   function cardAudio(i) {
+    var player = isPlayableUrl(i.src)
+      ? '<div class="ttf-audio"><audio controls preload="none" src="' +
+        i.src +
+        '"><track kind="captions"></audio></div>'
+      : mediaFallback('audio', 'Audio unavailable');
+
     return (
       '<article class="ttf-card" tabindex="0" aria-label="Voice from ' +
       i.name +
@@ -195,19 +228,26 @@
       '<div class="ttf-text">' +
       (i.text || '') +
       '</div>' +
-      '<div class="ttf-audio"><audio controls preload="none" src="' +
-      i.src +
-      '"></audio></div></article>'
+      player +
+      '</article>'
     );
   }
 
   function cardVideo(i) {
-    var inner =
-      i.provider === 'youtube'
-        ? '<iframe src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/6950ace7ee1047793af668b6.mp4" title="' +
-          i.name +
-          '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-        : '<video controls preload="none" src="' + i.src + '"></video>';
+    var src = i.src;
+    // Legacy reference mapped provider:"youtube" to the verified msgsndr MP4.
+    if (!isPlayableUrl(src) && i.provider === 'youtube') {
+      src = VERIFIED_TESTIMONIAL_MP4;
+    }
+
+    var inner = isPlayableUrl(src)
+      ? '<video controls playsinline preload="metadata" src="' +
+        src +
+        '" title="' +
+        (i.name || 'Testimonial video') +
+        '">Sorry, your browser does not support embedded videos.</video>'
+      : mediaFallback('video', 'Video unavailable');
+
     return (
       '<article class="ttf-card" tabindex="0" aria-label="Video: ' +
       i.name +
@@ -308,6 +348,7 @@
     skin.querySelectorAll('.thumbnail').forEach(function (thumb) {
       thumb.addEventListener('click', function () {
         var videoUrl = thumb.getAttribute('data-video');
+        if (!isPlayableUrl(videoUrl)) return;
         var video = document.createElement('video');
         video.src = videoUrl;
         video.controls = true;
@@ -318,50 +359,113 @@
     });
   }
 
+  function setFormStatus(el, message, kind) {
+    if (!el) return;
+    if (!message) {
+      el.hidden = true;
+      el.textContent = '';
+      el.removeAttribute('data-kind');
+      return;
+    }
+    el.hidden = false;
+    el.textContent = message;
+    el.setAttribute('data-kind', kind || 'info');
+  }
+
   function initRegistration(root) {
     var form = root.querySelector('[data-ttf-registration-form]');
     if (!form || form.__ttfFormInit) return;
+
+    // Native GHL embed inside the slot — leave alone (no fake handler).
+    if (form.hasAttribute('data-ghl-native-embed') || form.querySelector('.hl-form, .ghl-form-embed, iframe[src*="leadconnector"], iframe[src*="msgsndr"]')) {
+      return;
+    }
+
     form.__ttfFormInit = true;
 
-    var hint = form.querySelector('.ttfns-ghl-hint');
+    var statusEl = form.querySelector('[data-ttf-form-status]');
+    var submitBtn = form.querySelector('[type="submit"]');
+    var webhook =
+      (form.getAttribute('data-ghl-webhook') || '').trim() ||
+      'https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7';
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      setFormStatus(statusEl, '', '');
 
       var name = (form.name && form.name.value ? form.name.value : '').trim();
       var email = (form.email && form.email.value ? form.email.value : '').trim();
       var whatsapp = (form.whatsapp && form.whatsapp.value ? form.whatsapp.value : '').trim();
 
       if (!name || !email || !whatsapp) {
-        alert('Please fill in all required fields.');
+        setFormStatus(statusEl, 'Please fill in all required fields.', 'error');
         return;
       }
 
-      // Native GHL form embed should replace this placeholder for production submissions.
-      if (hint) hint.hidden = false;
-      alert(
-        'Thanks! This layout form is a placeholder. Insert the native GoHighLevel form into [data-ghl-form="registration"] for live submissions.',
-      );
+      if (!webhook) {
+        setFormStatus(
+          statusEl,
+          'Form is not connected. Set data-ghl-webhook or paste a native GHL form embed.',
+          'error',
+        );
+        return;
+      }
+
+      var payload = {
+        name: name,
+        email: email,
+        whatsapp: whatsapp,
+        source: 'TTF Glass CTA (no-bg)',
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      setFormStatus(statusEl, 'Submitting…', 'pending');
+
+      fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          if (!res.ok) {
+            throw new Error('HTTP ' + res.status);
+          }
+          setFormStatus(statusEl, 'Thank you! Your info has been sent successfully.', 'success');
+          form.reset();
+        })
+        .catch(function (err) {
+          console.error('[TTF] Registration submit failed', err);
+          setFormStatus(
+            statusEl,
+            'Submission failed. Please try again or contact support.',
+            'error',
+          );
+        })
+        .then(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
   function initInteractions(root) {
-    if (!root || root.__ttfInteractionsInit) return;
-    root.__ttfInteractionsInit = true;
+    if (!root) return;
     initTestimonials(root);
     initVlogs(root);
     initRegistration(root);
+    root.__ttfInteractionsInit = true;
   }
 
   global.TTF = global.TTF || {};
   global.TTF.initInteractions = initInteractions;
   global.TTF.TTF_DATA = TTF_DATA;
+  global.TTF.VERIFIED_TESTIMONIAL_MP4 = VERIFIED_TESTIMONIAL_MP4;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 
 /* ===== main.js ===== */
 /**
  * TTF app bootstrap — safe for Vite ESM and GHL classic IIFE paste.
+ * Waits for #ttf-app (supports delayed GHL Custom Code mount).
  * Initializes once; guards Ziko chatbot against double init.
  */
 (function (global) {
@@ -477,6 +581,10 @@
     },
   };
 
+  var BOOT_INTERVAL_MS = 100;
+  var BOOT_MAX_ATTEMPTS = 50; // ~5s for delayed GHL mount
+  var ZIKO_RTL_MAX_ATTEMPTS = 40; // ~20s then stop
+
   /** Safe dynamic import that does not break classic-script parsers */
   function dynamicImport(url) {
     try {
@@ -492,6 +600,7 @@
 
     var RTL_REGEX = /[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
     var WIDGET_SELECTOR = 'n8nchatui-popup';
+    var attempts = 0;
 
     function applyShadowStyles(shadowRoot, direction) {
       var styleTag = shadowRoot.getElementById('dynamic-rtl-styles');
@@ -510,11 +619,16 @@
     }
 
     function initWidgetObserver() {
+      if (global.__ttfZikoRtlReady) return;
       var widgetHost = document.querySelector(WIDGET_SELECTOR);
       if (!widgetHost || !widgetHost.shadowRoot) {
+        attempts += 1;
+        if (attempts >= ZIKO_RTL_MAX_ATTEMPTS) return;
         setTimeout(initWidgetObserver, 500);
         return;
       }
+
+      global.__ttfZikoRtlReady = true;
       var shadow = widgetHost.shadowRoot;
       var shadowObserver = new MutationObserver(function () {
         var textarea = shadow.querySelector('textarea');
@@ -544,6 +658,11 @@
   function runChatbotInit(Chatbot) {
     if (!Chatbot || typeof Chatbot.init !== 'function') return;
     if (global.__ttfZikoStarted) return;
+    if (document.querySelector('n8nchatui-popup')) {
+      global.__ttfZikoStarted = true;
+      initZikoRtlGuard();
+      return;
+    }
     global.__ttfZikoStarted = true;
     try {
       Chatbot.init(ZIKO_CONFIG);
@@ -563,7 +682,16 @@
         runChatbotInit(mod && (mod.default || mod));
       })
       .catch(function () {
-        if (document.querySelector('script[data-ttf-ziko-cdn]')) return;
+        if (document.querySelector('script[data-ttf-ziko-cdn]')) {
+          dynamicImport(ZIKO_CDN)
+            .then(function (mod) {
+              runChatbotInit(mod && (mod.default || mod));
+            })
+            .catch(function () {
+              runChatbotInit(global.Chatbot);
+            });
+          return;
+        }
         var s = document.createElement('script');
         s.src = ZIKO_CDN;
         s.type = 'module';
@@ -581,15 +709,9 @@
       });
   }
 
-  function initApp() {
-    if (global.__ttfAppInit) return;
-    global.__ttfAppInit = true;
-
-    var root = document.getElementById('ttf-app');
-    if (!root) {
-      console.warn('[TTF] #ttf-app not found');
-      return;
-    }
+  function bootstrapRoot(root) {
+    if (!root || root.__ttfBootstrapped) return false;
+    root.__ttfBootstrapped = true;
 
     if (global.TTF && typeof global.TTF.initNavigation === 'function') {
       global.TTF.initNavigation(root);
@@ -599,6 +721,35 @@
     }
 
     initZiko();
+    return true;
+  }
+
+  function tryInitApp() {
+    var root = document.getElementById('ttf-app');
+    if (!root) return false;
+    return bootstrapRoot(root);
+  }
+
+  function scheduleInit() {
+    if (global.__ttfBootScheduled) return;
+    global.__ttfBootScheduled = true;
+
+    if (tryInitApp()) return;
+
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts += 1;
+      if (tryInitApp() || attempts >= BOOT_MAX_ATTEMPTS) {
+        clearInterval(timer);
+        if (!document.getElementById('ttf-app')) {
+          console.warn('[TTF] #ttf-app not found after delayed wait');
+        }
+      }
+    }, BOOT_INTERVAL_MS);
+  }
+
+  function initApp() {
+    scheduleInit();
   }
 
   global.TTF = global.TTF || {};
@@ -606,8 +757,8 @@
   global.TTF.initZiko = initZiko;
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
+    document.addEventListener('DOMContentLoaded', scheduleInit, { once: true });
   } else {
-    initApp();
+    scheduleInit();
   }
 })(typeof window !== 'undefined' ? window : globalThis);

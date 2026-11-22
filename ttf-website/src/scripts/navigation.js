@@ -27,7 +27,9 @@
         if (window.innerWidth <= 900) {
           e.preventDefault();
           const li = link.parentElement;
-          if (li) li.classList.toggle('open');
+          if (!li) return;
+          const open = li.classList.toggle('open');
+          link.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
       });
     });

@@ -12,8 +12,8 @@
       /* Local preview only — does not ship into GHL scoped CSS */
       html, body { margin: 0; padding: 0; background: #1b2029; }
     </style>
-    <script type="module" crossorigin src="/assets/index-CKFfujk3.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cpdg6Fbb.css">
+    <script type="module" crossorigin src="/assets/index-D6b6IQeE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-0tFMwTs7.css">
   </head>
   <body>
     <div id="ttf-app">
@@ -27,48 +27,69 @@
     />
   </a>
 
-  <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false" data-ttf-burger>
+  <button
+    class="burger"
+    type="button"
+    aria-label="Open menu"
+    aria-controls="menu"
+    aria-expanded="false"
+    data-ttf-burger
+  >
     ☰
   </button>
 
-  <ul class="menu" id="menu">
-    <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+  <nav aria-label="Primary">
+    <ul class="menu" id="menu">
+      <li class="ttf-menu-close">
+        <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+      </li>
 
-    <li>
-      <a href="https://techtitansfactory.com/home">Home Page</a>
-    </li>
+      <li>
+        <a href="https://techtitansfactory.com/home">Home Page</a>
+      </li>
 
-    <li>
-      <a href="https://techtitansfactory.com/AboutUs" data-ttf-dropdown-toggle>About Us ▾</a>
-      <ul class="dropdown">
-        <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
-        <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
-        <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
-        <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
-        <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
-      </ul>
-    </li>
+      <li>
+        <a
+          href="https://techtitansfactory.com/AboutUs"
+          data-ttf-dropdown-toggle
+          aria-haspopup="true"
+          aria-expanded="false"
+        >About Us ▾</a>
+        <ul class="dropdown" role="list">
+          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
+        </ul>
+      </li>
 
-    <li>
-      <a href="https://techtitansfactory.com/services" data-ttf-dropdown-toggle>Services ▾</a>
-      <ul class="dropdown">
-        <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
-        <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
-        <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
-        <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
-      </ul>
-    </li>
+      <li>
+        <a
+          href="https://techtitansfactory.com/services"
+          data-ttf-dropdown-toggle
+          aria-haspopup="true"
+          aria-expanded="false"
+        >Services ▾</a>
+        <ul class="dropdown" role="list">
+          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
+        </ul>
+      </li>
 
-    <li>
-      <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
-    </li>
-    <li>
-      <a href="https://portal.techtitansfactory.com/">Members Area</a>
-    </li>
-    <li>
-      <a href="https://techtitansfactory.com/contactus">Contact Us</a>
-    </li>
-  </ul>
+      <li>
+        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
+      </li>
+      <li>
+        <a href="https://portal.techtitansfactory.com/">Members Area</a>
+      </li>
+      <li>
+        <a href="https://techtitansfactory.com/contactus">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
     <!-- hero -->
@@ -76,8 +97,8 @@
   <div class="ttf-hero-row">
     <div class="ttf-hero-copy">
       <h1 class="ttf-hero-name">Wael Fathy</h1>
-      <h1 class="ttf-hero-decoding">DECODING</h1>
-      <h1 class="ttf-hero-success">SUCCESS</h1>
+      <p class="ttf-hero-decoding">DECODING</p>
+      <p class="ttf-hero-success">SUCCESS</p>
     </div>
     <div class="ttf-hero-portrait">
       <img
@@ -95,7 +116,7 @@
     <!-- about -->
 <section class="ttf-about" aria-label="About">
   <div class="ttf-about-inner">
-    <h1 class="ttf-about-heading">ABOUT</h1>
+    <h2 class="ttf-about-heading">ABOUT</h2>
     <div class="ttf-about-text">
       <p>
         <strong>Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
@@ -115,7 +136,7 @@
 <section class="ttf-partners-section" aria-label="Partners">
   <div class="ttf-partners-intro">
     <h2 class="ttf-partners-label">PARTNERS</h2>
-    <h1 class="ttf-partners-heading">WHO WE WORK WITH</h1>
+    <p class="ttf-partners-heading">WHO WE WORK WITH</p>
   </div>
 
   <!-- Desktop: glass partners (5 logos) — matches GHL desktop custom code -->
@@ -179,7 +200,7 @@
     <aside class="ttf-side">
       <div class="ttf-brand">
         <span class="ttf-dot"></span>
-        <h1>Testimonials</h1>
+        <h2>Testimonials</h2>
       </div>
       <p class="ttf-note">Pick a heading to view matching testimonials.</p>
 
@@ -209,7 +230,7 @@
     <main class="ttf-main" aria-live="polite">
       <div class="ttf-head">
         <div class="ttf-title">
-          <h2 id="ttf-heading">What People Say About TTF</h2>
+          <h3 id="ttf-heading">What People Say About TTF</h3>
           <small id="ttf-count">(2)</small>
         </div>
         <div class="ttf-chips" id="ttf-chips"></div>
@@ -395,10 +416,10 @@
 </section>
 
     <!-- cta -->
-<section class="ttfns" id="ttfns-cta">
+<section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
   <div class="ttfns-wrap">
     <div class="ttfns-left">
-      <h3 class="ttfns-title">Take Action with TTF</h3>
+      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
       <div class="ttfns-links">
         <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
           <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
@@ -413,25 +434,45 @@
     </div>
 
     <!--
-      GHL FORM INSERTION POINT
-      Replace the placeholder form below with a native GoHighLevel form embed.
-      Keep data-ghl-form="registration" on the wrapper for deployment docs / QA.
+      GoHighLevel registration form
+      --------------------------------
+      Default: posts JSON to the Lead Connector webhook copied from the
+      reference funnel (reference/assembled/registration.js).
+
+      GHL configuration checklist:
+      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
+         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
+         a different trigger.
+      2. Optional: replace the entire <form> with a native GHL Form embed
+         inside [data-ghl-form="registration"] — then remove/disable the
+         JS submit handler (it skips native embeds automatically).
+      3. Map fields: name, email, whatsapp (and optional source).
+      4. Test on a published GHL page (CORS + workflow). Local preview cannot
+         verify CRM contact creation.
     -->
     <div class="ttfns-form-slot" data-ghl-form="registration">
-      <form id="ttfns-form" class="ttfns-form" novalidate data-ttf-registration-form>
+      <form
+        id="ttfns-form"
+        class="ttfns-form"
+        novalidate
+        data-ttf-registration-form
+        data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
+      >
         <p class="ttfns-form-note">
           Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
         </p>
 
-        <input type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
-        <input type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
-        <input type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+
+        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+
+        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
 
         <button type="submit" class="ttfns-btn">Register Now</button>
-        <p class="ttfns-ghl-hint" hidden>
-          This form is a layout placeholder. Paste the native GHL form embed into
-          <code>[data-ghl-form="registration"]</code> for production submissions.
-        </p>
+        <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </div>

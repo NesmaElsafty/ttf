@@ -31,35 +31,41 @@ Built by `npm run build` inside `ttf-website/`:
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 ```
 
-## GHL form embed
+## Registration form (Lead Connector webhook)
 
-Locate:
+The form under `[data-ghl-form="registration"]` submits to the webhook copied from
+`reference/assembled/registration.js` (location `9LHVl0sw8gABEkuoMC1s`).
 
-```html
-<div … data-ghl-form="registration">
+Payload:
+
+```json
+{ "name": "...", "email": "...", "whatsapp": "...", "source": "TTF Glass CTA (no-bg)" }
 ```
 
-1. Delete or comment out the placeholder `<form id="ttfns-form">`.
-2. Paste the GHL form embed code from Sites → Forms (or the funnel form element export).
-3. Keep the outer `data-ghl-form="registration"` wrapper for QA selectors.
-4. Style the embedded form with GHL’s form designer to match lime `#d3fd04` / dark glass fields if needed.
+### Configure in GHL
 
-**Do not invent** form IDs, webhook URLs, or LeadConnector endpoints in code.
+1. Open **Automations → Webhooks** (or the workflow that owns trigger `28d257a9-5c8b-42fd-9279-3d3e72166ef7`).
+2. Confirm the trigger is active and maps `name` / `email` / `whatsapp`.
+3. If you rotate the webhook, update `data-ghl-webhook` on `#ttfns-form` and rebuild.
+4. **Optional:** replace the entire `<form id="ttfns-form">` with a native GHL Form embed inside the same slot. The JS skips handlers when a native embed is detected.
+
+Success messaging appears only after a successful HTTP response. Local Vite preview may succeed at the network layer but **does not prove CRM contact creation**.
 
 ## Safety rules for GHL
 
 - All markup lives inside `#ttf-app`.
-- CSS is prefixed / scoped under `#ttf-app` — no global `body { }` resets in shipped CSS.
-- JS initializes once (`__ttfAppInit`); safe to paste even if GHL reloads the block.
+- CSS is scoped under `#ttf-app` — no global `body { }` resets in shipped CSS.
+- JS waits for `#ttf-app` (bounded ~5s retry) then bootstraps once per root (`__ttfBootstrapped`).
+- Ziko double-init guarded (`__ttfZikoInit` / `__ttfZikoStarted`).
 - No SPA router — all links are absolute production URLs.
 
 ## Smoke test after publish
 
 1. Desktop hero: Wael Fathy / DECODING / SUCCESS + portrait.
 2. Mobile ≤900px: burger opens / closes; dropdowns expand on tap.
-3. Testimonials: three tabs render different cards.
+3. Testimonials: three tabs render different cards; Real Feedback plays HTML5 video.
 4. Vlogs: click thumbnail → video element plays.
-5. Registration slot: GHL form submits into the account CRM.
+5. Registration: submit a test lead; confirm contact/workflow in GHL.
 6. Ziko: single floating button; Arabic input flips RTL inside widget.
 7. Footer social icons open correct profiles.
 
