@@ -22,9 +22,13 @@ npm run build      # Vite build + GHL artifacts in dist/
 | Command | Output |
 |---------|--------|
 | `npm run assemble` | `src/index.html` |
-| `npm run build` | Vite `dist/` + `ghl-home.html`, `ghl-home-inline.html`, `ttf.css`, `ttf.js` |
+| `npm run build` | Vite `dist-vite/` + `ghl-home.html`, `ghl-home-inline.html`, **`TTF-HOMEPAGE-GHL.html`**, `ttf.css`, `ttf.js` |
 | `npm run build:ghl` | GHL artifacts only (no Vite bundle) |
 | `npm run preview` | Preview Vite production build |
+
+### Paste into GoHighLevel (recommended)
+
+Copy the entire contents of `dist/TTF-HOMEPAGE-GHL.html` into one Custom Code / Custom HTML element. It is a fragment (no `<html>`/`<body>`), with CSS + JS inlined.
 
 Requires Node.js 18+.
 

@@ -1,9 +1,10 @@
 /**
  * Builds GoHighLevel deployment artifacts:
- *   dist/ghl-home.html        — HTML fragment (#ttf-app only)
- *   dist/ghl-home-inline.html — single file with inlined CSS + JS
- *   dist/ttf.css              — concatenated scoped stylesheet
- *   dist/ttf.js               — concatenated IIFE-safe scripts
+ *   dist/ghl-home.html            — HTML fragment (#ttf-app only)
+ *   dist/ghl-home-inline.html     — single file with inlined CSS + JS
+ *   dist/TTF-HOMEPAGE-GHL.html    — paste-ready single Custom Code file
+ *   dist/ttf.css                  — concatenated scoped stylesheet
+ *   dist/ttf.js                   — concatenated IIFE-safe scripts
  */
 import fs from 'fs';
 import path from 'path';
@@ -71,11 +72,12 @@ const js = [
   .join('\n\n');
 
 const googleFonts =
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap';
 const faCss =
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
 
-const inline = `<!-- Tech Titans Factory — GHL inline bundle -->
+function buildInlineBundle(label) {
+  return `<!-- ${label} -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="${googleFonts}" rel="stylesheet" />
@@ -88,14 +90,22 @@ ${fragment}
 ${js}
 </script>
 `;
+}
+
+const inline = buildInlineBundle('Tech Titans Factory — GHL inline bundle');
+const homepageGhl = buildInlineBundle(
+  'Tech Titans Factory — paste-ready GoHighLevel Custom Code (TTF-HOMEPAGE-GHL)',
+);
 
 fs.writeFileSync(path.join(dist, 'ghl-home.html'), fragment, 'utf8');
 fs.writeFileSync(path.join(dist, 'ghl-home-inline.html'), inline, 'utf8');
+fs.writeFileSync(path.join(dist, 'TTF-HOMEPAGE-GHL.html'), homepageGhl, 'utf8');
 fs.writeFileSync(path.join(dist, 'ttf.css'), css, 'utf8');
 fs.writeFileSync(path.join(dist, 'ttf.js'), js, 'utf8');
 
 console.log('GHL build complete:');
 console.log(' - dist/ghl-home.html');
 console.log(' - dist/ghl-home-inline.html');
+console.log(' - dist/TTF-HOMEPAGE-GHL.html');
 console.log(' - dist/ttf.css');
 console.log(' - dist/ttf.js');

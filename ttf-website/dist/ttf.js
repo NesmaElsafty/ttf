@@ -709,6 +709,26 @@
       });
   }
 
+  function initHeroEntrance(root) {
+    var hero = root.querySelector('[data-ttf-hero]');
+    if (!hero || hero.__ttfHeroAnim) return;
+    hero.__ttfHeroAnim = true;
+
+    var reduce =
+      global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      hero.classList.add('ttf-hero--entered');
+      return;
+    }
+
+    // Double rAF so initial opacity:0 paints before fadeInUp starts (GHL Animate.css behavior).
+    global.requestAnimationFrame(function () {
+      global.requestAnimationFrame(function () {
+        hero.classList.add('ttf-hero--entered');
+      });
+    });
+  }
+
   function bootstrapRoot(root) {
     if (!root || root.__ttfBootstrapped) return false;
     root.__ttfBootstrapped = true;
@@ -720,6 +740,7 @@
       global.TTF.initInteractions(root);
     }
 
+    initHeroEntrance(root);
     initZiko();
     return true;
   }

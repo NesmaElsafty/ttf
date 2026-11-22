@@ -355,6 +355,43 @@
   overflow: visible;
 }
 
+/* Hero entrance — Animate.css fadeInUp as used by GHL
+   (data-animation-class="animate__animated animate__fadeInUp", 1s, delay 0, ease, both) */
+@keyframes ttf-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#ttf-app .ttf-hero-anim {
+  animation-name: ttf-fadeInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+#ttf-app .ttf-hero:not(.ttf-hero--entered) .ttf-hero-anim {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ttf-app .ttf-hero-anim {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #ttf-app .ttf-hero:not(.ttf-hero--entered) .ttf-hero-anim {
+    opacity: 1;
+  }
+}
+
 #ttf-app .ttf-hero-portrait img {
   width: 400px;
   max-width: 100%;
@@ -365,11 +402,12 @@
 }
 
 /* ===== About + Partners band (shared continuous BG) =====
-   Reference uses a solid dark page + .bg layer at opacity 0.3 */
+   Mirrors GHL section--CHrNfd6Co (.bg.full-center opacity 0.3) on desktop
+   and section-ZPj-jc3mjg (.bg.bgCover100) on mobile. */
 #ttf-app .ttf-about-partners-band {
   position: relative;
   background-color: var(--ttf-bg);
-  padding-bottom: 20px;
+  padding: 0 0 20px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -381,7 +419,7 @@
   z-index: 0;
   background-image: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccddce253906462602ff38.png');
   background-size: cover;
-  background-position: center center;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   opacity: 0.3;
   pointer-events: none;
@@ -394,14 +432,14 @@
 
 #ttf-app .ttf-about {
   position: relative;
-  padding: 40px 20px 10px;
+  padding: 0 10px 0;
 }
 
 #ttf-app .ttf-about-inner {
-  max-width: 1150px;
+  max-width: 1170px;
   margin: 0 auto;
   text-align: center;
-  padding: 10px 5px;
+  padding: 0 10px;
 }
 
 #ttf-app .ttf-about-heading {
@@ -416,22 +454,24 @@
 }
 
 #ttf-app .ttf-about-text {
-  margin: 0 auto;
+  margin: 20px auto 0;
   max-width: 1150px;
   font-family: var(--ttf-font-condensed);
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 1.5em;
   color: #fff;
   text-align: center;
 }
 
 #ttf-app .ttf-about-text p {
-  margin: 0 0 0.35em;
+  margin: 0;
   font-family: var(--ttf-font-condensed);
   font-size: 18px;
+  font-weight: 100;
   line-height: 27px;
   color: #fff;
+  text-align: center;
 }
 
 #ttf-app .ttf-about-text strong {
@@ -445,7 +485,7 @@
   text-decoration: none;
   font-family: var(--ttf-font-condensed);
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 100;
 }
 
 #ttf-app .ttf-about-more strong {
@@ -493,7 +533,7 @@
   background: transparent;
   color: #fff;
   font-family: var(--ttf-font-body);
-  padding: 40px 20px 20px;
+  padding: 70px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -555,7 +595,7 @@
 /* Crystal partners (style-13) — mobile */
 #ttf-app .ttf-crystal-partners {
   background: transparent;
-  padding: 40px 0 20px;
+  padding: 80px 20px;
   display: none;
   justify-content: center;
   align-items: center;
@@ -1821,6 +1861,19 @@
     padding: 24px 0 12px;
   }
 
+  #ttf-app .ttf-about-partners-band {
+    padding: 80px 0 20px;
+  }
+
+  #ttf-app .ttf-about-partners-band::before {
+    background-size: 100%;
+    background-position: 0% 0%;
+  }
+
+  #ttf-app .ttf-about {
+    padding: 0 20px;
+  }
+
   #ttf-app .ttf-about-text,
   #ttf-app .ttf-about-text p {
     font-size: 16px;
@@ -1830,10 +1883,6 @@
   #ttf-app .ttf-partners-heading,
   #ttf-app .ttf-about-heading {
     font-size: 32px;
-  }
-
-  #ttf-app .ttf-about-partners-band {
-    background-position: center top;
   }
 }
 

@@ -1,0 +1,3216 @@
+<!-- Tech Titans Factory — paste-ready GoHighLevel Custom Code (TTF-HOMEPAGE-GHL) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&family=Roboto+Condensed:wght@100;300;400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style id="ttf-css">
+/* ===== tokens.css ===== */
+/* Tech Titans Factory design tokens — scoped to #ttf-app */
+#ttf-app {
+  --ttf-brand: #d3fd04;
+  --ttf-bg: #1b2029;
+  --ttf-text: #ffffff;
+  --ttf-script: #4d525d;
+  --ttf-muted: #bfc4c8;
+  --ttf-glass: rgba(255, 255, 255, 0.08);
+  --ttf-glass-soft: rgba(255, 255, 255, 0.05);
+  --ttf-line: rgba(255, 255, 255, 0.14);
+  --ttf-card: rgba(255, 255, 255, 0.06);
+  --ttf-radius: 16px;
+  --ttf-font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ttf-font-condensed: 'Roboto Condensed', 'Poppins', sans-serif;
+  --ttf-font-script: 'Charlotte Southern', cursive;
+  --ttf-font-display: 'Korolev Bold', 'Poppins', sans-serif;
+  --ttf-font-heavy: 'Korolev Heavy', 'Poppins', sans-serif;
+  --ttf-font-thin: 'Korolev Thin', 'Poppins', sans-serif;
+  --ttf-max: 1200px;
+
+  /* Crystal / partners */
+  --crystal-bg: rgba(255, 255, 255, 0.08);
+  --crystal-border: rgba(255, 255, 255, 0.18);
+  --crystal-accent: #d3fd04;
+  --crystal-text: #fff;
+}
+
+@font-face {
+  font-family: 'Korolev Bold';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc204fae2c5d2a22cf22.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korolev Heavy';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc5c4fae2c340722d69e.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korolev Thin';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc752539060d0efcd9c1.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charlotte Southern';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd314fae2c741a22e88e.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charlotte Swash';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd1ceaa0581dc5ef4a2e.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ===== base.css ===== */
+/* Scoped base — intentionally does NOT reset global html/body for GHL safety */
+
+#ttf-app {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: var(--ttf-font-body);
+  background-color: var(--ttf-bg);
+  color: var(--ttf-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ttf-app *,
+#ttf-app *::before,
+#ttf-app *::after {
+  box-sizing: border-box;
+}
+
+#ttf-app img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+#ttf-app a {
+  color: inherit;
+}
+
+#ttf-app button {
+  font-family: inherit;
+}
+
+#ttf-app .ttf-section-title {
+  margin: 40px 0 20px;
+  padding: 0 20px;
+  text-align: center;
+  font-family: var(--ttf-font-body);
+  font-weight: 600;
+  font-size: 28px;
+  color: #fff;
+}
+
+#ttf-app .ttf-social-proof-heading {
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+  margin: 48px 20px 24px;
+}
+
+#ttf-app .ttf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ===== components.css ===== */
+/* ===== Header / Navbar (from style-12) ===== */
+#ttf-app .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: var(--ttf-bg);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+#ttf-app .navbar img.logo {
+  max-height: 65px;
+}
+
+#ttf-app .menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+#ttf-app .menu > li {
+  position: relative;
+}
+
+#ttf-app .menu a {
+  text-decoration: none;
+  color: var(--ttf-text);
+  font-weight: 500;
+  padding: 10px;
+  display: block;
+  transition: 0.3s;
+  position: relative;
+}
+
+#ttf-app .menu a:hover {
+  color: var(--ttf-brand);
+}
+
+#ttf-app .menu > li > a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--ttf-brand);
+  transition: width 0.3s;
+  margin-top: 2px;
+}
+
+#ttf-app .menu > li > a:hover::after {
+  width: 100%;
+}
+
+#ttf-app .dropdown a::after {
+  display: none !important;
+  content: none !important;
+}
+
+#ttf-app .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 8px 0;
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  background: rgba(27, 32, 41, 0.95);
+  min-width: 220px;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(211, 253, 4, 0.15);
+}
+
+#ttf-app .dropdown li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#ttf-app .dropdown a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #ddd;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+#ttf-app .dropdown a:hover {
+  background: rgba(211, 253, 4, 0.12);
+  color: var(--ttf-brand);
+}
+
+#ttf-app .menu li:hover > .dropdown {
+  display: block;
+}
+
+#ttf-app .burger {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--ttf-text);
+  background: none;
+  border: none;
+}
+
+#ttf-app .menu > .ttf-menu-close {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  width: 0;
+  overflow: visible;
+  position: static;
+}
+
+#ttf-app .close-btn {
+  display: none;
+  font-size: 28px;
+  color: var(--ttf-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+/* ===== Hero (matches GHL section-dYIsxZLYd) ===== */
+#ttf-app .ttf-hero {
+  position: relative;
+  margin: 20px 0 0;
+  padding: 0 5% 20px;
+  min-height: 681px;
+  height: 681px;
+  overflow: hidden;
+  background-color: var(--ttf-bg);
+  box-sizing: border-box;
+}
+
+/* Inner row carries the SVG at background-size: 100% (not cover) */
+#ttf-app .ttf-hero-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  height: 661px;
+  margin: 0;
+  background-image: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccd5f5a298134caf841aaa.svg');
+  background-size: 100%;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+}
+
+#ttf-app .ttf-hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 0;
+  margin-left: 80px;
+  text-align: left;
+}
+
+#ttf-app .ttf-hero-name {
+  margin: 0 -50px 0 40px;
+  padding: 80px 0 30px;
+  font-family: var(--ttf-font-script);
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 65px;
+  color: var(--ttf-script);
+  text-transform: none;
+  text-align: left;
+}
+
+#ttf-app .ttf-hero-decoding {
+  margin: 0 0 0 40px;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 95px;
+  font-weight: 100;
+  line-height: 95px;
+  color: var(--ttf-brand);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+#ttf-app .ttf-hero-success {
+  margin: -11px 0 0 40px;
+  padding: 0 0 60px;
+  font-family: var(--ttf-font-display);
+  font-size: 160px;
+  font-weight: 600;
+  line-height: 160px;
+  color: var(--ttf-brand);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+#ttf-app .ttf-hero-portrait {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Hero entrance — Animate.css fadeInUp as used by GHL
+   (data-animation-class="animate__animated animate__fadeInUp", 1s, delay 0, ease, both) */
+@keyframes ttf-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#ttf-app .ttf-hero-anim {
+  animation-name: ttf-fadeInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+#ttf-app .ttf-hero:not(.ttf-hero--entered) .ttf-hero-anim {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ttf-app .ttf-hero-anim {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #ttf-app .ttf-hero:not(.ttf-hero--entered) .ttf-hero-anim {
+    opacity: 1;
+  }
+}
+
+#ttf-app .ttf-hero-portrait img {
+  width: 400px;
+  max-width: 100%;
+  height: 711px;
+  max-height: none;
+  object-fit: fill;
+  display: block;
+}
+
+/* ===== About + Partners band (shared continuous BG) =====
+   Mirrors GHL section--CHrNfd6Co (.bg.full-center opacity 0.3) on desktop
+   and section-ZPj-jc3mjg (.bg.bgCover100) on mobile. */
+#ttf-app .ttf-about-partners-band {
+  position: relative;
+  background-color: var(--ttf-bg);
+  padding: 0 0 20px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#ttf-app .ttf-about-partners-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccddce253906462602ff38.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+#ttf-app .ttf-about-partners-band > * {
+  position: relative;
+  z-index: 1;
+}
+
+#ttf-app .ttf-about {
+  position: relative;
+  padding: 0 10px 0;
+}
+
+#ttf-app .ttf-about-inner {
+  max-width: 1170px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 10px;
+}
+
+#ttf-app .ttf-about-heading {
+  margin: 10px 0 20px;
+  font-family: var(--ttf-font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1em;
+  color: var(--ttf-brand);
+  text-transform: none;
+  text-align: center;
+}
+
+#ttf-app .ttf-about-text {
+  margin: 20px auto 0;
+  max-width: 1150px;
+  font-family: var(--ttf-font-condensed);
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 1.5em;
+  color: #fff;
+  text-align: center;
+}
+
+#ttf-app .ttf-about-text p {
+  margin: 0;
+  font-family: var(--ttf-font-condensed);
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 27px;
+  color: #fff;
+  text-align: center;
+}
+
+#ttf-app .ttf-about-text strong {
+  font-weight: 400;
+  color: #fff;
+  font-family: var(--ttf-font-condensed);
+}
+
+#ttf-app .ttf-about-more {
+  color: var(--ttf-brand);
+  text-decoration: none;
+  font-family: var(--ttf-font-condensed);
+  font-size: 18px;
+  font-weight: 100;
+}
+
+#ttf-app .ttf-about-more strong {
+  color: var(--ttf-brand);
+  font-weight: 400;
+}
+
+#ttf-app .ttf-about-more:hover {
+  text-decoration: underline;
+}
+
+#ttf-app .ttf-partners-section {
+  padding: 0 20px 40px;
+}
+
+#ttf-app .ttf-partners-intro {
+  max-width: 1080px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+#ttf-app .ttf-partners-label {
+  margin: 0;
+  font-family: var(--ttf-font-condensed);
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1.3em;
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+#ttf-app .ttf-partners-heading {
+  margin: 0 0 10px;
+  font-family: var(--ttf-font-body);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3em;
+  color: #fff;
+  text-align: center;
+}
+
+/* Desktop glass partners (style-14) */
+#ttf-app .ttf-partners-glass {
+  background: transparent;
+  color: #fff;
+  font-family: var(--ttf-font-body);
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ttf-app .ttf-partners-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+#ttf-app .ttf-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+#ttf-app .ttf-partner-card {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 25px 20px;
+  transition: all 0.35s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#ttf-app .ttf-partner-card:hover {
+  transform: scale(0.97);
+  border-color: var(--ttf-brand);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+#ttf-app .ttf-partner-card img {
+  width: 100%;
+  max-width: 130px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: all 0.35s ease;
+}
+
+#ttf-app .ttf-partner-card:hover img {
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+#ttf-app .ttf-partners-desktop {
+  display: flex;
+}
+
+#ttf-app .ttf-partners-mobile {
+  display: none;
+}
+
+/* Crystal partners (style-13) — mobile */
+#ttf-app .ttf-crystal-partners {
+  background: transparent;
+  padding: 80px 20px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--ttf-font-body);
+  color: var(--crystal-text);
+}
+
+#ttf-app .crystal-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+#ttf-app .crystal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+#ttf-app .crystal-logo {
+  background: var(--crystal-bg);
+  border: 1px solid var(--crystal-border);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 18px;
+  transition: all 0.35s ease;
+  width: 100%;
+}
+
+#ttf-app .crystal-logo:hover {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--crystal-accent);
+}
+
+#ttf-app .crystal-logo img {
+  width: 100%;
+  max-width: 130px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+#ttf-app .crystal-logo:hover img {
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+/* ===== Testimonials (style-15) ===== */
+#ttf-app .ttf-testimonials-section {
+  padding: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+#ttf-app .ttf-testimonials {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 18px;
+  --card: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.14);
+  --brand: #d3fd04;
+  --radius: 16px;
+  font-family: var(--ttf-font-condensed);
+  color: #fff;
+}
+
+#ttf-app .ttf-testimonials * {
+  box-sizing: border-box;
+  color: inherit;
+}
+
+#ttf-app .ttf-side {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(180deg, var(--glass), transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+#ttf-app .ttf-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--glass);
+  border: 1px solid var(--line);
+}
+
+#ttf-app .ttf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.4), 0 0 22px rgba(211, 253, 4, 0.25);
+}
+
+#ttf-app .ttf-brand h2 {
+  margin: 0;
+  font-size: 16px;
+  font-family: var(--ttf-font-body);
+  font-weight: 700;
+}
+
+#ttf-app .ttf-note {
+  margin: 2px 2px 8px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+#ttf-app .ttf-testimonials .ttf-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--glass), transparent);
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+  font-family: var(--ttf-font-condensed);
+  color: #fff;
+}
+
+#ttf-app .ttf-testimonials .ttf-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(211, 253, 4, 0.5);
+}
+
+#ttf-app .ttf-testimonials .ttf-btn.ttf-active {
+  box-shadow: inset 0 0 0 1px rgba(211, 253, 4, 0.85);
+}
+
+#ttf-app .ttf-tag {
+  margin-inline-start: auto;
+  font-size: 11px;
+  background: var(--brand);
+  color: #121212;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+#ttf-app .ttf-sub {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+#ttf-app .ttf-main {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#ttf-app .ttf-head {
+  position: sticky;
+  top: 0;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+#ttf-app .ttf-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 6px 6px;
+}
+
+#ttf-app .ttf-title h3 {
+  margin: 0;
+  font-size: 22px;
+  font-family: var(--ttf-font-body);
+}
+
+#ttf-app .ttf-title small {
+  opacity: 0.65;
+}
+
+#ttf-app .ttf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 6px 10px;
+}
+
+#ttf-app .ttf-chip {
+  font-size: 12px;
+  opacity: 0.8;
+  border: 1px dashed var(--line);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+#ttf-app .ttf-scroll {
+  overflow: auto;
+  padding: 10px;
+}
+
+#ttf-app .ttf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+#ttf-app .ttf-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#ttf-app .ttf-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(211, 253, 4, 0.6);
+  box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.35), 0 0 28px rgba(211, 253, 4, 0.2);
+}
+
+#ttf-app .ttf-person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+#ttf-app .ttf-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#ttf-app .ttf-name {
+  font-weight: 700;
+  font-family: var(--ttf-font-body);
+}
+
+#ttf-app .ttf-role {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+#ttf-app .ttf-text {
+  line-height: 1.7;
+}
+
+#ttf-app .ttf-rating {
+  margin-top: 10px;
+  color: var(--ttf-brand);
+}
+
+#ttf-app .ttf-audio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ttf-app .ttf-audio audio {
+  width: 100%;
+}
+
+#ttf-app .ttf-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+#ttf-app .ttf-video iframe,
+#ttf-app .ttf-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+  background: #000;
+}
+
+#ttf-app .ttf-media-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-height: 72px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+#ttf-app .ttf-video .ttf-media-fallback {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border: 0;
+  min-height: 0;
+}
+
+#ttf-app .ttf-media-fallback-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ttf-text);
+}
+
+#ttf-app .ttf-media-fallback-hint {
+  font-size: 11px;
+  opacity: 0.65;
+  max-width: 28ch;
+}
+
+/* ===== Vlogs (style-16) ===== */
+#ttf-app .ttf-vlogs-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 0 40px;
+}
+
+#ttf-app .ttf-skin {
+  --brand: #d3fd04;
+  --card: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.16);
+  --radius: 16px;
+  --fg: #ffffff;
+  font-family: var(--ttf-font-condensed);
+  color: var(--fg);
+}
+
+#ttf-app .ttf-skin .ghl-v-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 24px;
+  align-items: start;
+  padding: 20px;
+}
+
+#ttf-app .ttf-skin .ghl-v-left {
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  background: linear-gradient(180deg, var(--glass), transparent);
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+#ttf-app .ttf-skin .ghl-v-heading {
+  margin: 0 0 12px;
+  font-family: var(--ttf-font-body);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#ttf-app .ttf-skin .ghl-v-heading::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.4), 0 0 22px rgba(211, 253, 4, 0.25);
+}
+
+#ttf-app .ttf-skin .ghl-v-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#ttf-app .ttf-skin .ttf-btn {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--glass), transparent);
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s;
+  color: var(--fg);
+  font-size: 15px;
+}
+
+#ttf-app .ttf-skin .ttf-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(211, 253, 4, 0.5);
+}
+
+#ttf-app .ttf-skin .ttf-btn.ttf-active {
+  box-shadow: inset 0 0 0 1px rgba(211, 253, 4, 0.85);
+}
+
+#ttf-app .ttf-skin .ghl-v-note {
+  font-size: 12.5px;
+  opacity: 0.8;
+  margin: 4px 2px 0;
+}
+
+#ttf-app .ttf-skin .ghl-v-right {
+  display: grid;
+  gap: 20px;
+}
+
+#ttf-app .ttf-skin .ghl-v-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  transition: 0.25s ease;
+}
+
+#ttf-app .ttf-skin .ghl-v-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(211, 253, 4, 0.6);
+  box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.35), 0 0 28px rgba(211, 253, 4, 0.2);
+}
+
+#ttf-app .ttf-skin .v-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+#ttf-app .ttf-skin video {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  display: block;
+}
+
+#ttf-app .ttf-skin .thumbnail {
+  position: relative;
+  cursor: pointer;
+}
+
+#ttf-app .ttf-skin .thumbnail img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+#ttf-app .ttf-skin .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 32px;
+  padding: 12px 18px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+#ttf-app .ttf-skin .thumbnail:hover .play-btn {
+  background: var(--brand);
+  color: #000;
+}
+
+#ttf-app .ttf-skin .ghl-v-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--ttf-font-body);
+  color: var(--brand);
+}
+
+#ttf-app .ttf-skin .ghl-v-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+/* ===== Marketing Team ===== */
+#ttf-app .ttf-marketing {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#ttf-app .ttf-marketing-heading {
+  margin: 0 0 18px;
+  font-family: var(--ttf-font-body);
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+#ttf-app .ttf-marketing-desc {
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #fff;
+  opacity: 0.92;
+}
+
+#ttf-app .ttf-marketing-pillars {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ttf-app .ttf-marketing-pillars li {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+#ttf-app .ttf-marketing-btn {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 20px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--ttf-font-body);
+  transition: opacity 0.25s ease;
+}
+
+#ttf-app .ttf-marketing-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== Programs (style-17) ===== */
+#ttf-app .ttf-programs-section {
+  padding-bottom: 30px;
+}
+
+#ttf-app .ttf-programs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  --card: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.14);
+  --brand: #d3fd04;
+  --text: #cfcfcf;
+  --radius: 16px;
+}
+
+#ttf-app .ttf-program-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#ttf-app .ttf-program-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(211, 253, 4, 0.6);
+  box-shadow: 0 0 0 1px rgba(211, 253, 4, 0.35), 0 0 28px rgba(211, 253, 4, 0.2);
+}
+
+#ttf-app .ttf-program-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+}
+
+#ttf-app .ttf-program-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#ttf-app .ttf-program-body h3 {
+  font-family: var(--ttf-font-body);
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: var(--brand);
+}
+
+#ttf-app .ttf-program-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin: 0 0 14px;
+}
+
+#ttf-app .ttf-programs .ttf-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--glass), transparent);
+  border-radius: 14px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ttf-font-condensed);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  transition: 0.25s ease;
+}
+
+#ttf-app .ttf-programs .ttf-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  background: var(--glass);
+}
+
+/* ===== Newsletter CTA (style-18) ===== */
+#ttf-app .ttf-cta {
+  width: 100%;
+  padding: 24px 12px;
+  display: flex;
+  justify-content: center;
+  --ttf-bg-cta: #d3fd04;
+  --ttf-fg-cta: #1b2029;
+  --ttf-radius-cta: 16px;
+}
+
+#ttf-app .ttf-cta-box {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border-radius: var(--ttf-radius-cta);
+  background: rgba(211, 253, 4, 0.08);
+  border: 1px solid rgba(211, 253, 4, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+#ttf-app .ttf-cta-text span {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border: 1px solid var(--ttf-bg-cta);
+  color: var(--ttf-bg-cta);
+  border-radius: 999px;
+  margin-bottom: 6px;
+  background: rgba(211, 253, 4, 0.08);
+}
+
+#ttf-app .ttf-cta-text h2 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ttf-bg-cta);
+}
+
+#ttf-app .ttf-cta-text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
+  color: #eee;
+}
+
+#ttf-app .ttf-cta-media {
+  padding: 6px;
+  border-radius: var(--ttf-radius-cta);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin: 0;
+}
+
+#ttf-app .ttf-cta-media:hover {
+  transform: scale(1.02);
+}
+
+#ttf-app .ttf-cta-media img {
+  width: 100%;
+  max-height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+#ttf-app .ttf-cta-media figcaption {
+  font-size: 12px;
+  margin-top: 6px;
+  opacity: 0.8;
+  color: #ccc;
+}
+
+/* ===== Take Action / registration (style-19) ===== */
+#ttf-app .ttfns {
+  --brand: #d3fd04;
+  --line: rgba(255, 255, 255, 0.16);
+  --glass: rgba(255, 255, 255, 0.08);
+  --text: #fff;
+  --radius: 14px;
+  --muted: #bfc4c8;
+  font-family: var(--ttf-font-body);
+  color: var(--text);
+  background: transparent;
+  padding: 0 16px;
+}
+
+#ttf-app .ttfns-wrap {
+  max-width: 1000px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+#ttf-app .ttfns-title {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+#ttf-app .ttfns-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#ttf-app .ttfns-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--glass), transparent);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+#ttf-app .ttfns-link i {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+#ttf-app .ttfns-link:hover {
+  border-color: var(--brand);
+  transform: translateY(-1px);
+}
+
+#ttf-app .ttfns-form-note {
+  font-size: 13px;
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+#ttf-app .ttfns-input {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+#ttf-app .ttfns-input:focus {
+  border-color: var(--brand);
+}
+
+#ttf-app .ttfns-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--brand);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+#ttf-app .ttfns-btn:hover {
+  opacity: 0.9;
+}
+
+#ttf-app .ttfns-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#ttf-app .ttfns-form-status {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+#ttf-app .ttfns-form-status[data-kind="success"] {
+  color: var(--brand);
+}
+
+#ttf-app .ttfns-form-status[data-kind="error"] {
+  color: #ff8e8e;
+}
+
+#ttf-app .ttfns-form-status[data-kind="pending"] {
+  color: var(--muted);
+}
+
+/* ===== Footer (style-20) ===== */
+#ttf-app .ttfx-footer {
+  --ttfx-accent: #d3fd04;
+  --ttfx-bg: #1b2029;
+  --ttfx-fg: #f5f5f5;
+  --ttfx-muted: rgba(255, 255, 255, 0.7);
+  --ttfx-border: rgba(255, 255, 255, 0.12);
+  --ttfx-font: var(--ttf-font-body);
+  font-family: var(--ttfx-font);
+  background: var(--ttfx-bg);
+  color: var(--ttfx-fg);
+  padding: 50px 20px 20px;
+  position: relative;
+}
+
+#ttf-app .ttfx-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--ttfx-accent);
+}
+
+#ttf-app .ttfx-wrap {
+  max-width: 1280px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+}
+
+#ttf-app .ttfx-brand-title {
+  margin: 0 0 14px 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#ttf-app .ttfx-brand-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ttfx-muted);
+  margin: 0;
+  max-width: 420px;
+}
+
+#ttf-app .ttfx-social {
+  margin-top: 22px;
+  display: flex;
+  gap: 14px;
+}
+
+#ttf-app .ttfx-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ttfx-fg);
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+#ttf-app .ttfx-social-link:hover {
+  background: var(--ttfx-accent);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+#ttf-app .ttfx-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 32px;
+}
+
+#ttf-app .ttfx-links-title {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ttfx-accent);
+}
+
+#ttf-app .ttfx-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#ttf-app .ttfx-item {
+  margin: 0 0 8px 0;
+}
+
+#ttf-app .ttfx-link {
+  text-decoration: none;
+  color: var(--ttfx-fg);
+  font-size: 14px;
+  opacity: 0.8;
+  transition: 0.25s ease;
+  position: relative;
+  padding-left: 0;
+}
+
+#ttf-app .ttfx-link::before {
+  content: "•";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  color: var(--ttfx-accent);
+  font-size: 14px;
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+#ttf-app .ttfx-link:hover {
+  opacity: 1;
+  color: var(--ttfx-accent);
+  padding-left: 8px;
+}
+
+#ttf-app .ttfx-link:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+#ttf-app .ttfx-bottom {
+  margin-top: 32px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--ttfx-muted);
+  padding-top: 14px;
+  border-top: 1px solid var(--ttfx-border);
+}
+
+
+/* ===== responsive.css ===== */
+/* Responsive overrides — scoped to #ttf-app */
+
+@media (max-width: 1100px) {
+  #ttf-app .ttf-hero-decoding {
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  #ttf-app .ttf-hero-success {
+    font-size: 110px;
+    line-height: 110px;
+  }
+
+  #ttf-app .ttf-hero-name {
+    font-size: 52px;
+    line-height: 52px;
+    padding: 48px 0 20px;
+  }
+
+  #ttf-app .ttf-hero-portrait img {
+    width: 320px;
+    height: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  #ttf-app .ttf-skin .ghl-v-wrap {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+
+  #ttf-app .ttf-skin .ghl-v-left {
+    position: static;
+    border-radius: var(--radius, 16px);
+  }
+
+  #ttf-app .ttf-skin video {
+    height: 200px;
+  }
+
+  /* Mobile hero: BG uses cover/center like GHL mobile section */
+  #ttf-app .ttf-hero {
+    height: auto;
+    min-height: 520px;
+    margin: 0;
+    padding: 0 0 20px;
+  }
+
+  #ttf-app .ttf-hero-row {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 520px;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  #ttf-app .ttf-hero-copy {
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    padding: 24px 20px 0;
+  }
+
+  #ttf-app .ttf-hero-name,
+  #ttf-app .ttf-hero-decoding,
+  #ttf-app .ttf-hero-success {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  #ttf-app .ttf-hero-name {
+    padding: 40px 0 16px;
+  }
+
+  #ttf-app .ttf-hero-success {
+    padding-bottom: 12px;
+  }
+
+  #ttf-app .ttf-hero-portrait {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  #ttf-app .ttf-hero-portrait img {
+    width: auto;
+    max-width: 280px;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 900px) {
+  #ttf-app .burger {
+    display: block;
+    margin: 0;
+    margin-left: auto;
+  }
+
+  #ttf-app .menu {
+    flex-direction: column;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 280px;
+    background: linear-gradient(160deg, rgba(27, 32, 41, 0.98) 70%, rgba(211, 253, 4, 0.08) 100%);
+    backdrop-filter: blur(16px);
+    padding: 80px 20px;
+    transition: 0.4s;
+    border-left: 2px solid rgba(211, 253, 4, 0.25);
+    z-index: 1000;
+  }
+
+  #ttf-app .menu.open {
+    right: 0;
+  }
+
+  #ttf-app .menu > .ttf-menu-close {
+    display: list-item;
+  }
+
+  #ttf-app .close-btn {
+    display: block;
+  }
+
+  #ttf-app .dropdown {
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: none;
+  }
+
+  #ttf-app .menu li.open > .dropdown {
+    display: block;
+  }
+
+  #ttf-app .menu li:hover > .dropdown {
+    display: none;
+  }
+
+  #ttf-app .menu li.open:hover > .dropdown,
+  #ttf-app .menu li.open > .dropdown {
+    display: block;
+  }
+
+  #ttf-app .dropdown a {
+    padding-left: 25px;
+    font-size: 15px;
+    color: #bbb;
+  }
+
+  #ttf-app .dropdown a:hover {
+    background: transparent;
+    color: var(--ttf-brand);
+  }
+
+  #ttf-app .ttf-cta-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #ttf-app .ttf-cta-media {
+    order: -1;
+  }
+
+  #ttf-app .ttfx-wrap {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #ttf-app .ttfx-links {
+    grid-template-columns: 1fr;
+  }
+
+  #ttf-app .ttf-social-proof-heading {
+    font-size: 32px;
+  }
+
+  #ttf-app .ttf-marketing-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 860px) {
+  #ttf-app .ttf-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  #ttf-app .ttf-side {
+    position: static;
+  }
+
+  #ttf-app .ttf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  #ttf-app .ttf-partners-desktop {
+    display: none !important;
+  }
+
+  #ttf-app .ttf-partners-mobile,
+  #ttf-app .ttf-crystal-partners.ttf-partners-mobile {
+    display: flex !important;
+  }
+
+  #ttf-app .crystal-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px;
+  }
+
+  #ttf-app .crystal-logo {
+    padding: 14px;
+  }
+
+  #ttf-app .crystal-logo img {
+    max-width: 80px;
+  }
+
+  #ttf-app .ttfns-wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin: 40px auto;
+  }
+
+  #ttf-app .ttfns-links {
+    align-items: stretch;
+  }
+
+  #ttf-app .ttfns-link {
+    justify-content: center;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  #ttf-app .ttf-hero-decoding {
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  #ttf-app .ttf-hero-success {
+    font-size: 64px;
+    line-height: 68px;
+  }
+
+  #ttf-app .ttf-hero-name {
+    font-size: 42px;
+    line-height: 42px;
+    padding: 24px 0 12px;
+  }
+
+  #ttf-app .ttf-about-partners-band {
+    padding: 80px 0 20px;
+  }
+
+  #ttf-app .ttf-about-partners-band::before {
+    background-size: 100%;
+    background-position: 0% 0%;
+  }
+
+  #ttf-app .ttf-about {
+    padding: 0 20px;
+  }
+
+  #ttf-app .ttf-about-text,
+  #ttf-app .ttf-about-text p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  #ttf-app .ttf-partners-heading,
+  #ttf-app .ttf-about-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  #ttf-app .crystal-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px;
+  }
+
+  #ttf-app .crystal-logo img {
+    max-width: 70px;
+  }
+
+  #ttf-app .navbar {
+    padding: 12px 16px;
+  }
+}
+
+</style>
+<div id="ttf-app">
+  <!-- header -->
+<header class="navbar" role="banner">
+  <a href="https://techtitansfactory.com/home" class="ttf-logo-link" aria-label="Tech Titans Factory Home">
+    <img
+      src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68c8d272f21b3134c4a0b881.png"
+      alt="TTF Logo"
+      class="logo"
+    />
+  </a>
+
+  <button
+    class="burger"
+    type="button"
+    aria-label="Open menu"
+    aria-controls="menu"
+    aria-expanded="false"
+    data-ttf-burger
+  >
+    ☰
+  </button>
+
+  <nav aria-label="Primary">
+    <ul class="menu" id="menu">
+      <li class="ttf-menu-close">
+        <button class="close-btn" type="button" aria-label="Close menu" data-ttf-close-menu>✖</button>
+      </li>
+
+      <li>
+        <a href="https://techtitansfactory.com/home">Home Page</a>
+      </li>
+
+      <li>
+        <a
+          href="https://techtitansfactory.com/AboutUs"
+          data-ttf-dropdown-toggle
+          aria-haspopup="true"
+          aria-expanded="false"
+        >About Us ▾</a>
+        <ul class="dropdown" role="list">
+          <li><a href="https://techtitansfactory.com/AboutUs#row-_FpB7hE4wh">About TTF</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#row-N3nPp3ht_q8">About Eng. Wael Fathy</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-n8sn7Xe_D-">Core Values</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Vision</a></li>
+          <li><a href="https://techtitansfactory.com/AboutUs#custom-code-EBePVTY6hf">Our Mission</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a
+          href="https://techtitansfactory.com/services"
+          data-ttf-dropdown-toggle
+          aria-haspopup="true"
+          aria-expanded="false"
+        >Services ▾</a>
+        <ul class="dropdown" role="list">
+          <li><a href="https://techtitansfactory.com/services#custom-code-IlWsjWjeQv">Training Programs</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-bwcj1yYH5X">Consulting Services</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-SPDSgrxP8x">Content Creation</a></li>
+          <li><a href="https://techtitansfactory.com/services#custom-code-A9kDIYrC0A">All-in-One Business Setup</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a>
+      </li>
+      <li>
+        <a href="https://portal.techtitansfactory.com/">Members Area</a>
+      </li>
+      <li>
+        <a href="https://techtitansfactory.com/contactus">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- hero -->
+<section class="ttf-hero" aria-label="Hero" data-ttf-hero>
+  <div class="ttf-hero-row">
+    <div class="ttf-hero-copy">
+      <h1 class="ttf-hero-name ttf-hero-anim">Wael Fathy</h1>
+      <p class="ttf-hero-decoding ttf-hero-anim">DECODING</p>
+      <p class="ttf-hero-success ttf-hero-anim">SUCCESS</p>
+    </div>
+    <div class="ttf-hero-portrait">
+      <img
+        class="ttf-hero-anim"
+        src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ebc18f385c980b4d20f14c.png"
+        alt="Wael Fathy"
+        width="400"
+        height="711"
+      />
+    </div>
+  </div>
+</section>
+
+  <!-- about+partners band -->
+<div class="ttf-about-partners-band">
+  <!-- about -->
+<section class="ttf-about" aria-label="About">
+  <div class="ttf-about-inner">
+    <h2 class="ttf-about-heading">ABOUT</h2>
+    <div class="ttf-about-text">
+      <p>
+        <strong>Founded by IT master hand Wael Fathy. Tech Titans Factory was born out of our belief that Information Technology and</strong>
+      </p>
+      <p>
+        <strong>Business Information Systems are more than just technicalities, it’s about holistic personal growth and development and</strong>
+      </p>
+      <p>
+        <strong>achieving excellence in every part of your career. We’re here to equip you ...</strong>
+        <a class="ttf-about-more" href="https://techtitansfactory.com/AboutUs"><strong>Read More</strong></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+  <!-- partners -->
+<section class="ttf-partners-section" aria-label="Partners">
+  <div class="ttf-partners-intro">
+    <h2 class="ttf-partners-label">PARTNERS</h2>
+    <p class="ttf-partners-heading">WHO WE WORK WITH</p>
+  </div>
+
+  <!-- Desktop: glass partners (5 logos) — matches GHL desktop custom code -->
+  <div class="ttf-partners-glass ttf-partners-desktop">
+    <div class="ttf-partners-container">
+      <div class="ttf-partners-grid">
+        <div class="ttf-partner-card">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68e94c458367a04fff48d473.png" alt="Partner 1" />
+        </div>
+        <div class="ttf-partner-card">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68e94c454c424daba97f7400.png" alt="Partner 2" />
+        </div>
+        <div class="ttf-partner-card">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10bd79c180500bb7b25.png" alt="Partner 3" />
+        </div>
+        <div class="ttf-partner-card">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10b5477e065819f72a3.png" alt="Partner 4" />
+        </div>
+        <div class="ttf-partner-card">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10b5477e0f56b9f72ae.png" alt="Partner 5" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile: crystal partners (6 logos, 3 per row) — matches GHL mobile custom code -->
+  <div class="ttf-crystal-partners ttf-partners-mobile" dir="rtl">
+    <div class="crystal-wrapper">
+      <div class="crystal-grid">
+        <div class="crystal-logo">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68e94c458367a04fff48d473.png" alt="Partner 1" />
+        </div>
+        <div class="crystal-logo">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68e94c454c424daba97f7400.png" alt="Partner 2" />
+        </div>
+        <div class="crystal-logo">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10bd79c180500bb7b25.png" alt="Partner 3" />
+        </div>
+        <div class="crystal-logo">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10b5477e065819f72a3.png" alt="Partner 4" />
+        </div>
+        <div class="crystal-logo">
+          <img src="https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68dde10b5477e0f56b9f72ae.png" alt="Partner 5" />
+        </div>
+        <div class="crystal-logo">
+          <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68dde10b5fb5bd38bc6e2fc6.png" alt="Partner 6" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+  <!-- testimonials -->
+<section class="ttf-testimonials-section" aria-labelledby="ttf-social-proof-heading">
+  <h2 class="ttf-section-title ttf-social-proof-heading" id="ttf-social-proof-heading">
+    Testimonials &amp; Social Proof
+  </h2>
+
+  <div class="ttf-testimonials" dir="ltr" id="ttf-component">
+    <aside class="ttf-side">
+      <div class="ttf-brand">
+        <span class="ttf-dot"></span>
+        <h2>Testimonials</h2>
+      </div>
+      <p class="ttf-note">Pick a heading to view matching testimonials.</p>
+
+      <button class="ttf-btn ttf-active" data-key="people" type="button">
+        <div>
+          <div>What People Say About TTF</div>
+          <span class="ttf-sub">General praise &amp; highlights</span>
+        </div>
+        <span class="ttf-tag">NEW</span>
+      </button>
+
+      <button class="ttf-btn" data-key="voices" type="button">
+        <div>
+          <div>Voices from Our Community</div>
+          <span class="ttf-sub">Uploadable voice notes</span>
+        </div>
+      </button>
+
+      <button class="ttf-btn" data-key="real" type="button">
+        <div>
+          <div>Real Feedback, Real Impact</div>
+          <span class="ttf-sub">Videos / case studies</span>
+        </div>
+      </button>
+    </aside>
+
+    <main class="ttf-main" aria-live="polite">
+      <div class="ttf-head">
+        <div class="ttf-title">
+          <h3 id="ttf-heading">What People Say About TTF</h3>
+          <small id="ttf-count">(2)</small>
+        </div>
+        <div class="ttf-chips" id="ttf-chips"></div>
+      </div>
+      <div class="ttf-scroll">
+        <div class="ttf-grid" id="ttf-grid"></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+  <!-- vlogs -->
+<section class="ttf-vlogs-section" id="heading--Oif2KX2bp" aria-labelledby="ttf-vlogs-heading">
+  <h2 class="ttf-section-title" id="ttf-vlogs-heading">Our Vlogs</h2>
+
+  <div class="ghl-vlogs ttf-skin">
+    <div class="ghl-v-wrap">
+      <aside class="ghl-v-left">
+        <h2 class="ghl-v-heading">Latest Vlogs</h2>
+
+        <div class="ghl-v-list">
+          <button class="v-item-btn ttf-btn ttf-active" type="button" data-index="0">
+            <span>Video One</span>
+          </button>
+          <button class="v-item-btn ttf-btn" type="button" data-index="1">
+            <span>Video Two</span>
+          </button>
+          <button class="v-item-btn ttf-btn" type="button" data-index="2">
+            <span>Video Three</span>
+          </button>
+          <button class="v-item-btn ttf-btn" type="button" data-index="3">
+            <span>Video Four</span>
+          </button>
+        </div>
+
+        <p class="ghl-v-note">
+          Exclusive vlogs covering travels, behind-the-scenes, and life hacks.
+          Click a title to jump or scroll the videos.
+        </p>
+      </aside>
+
+      <section class="ghl-v-right" id="ghlVContainer">
+        <article class="ghl-v-card" data-index="0">
+          <div class="v-frame">
+            <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d982834c35d61ce38d414e.mov">
+              <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video One Thumbnail" />
+              <div class="play-btn">▶</div>
+            </div>
+          </div>
+          <div class="ghl-v-content">
+            <h3 class="ghl-v-title">Video One</h3>
+            <p class="ghl-v-text">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
+          </div>
+        </article>
+
+        <article class="ghl-v-card" data-index="1">
+          <div class="v-frame">
+            <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98283c79131a35b0f6775.mov">
+              <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Two Thumbnail" />
+              <div class="play-btn">▶</div>
+            </div>
+          </div>
+          <div class="ghl-v-content">
+            <h3 class="ghl-v-title">Video Two</h3>
+            <p class="ghl-v-text">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
+          </div>
+        </article>
+
+        <article class="ghl-v-card" data-index="2">
+          <div class="v-frame">
+            <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98283337bbfd0da48cf11.mov">
+              <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Three Thumbnail" />
+              <div class="play-btn">▶</div>
+            </div>
+          </div>
+          <div class="ghl-v-content">
+            <h3 class="ghl-v-title">Video Three</h3>
+            <p class="ghl-v-text">Practical tips and tricks that make everyday life easier and more efficient.</p>
+          </div>
+        </article>
+
+        <article class="ghl-v-card" data-index="3">
+          <div class="v-frame">
+            <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98298337bbf542148d079.mov">
+              <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Four Thumbnail" />
+              <div class="play-btn">▶</div>
+            </div>
+          </div>
+          <div class="ghl-v-content">
+            <h3 class="ghl-v-title">Video Four</h3>
+            <p class="ghl-v-text">Start your day right with this complete guide to a productive routine.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+  </div>
+</section>
+
+  <!-- marketing-team -->
+<section class="ttf-marketing" aria-label="Marketing Team">
+  <div class="ttf-marketing-inner">
+    <h2 class="ttf-marketing-heading">OUR EXCEPTIONAL MARKETING TEAM</h2>
+    <p class="ttf-marketing-desc">
+      Our team consists of highly skilled professionals with deep expertise in web design, e-commerce, web analytics, SEO, and PPC. We are committed to delivering exceptional results for our clients.
+    </p>
+    <ul class="ttf-marketing-pillars">
+      <li>Expertise</li>
+      <li>Collaboration</li>
+      <li>Results-Driven</li>
+    </ul>
+    <a
+      class="ttf-marketing-btn"
+      href="https://link.funnelfast.co/preview/nGeTSETyCs1kTSisaifA"
+      aria-label="OUR SERVICES"
+    >
+      OUR SERVICES
+    </a>
+  </div>
+</section>
+
+  <!-- programs -->
+<section class="ttf-programs-section" aria-labelledby="ttf-programs-heading">
+  <h2 class="ttf-section-title" id="ttf-programs-heading">Our Programs</h2>
+
+  <div class="ttf-programs">
+    <div class="ttf-program-card">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800" alt="Business Information Systems" />
+      <div class="ttf-program-body">
+        <h3>Business Information Systems</h3>
+        <p>From Technical Mastery to Strategic Impact. Learn to align technology with business goals for powerful results.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="ttf-program-card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&amp;w=800" alt="The Smart Customer Service" />
+      <div class="ttf-program-body">
+        <h3>The Smart Customer Service</h3>
+        <p>Develop strategies for exceptional customer experiences and build loyalty through intelligent systems.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="ttf-program-card">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=800" alt="From Trainer to Business Leader" />
+      <div class="ttf-program-body">
+        <h3>From Trainer to Business Leader</h3>
+        <p>Transition your training expertise into business leadership and strategic influence within your industry.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="ttf-program-card">
+      <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&amp;w=800" alt="The Golden Nuggets in the IT World" />
+      <div class="ttf-program-body">
+        <h3>The Golden Nuggets in the IT World</h3>
+        <p>Discover essential insights, methods, and best practices that shape success in the modern IT ecosystem.</p>
+        <a href="https://techtitansfactory.com/services" class="ttf-btn">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- newsletter -->
+<section class="ttf-cta" aria-labelledby="ttf-cta-title">
+  <div class="ttf-cta-box">
+    <div class="ttf-cta-text">
+      <span>Stay in the loop</span>
+      <h2 id="ttf-cta-title">Join our Newsletter</h2>
+      <p>
+        Short, valuable updates from TTF — insights, tips, and hand-picked videos that truly help you grow.
+      </p>
+    </div>
+
+    <figure class="ttf-cta-media">
+      <img
+        src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d032da155259f31ca9a794.png"
+        alt="TTF mark / brand visual"
+      />
+      <figcaption>Tech Titans Factory</figcaption>
+    </figure>
+  </div>
+</section>
+
+  <!-- cta -->
+<section class="ttfns" id="ttfns-cta" aria-labelledby="ttfns-title">
+  <div class="ttfns-wrap">
+    <div class="ttfns-left">
+      <h2 class="ttfns-title" id="ttfns-title">Take Action with TTF</h2>
+      <div class="ttfns-links">
+        <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" class="ttfns-link">
+          <i class="fab fa-instagram" aria-hidden="true"></i> Get daily motivation
+        </a>
+        <a href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" rel="noopener noreferrer" class="ttfns-link">
+          <i class="fab fa-youtube" aria-hidden="true"></i> Watch TTF Show
+        </a>
+        <a href="#ttfns-form" class="ttfns-link">
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i> Video to your email
+        </a>
+      </div>
+    </div>
+
+    <!--
+      GoHighLevel registration form
+      --------------------------------
+      Default: posts JSON to the Lead Connector webhook copied from the
+      reference funnel (reference/assembled/registration.js).
+
+      GHL configuration checklist:
+      1. Confirm webhook URL in GHL → Automations / Webhooks (or Forms →
+         Workflow trigger). Replace data-ghl-webhook if the live funnel uses
+         a different trigger.
+      2. Optional: replace the entire <form> with a native GHL Form embed
+         inside [data-ghl-form="registration"] — then remove/disable the
+         JS submit handler (it skips native embeds automatically).
+      3. Map fields: name, email, whatsapp (and optional source).
+      4. Test on a published GHL page (CORS + workflow). Local preview cannot
+         verify CRM contact creation.
+    -->
+    <div class="ttfns-form-slot" data-ghl-form="registration">
+      <form
+        id="ttfns-form"
+        class="ttfns-form"
+        novalidate
+        data-ttf-registration-form
+        data-ghl-webhook="https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"
+      >
+        <p class="ttfns-form-note">
+          Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
+        </p>
+
+        <label class="ttf-sr-only" for="ttfns-name">Full Name</label>
+        <input id="ttfns-name" type="text" name="name" placeholder="Full Name" class="ttfns-input" required autocomplete="name" />
+
+        <label class="ttf-sr-only" for="ttfns-email">Email Address</label>
+        <input id="ttfns-email" type="email" name="email" placeholder="Email Address" class="ttfns-input" required autocomplete="email" />
+
+        <label class="ttf-sr-only" for="ttfns-whatsapp">WhatsApp Number (with country code)</label>
+        <input id="ttfns-whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required autocomplete="tel" />
+
+        <button type="submit" class="ttfns-btn">Register Now</button>
+        <p class="ttfns-form-status" data-ttf-form-status role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+  <!-- footer -->
+<footer class="ttfx-footer">
+  <div class="ttfx-wrap">
+    <section class="ttfx-brand">
+      <h3 class="ttfx-brand-title">Tech Titans Factory</h3>
+      <p class="ttfx-brand-desc">
+        Empowering businesses with cutting-edge training, consulting, and digital solutions.
+        Stay ahead with TTF insights and innovation.
+      </p>
+      <nav class="ttfx-social" aria-label="Social media">
+        <a class="ttfx-social-link" href="https://www.facebook.com/profile.php?id=61568805620771" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a class="ttfx-social-link" href="https://www.linkedin.com/company/105457770/admin/dashboard/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+        </a>
+        <a class="ttfx-social-link" href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube" aria-hidden="true"></i>
+        </a>
+        <a class="ttfx-social-link" href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </section>
+
+    <nav class="ttfx-links" aria-label="Footer">
+      <div>
+        <h4 class="ttfx-links-title">Explore</h4>
+        <ul class="ttfx-list">
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home">Home</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/AboutUs">About Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/services">Services</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/home#heading--Oif2KX2bp">Vlog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="ttfx-links-title">Support</h4>
+        <ul class="ttfx-list">
+          <li class="ttfx-item"><a class="ttfx-link" href="https://portal.techtitansfactory.com/">Members Area</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/contactus">Contact Us</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/privacypolicy">Privacy Policy</a></li>
+          <li class="ttfx-item"><a class="ttfx-link" href="https://techtitansfactory.com/refundpolicy">Refund Policy</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="ttfx-bottom">© 2025 Tech Titans Factory. All rights reserved.</div>
+</footer>
+
+  <!-- ziko -->
+<!-- Ziko chatbot mount — initialized once by ttf.js (guarded against double init) -->
+<div id="ttf-ziko" class="ttf-ziko" aria-hidden="true" data-ttf-ziko></div>
+</div>
+
+<script id="ttf-js">
+/* ===== navigation.js ===== */
+/**
+ * Sticky header / burger menu / mobile dropdowns
+ * Browser-safe IIFE; attaches once per #ttf-app root.
+ */
+(function (global) {
+  'use strict';
+
+  function initNavigation(root) {
+    if (!root || root.__ttfNavInit) return;
+    root.__ttfNavInit = true;
+
+    const menu = root.querySelector('#menu');
+    const burger = root.querySelector('[data-ttf-burger]');
+    const closeBtn = root.querySelector('[data-ttf-close-menu]');
+
+    function toggleMenu() {
+      if (!menu) return;
+      const open = menu.classList.toggle('open');
+      if (burger) burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    if (burger) burger.addEventListener('click', toggleMenu);
+    if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+
+    root.querySelectorAll('[data-ttf-dropdown-toggle]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          const li = link.parentElement;
+          if (!li) return;
+          const open = li.classList.toggle('open');
+          link.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+      });
+    });
+
+    // Close drawer when a non-dropdown link is clicked on mobile
+    if (menu) {
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (window.innerWidth <= 900 && !a.hasAttribute('data-ttf-dropdown-toggle')) {
+            menu.classList.remove('open');
+            if (burger) burger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // Expose for any leftover inline handlers
+    global.toggleMenu = toggleMenu;
+    global.toggleDropdown = function (e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        e.target.parentElement.classList.toggle('open');
+      }
+    };
+  }
+
+  global.TTF = global.TTF || {};
+  global.TTF.initNavigation = initNavigation;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+
+/* ===== interactions.js ===== */
+/**
+ * Testimonials tabs, vlogs play/scroll, GHL registration webhook submit
+ */
+(function (global) {
+  'use strict';
+
+  /** Only absolute https URLs verified on the reference funnel / CDN. */
+  var VERIFIED_TESTIMONIAL_MP4 =
+    'https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/6950ace7ee1047793af668b6.mp4';
+
+  var TTF_DATA = {
+    people: {
+      title: 'What People Say About TTF',
+      tags: ['Training', 'Consulting', 'Business Solutions'],
+      items: [
+        {
+          type: 'text',
+          name: 'Sara Al-Mutairi',
+          role: 'HR Manager – FinTech Co.',
+          text: "TTF's training elevated our team's performance in just 30 days. Clear content, highly practical.",
+          rating: 5,
+          img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop',
+        },
+        {
+          type: 'text',
+          name: 'Mohamed El-Sayed',
+          role: 'Founder – StartHub',
+          text: 'Consulting was precise and realistic. We left with a roadmap that simplified decisions.',
+          rating: 5,
+          img: '',
+        },
+      ],
+    },
+    voices: {
+      title: 'Voices from Our Community',
+      tags: ['Community', 'Audio', 'TTF Family'],
+      items: [
+        {
+          type: 'audio',
+          name: 'Lina H.',
+          role: 'Product Manager',
+          text: 'Voice note about the weekly circles.',
+          img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+          // Reference used /media/voices/lina-note.mp3 — not hosted publicly; no verified URL.
+          src: '',
+        },
+        {
+          type: 'audio',
+          name: 'Rashid A.',
+          role: 'SMB Owner',
+          text: 'Quick testimonial.',
+          img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop',
+          src: '',
+        },
+        {
+          type: 'audio',
+          name: 'Nour B.',
+          role: 'Team Lead',
+          text: 'On saving time via TTF.',
+          img: 'https://images.unsplash.com/photo-1545588201-9403f36c0f48?q=80&w=400&auto=format&fit=crop',
+          src: '',
+        },
+      ],
+    },
+    real: {
+      title: 'Real Feedback, Real Impact',
+      tags: ['Impact', 'Videos', 'Case Studies'],
+      items: [
+        {
+          type: 'video',
+          provider: 'mp4',
+          // Reference "youtube" card mapped to this verified msgsndr MP4 (not a YouTube embed).
+          src: VERIFIED_TESTIMONIAL_MP4,
+          name: 'Case Study – Ops',
+          role: 'COO – Logistics',
+        },
+        {
+          type: 'video',
+          provider: 'mp4',
+          // Reference path /media/videos/cx-drop-22.mp4 is not publicly hosted.
+          src: '',
+          name: 'Customer Experience',
+          role: 'Head of CX',
+        },
+      ],
+    },
+  };
+
+  function isPlayableUrl(src) {
+    return typeof src === 'string' && /^https?:\/\//i.test(src.trim());
+  }
+
+  function mediaFallback(kind, label) {
+    return (
+      '<div class="ttf-media-fallback" role="status">' +
+      '<span class="ttf-media-fallback-label">' +
+      (label || 'Media unavailable') +
+      '</span>' +
+      '<span class="ttf-media-fallback-hint">' +
+      (kind === 'audio'
+        ? 'Audio file is not hosted on a verified public URL.'
+        : 'Video file is not hosted on a verified public URL.') +
+      '</span></div>'
+    );
+  }
+
+  function stars(n) {
+    return '★★★★★'
+      .slice(0, n)
+      .split('')
+      .map(function () {
+        return '<span aria-hidden="true">★</span>';
+      })
+      .join('');
+  }
+
+  function cardText(i) {
+    return (
+      '<article class="ttf-card" tabindex="0" aria-label="' +
+      i.name +
+      '">' +
+      '<div class="ttf-person">' +
+      '<img class="ttf-avatar" src="' +
+      (i.img || '') +
+      '" alt="' +
+      i.name +
+      '">' +
+      '<div><div class="ttf-name">' +
+      i.name +
+      '</div><div class="ttf-role">' +
+      i.role +
+      '</div></div></div>' +
+      '<div class="ttf-text">' +
+      i.text +
+      '</div>' +
+      (i.rating ? '<div class="ttf-rating" aria-hidden="true">' + stars(i.rating) + '</div>' : '') +
+      '</article>'
+    );
+  }
+
+  function cardAudio(i) {
+    var player = isPlayableUrl(i.src)
+      ? '<div class="ttf-audio"><audio controls preload="none" src="' +
+        i.src +
+        '"><track kind="captions"></audio></div>'
+      : mediaFallback('audio', 'Audio unavailable');
+
+    return (
+      '<article class="ttf-card" tabindex="0" aria-label="Voice from ' +
+      i.name +
+      '">' +
+      '<div class="ttf-person">' +
+      '<img class="ttf-avatar" src="' +
+      i.img +
+      '" alt="' +
+      i.name +
+      '">' +
+      '<div><div class="ttf-name">' +
+      i.name +
+      '</div><div class="ttf-role">' +
+      i.role +
+      '</div></div></div>' +
+      '<div class="ttf-text">' +
+      (i.text || '') +
+      '</div>' +
+      player +
+      '</article>'
+    );
+  }
+
+  function cardVideo(i) {
+    var src = i.src;
+    // Legacy reference mapped provider:"youtube" to the verified msgsndr MP4.
+    if (!isPlayableUrl(src) && i.provider === 'youtube') {
+      src = VERIFIED_TESTIMONIAL_MP4;
+    }
+
+    var inner = isPlayableUrl(src)
+      ? '<video controls playsinline preload="metadata" src="' +
+        src +
+        '" title="' +
+        (i.name || 'Testimonial video') +
+        '">Sorry, your browser does not support embedded videos.</video>'
+      : mediaFallback('video', 'Video unavailable');
+
+    return (
+      '<article class="ttf-card" tabindex="0" aria-label="Video: ' +
+      i.name +
+      '">' +
+      '<div class="ttf-person"><div><div class="ttf-name">' +
+      i.name +
+      '</div><div class="ttf-role">' +
+      (i.role || '') +
+      '</div></div></div>' +
+      '<div class="ttf-video">' +
+      inner +
+      '</div></article>'
+    );
+  }
+
+  function initTestimonials(root) {
+    var $c = root.querySelector('#ttf-component');
+    if (!$c || $c.__ttfTestimonialsInit) return;
+    $c.__ttfTestimonialsInit = true;
+
+    var grid = $c.querySelector('#ttf-grid');
+    var chips = $c.querySelector('#ttf-chips');
+    var heading = $c.querySelector('#ttf-heading');
+    var count = $c.querySelector('#ttf-count');
+    if (!grid || !chips || !heading || !count) return;
+
+    function render(key) {
+      var set = TTF_DATA[key];
+      if (!set) return;
+      heading.textContent = set.title;
+      chips.innerHTML = set.tags
+        .map(function (t) {
+          return '<span class="ttf-chip">' + t + '</span>';
+        })
+        .join('');
+      grid.innerHTML = set.items
+        .map(function (i) {
+          if (i.type === 'audio') return cardAudio(i);
+          if (i.type === 'video') return cardVideo(i);
+          return cardText(i);
+        })
+        .join('');
+      count.textContent = '(' + set.items.length + ')';
+    }
+
+    render('people');
+
+    $c.querySelectorAll('.ttf-side .ttf-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        $c.querySelectorAll('.ttf-side .ttf-btn').forEach(function (b) {
+          b.classList.remove('ttf-active');
+        });
+        btn.classList.add('ttf-active');
+        render(btn.dataset.key);
+      });
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  }
+
+  function initVlogs(root) {
+    var skin = root.querySelector('.ttf-skin');
+    if (!skin || skin.__ttfVlogsInit) return;
+    skin.__ttfVlogsInit = true;
+
+    var buttons = skin.querySelectorAll('.v-item-btn');
+    var cards = skin.querySelectorAll('.ghl-v-card');
+
+    function setActive(idx) {
+      buttons.forEach(function (b) {
+        b.classList.remove('ttf-active');
+      });
+      if (buttons[idx]) buttons[idx].classList.add('ttf-active');
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-index'), 10);
+        var target = skin.querySelector('.ghl-v-card[data-index="' + idx + '"]');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setActive(idx);
+        }
+      });
+    });
+
+    cards.forEach(function (card) {
+      var idx = parseInt(card.getAttribute('data-index'), 10);
+      card.addEventListener('mouseenter', function () {
+        setActive(idx);
+      });
+    });
+
+    skin.querySelectorAll('.thumbnail').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var videoUrl = thumb.getAttribute('data-video');
+        if (!isPlayableUrl(videoUrl)) return;
+        var video = document.createElement('video');
+        video.src = videoUrl;
+        video.controls = true;
+        video.autoplay = true;
+        video.setAttribute('playsinline', 'true');
+        thumb.replaceWith(video);
+      });
+    });
+  }
+
+  function setFormStatus(el, message, kind) {
+    if (!el) return;
+    if (!message) {
+      el.hidden = true;
+      el.textContent = '';
+      el.removeAttribute('data-kind');
+      return;
+    }
+    el.hidden = false;
+    el.textContent = message;
+    el.setAttribute('data-kind', kind || 'info');
+  }
+
+  function initRegistration(root) {
+    var form = root.querySelector('[data-ttf-registration-form]');
+    if (!form || form.__ttfFormInit) return;
+
+    // Native GHL embed inside the slot — leave alone (no fake handler).
+    if (form.hasAttribute('data-ghl-native-embed') || form.querySelector('.hl-form, .ghl-form-embed, iframe[src*="leadconnector"], iframe[src*="msgsndr"]')) {
+      return;
+    }
+
+    form.__ttfFormInit = true;
+
+    var statusEl = form.querySelector('[data-ttf-form-status]');
+    var submitBtn = form.querySelector('[type="submit"]');
+    var webhook =
+      (form.getAttribute('data-ghl-webhook') || '').trim() ||
+      'https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      setFormStatus(statusEl, '', '');
+
+      var name = (form.name && form.name.value ? form.name.value : '').trim();
+      var email = (form.email && form.email.value ? form.email.value : '').trim();
+      var whatsapp = (form.whatsapp && form.whatsapp.value ? form.whatsapp.value : '').trim();
+
+      if (!name || !email || !whatsapp) {
+        setFormStatus(statusEl, 'Please fill in all required fields.', 'error');
+        return;
+      }
+
+      if (!webhook) {
+        setFormStatus(
+          statusEl,
+          'Form is not connected. Set data-ghl-webhook or paste a native GHL form embed.',
+          'error',
+        );
+        return;
+      }
+
+      var payload = {
+        name: name,
+        email: email,
+        whatsapp: whatsapp,
+        source: 'TTF Glass CTA (no-bg)',
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      setFormStatus(statusEl, 'Submitting…', 'pending');
+
+      fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          if (!res.ok) {
+            throw new Error('HTTP ' + res.status);
+          }
+          setFormStatus(statusEl, 'Thank you! Your info has been sent successfully.', 'success');
+          form.reset();
+        })
+        .catch(function (err) {
+          console.error('[TTF] Registration submit failed', err);
+          setFormStatus(
+            statusEl,
+            'Submission failed. Please try again or contact support.',
+            'error',
+          );
+        })
+        .then(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+    });
+  }
+
+  function initInteractions(root) {
+    if (!root) return;
+    initTestimonials(root);
+    initVlogs(root);
+    initRegistration(root);
+    root.__ttfInteractionsInit = true;
+  }
+
+  global.TTF = global.TTF || {};
+  global.TTF.initInteractions = initInteractions;
+  global.TTF.TTF_DATA = TTF_DATA;
+  global.TTF.VERIFIED_TESTIMONIAL_MP4 = VERIFIED_TESTIMONIAL_MP4;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+
+/* ===== main.js ===== */
+/**
+ * TTF app bootstrap — safe for Vite ESM and GHL classic IIFE paste.
+ * Waits for #ttf-app (supports delayed GHL Custom Code mount).
+ * Initializes once; guards Ziko chatbot against double init.
+ */
+(function (global) {
+  'use strict';
+
+  var ZIKO_CDN = 'https://cdn.n8nchatui.com/v1/pole-embed-yard.js';
+  var ZIKO_CONFIG = {
+    n8nChatUrl: 'https://diginovia-ai.cloud/webhook/95be99e1-07d2-4b95-ba6d-3c0043b83cc2/chat',
+    metadata: {},
+    theme: {
+      button: {
+        backgroundColor: '#EFF1F4',
+        right: 20,
+        bottom: 20,
+        size: 59,
+        iconColor: '#ffffff',
+        customIconSrc: 'https://keyworld.technology/wp-content/uploads/chatbot_images/ziko_chatbot_icon-003.png',
+        customIconSize: 94,
+        customIconBorderRadius: 10,
+        autoWindowOpen: { autoOpen: false, openDelay: 2 },
+        borderRadius: 'rounded',
+      },
+      tooltip: {
+        showTooltip: true,
+        tooltipMessage: "Hello! I'm Ziko your AI Assistant",
+        tooltipBackgroundColor: '#ffffff',
+        tooltipTextColor: '#CBD0D8',
+        tooltipFontSize: 13,
+        hideTooltipOnMobile: true,
+      },
+      customCSS: '.n8n-chat-ui-bot-header { background: rgb(200 205 213) !important}',
+      direction: 'ltr',
+      allowProgrammaticMessage: true,
+      consentScreen: {
+        enabled: false,
+        title: 'User Agreement',
+        message:
+          "By using this chatbot, you agree to our\n<p><a href='/terms' target='_blank' style='color: black; text-decoration: underline; text-decoration-color: black;'>Terms & Conditions</a></p>",
+        textColor: '#1e1e1f',
+        acceptButtonColor: '#f36539',
+        acceptButtonTextColor: '#ffffff',
+        acceptButtonText: 'Agree & Start Chatting',
+        backgroundColor: '#ffffff',
+        backdropColor: '#00000',
+      },
+      chatWindow: {
+        borderRadiusStyle: 'rounded',
+        avatarBorderRadius: 25,
+        messageBorderRadius: 6,
+        showTitle: true,
+        title: 'Ziko زيكو',
+        titleAvatarSrc: 'https://keyworld.technology/wp-content/uploads/chatbot_images/ziko_chatbot_icon-003.png',
+        avatarSize: 40,
+        welcomeMessage: 'Hello! I can help you explore KWT',
+        errorMessage: 'Something was wrong please try again or contact support at +201116077755',
+        backgroundColor: '#f7f7f7',
+        height: 480,
+        width: 400,
+        fontSize: 14,
+        starterPrompts: [
+          'KWT Services?',
+          'TTF Programs & Services?',
+          'Who You Are?',
+          'About Dr. Wael Fathy?',
+          'خدمات كي ورلد تكنولوجي?',
+          'خدمات تك تايتنز فاكتوري?',
+          'من أنتم ؟',
+          'مين وائل فتحي ؟',
+        ],
+        starterPromptFontSize: 14,
+        renderHTML: true,
+        clearChatOnReload: true,
+        showScrollbar: false,
+        botMessage: {
+          backgroundColor: '#E4FF10',
+          textColor: '#1B2029',
+          showAvatar: false,
+          avatarSrc: 'https://www.svgrepo.com/show/334455/bot.svg',
+          showCopyToClipboardIcon: true,
+        },
+        userMessage: {
+          backgroundColor: '#EFF1F4',
+          textColor: '#1B2029',
+          showAvatar: false,
+          avatarSrc: 'https://www.svgrepo.com/show/532363/user-alt-1.svg',
+        },
+        textInput: {
+          placeholder: 'Type your query',
+          backgroundColor: '#ffffff',
+          textColor: '#1B2029',
+          sendButtonColor: '#E0E61A',
+          maxChars: 500,
+          maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 500 characters.',
+          autoFocus: true,
+          borderRadius: 6,
+          sendButtonBorderRadius: 50,
+        },
+        footer: {
+          text: 'Powered By',
+          company: 'Diginovia',
+          companyLink: 'https://diginovia.com',
+          textColor: '#1B2029',
+        },
+        voiceInputConfig: {
+          enabled: true,
+          maxRecordingTime: 10,
+          recordingNotSupportedMessage:
+            'To record audio, use modern browsers like Chrome or Firefox that support audio recording',
+          microphoneAccessErrorMessage:
+            'Microphone access is required to record audio. Please allow microphone access in your browser settings',
+        },
+      },
+    },
+  };
+
+  var BOOT_INTERVAL_MS = 100;
+  var BOOT_MAX_ATTEMPTS = 50; // ~5s for delayed GHL mount
+  var ZIKO_RTL_MAX_ATTEMPTS = 40; // ~20s then stop
+
+  /** Safe dynamic import that does not break classic-script parsers */
+  function dynamicImport(url) {
+    try {
+      return new Function('u', 'return import(u)')(url);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  function initZikoRtlGuard() {
+    if (global.__ttfZikoRtlGuard) return;
+    global.__ttfZikoRtlGuard = true;
+
+    var RTL_REGEX = /[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+    var WIDGET_SELECTOR = 'n8nchatui-popup';
+    var attempts = 0;
+
+    function applyShadowStyles(shadowRoot, direction) {
+      var styleTag = shadowRoot.getElementById('dynamic-rtl-styles');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'dynamic-rtl-styles';
+        shadowRoot.appendChild(styleTag);
+      }
+      if (direction === 'rtl') {
+        styleTag.innerHTML =
+          '.chatbot-host-bubble{direction:rtl!important;text-align:right!important;}textarea{direction:rtl!important;text-align:right!important;}';
+      } else {
+        styleTag.innerHTML =
+          '.chatbot-host-bubble{direction:ltr!important;text-align:left!important;}textarea{direction:ltr!important;text-align:left!important;}';
+      }
+    }
+
+    function initWidgetObserver() {
+      if (global.__ttfZikoRtlReady) return;
+      var widgetHost = document.querySelector(WIDGET_SELECTOR);
+      if (!widgetHost || !widgetHost.shadowRoot) {
+        attempts += 1;
+        if (attempts >= ZIKO_RTL_MAX_ATTEMPTS) return;
+        setTimeout(initWidgetObserver, 500);
+        return;
+      }
+
+      global.__ttfZikoRtlReady = true;
+      var shadow = widgetHost.shadowRoot;
+      var shadowObserver = new MutationObserver(function () {
+        var textarea = shadow.querySelector('textarea');
+        if (textarea && !textarea.dataset.rtlListenerAttached) {
+          textarea.dataset.rtlListenerAttached = 'true';
+          textarea.addEventListener('input', function (e) {
+            var text = e.target.value;
+            if (!text) return;
+            var isRTL = RTL_REGEX.test(text);
+            var currentDir = textarea.dataset.dir;
+            if (isRTL && currentDir !== 'rtl') {
+              applyShadowStyles(shadow, 'rtl');
+              textarea.dataset.dir = 'rtl';
+            } else if (!isRTL && currentDir !== 'ltr') {
+              applyShadowStyles(shadow, 'ltr');
+              textarea.dataset.dir = 'ltr';
+            }
+          });
+        }
+      });
+      shadowObserver.observe(shadow, { childList: true, subtree: true });
+    }
+
+    initWidgetObserver();
+  }
+
+  function runChatbotInit(Chatbot) {
+    if (!Chatbot || typeof Chatbot.init !== 'function') return;
+    if (global.__ttfZikoStarted) return;
+    if (document.querySelector('n8nchatui-popup')) {
+      global.__ttfZikoStarted = true;
+      initZikoRtlGuard();
+      return;
+    }
+    global.__ttfZikoStarted = true;
+    try {
+      Chatbot.init(ZIKO_CONFIG);
+      initZikoRtlGuard();
+    } catch (err) {
+      console.error('[TTF] Ziko init failed', err);
+      global.__ttfZikoStarted = false;
+    }
+  }
+
+  function initZiko() {
+    if (global.__ttfZikoInit) return;
+    global.__ttfZikoInit = true;
+
+    dynamicImport(ZIKO_CDN)
+      .then(function (mod) {
+        runChatbotInit(mod && (mod.default || mod));
+      })
+      .catch(function () {
+        if (document.querySelector('script[data-ttf-ziko-cdn]')) {
+          dynamicImport(ZIKO_CDN)
+            .then(function (mod) {
+              runChatbotInit(mod && (mod.default || mod));
+            })
+            .catch(function () {
+              runChatbotInit(global.Chatbot);
+            });
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = ZIKO_CDN;
+        s.type = 'module';
+        s.dataset.ttfZikoCdn = '1';
+        s.onload = function () {
+          dynamicImport(ZIKO_CDN)
+            .then(function (mod) {
+              runChatbotInit(mod && (mod.default || mod));
+            })
+            .catch(function () {
+              runChatbotInit(global.Chatbot);
+            });
+        };
+        document.head.appendChild(s);
+      });
+  }
+
+  function initHeroEntrance(root) {
+    var hero = root.querySelector('[data-ttf-hero]');
+    if (!hero || hero.__ttfHeroAnim) return;
+    hero.__ttfHeroAnim = true;
+
+    var reduce =
+      global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      hero.classList.add('ttf-hero--entered');
+      return;
+    }
+
+    // Double rAF so initial opacity:0 paints before fadeInUp starts (GHL Animate.css behavior).
+    global.requestAnimationFrame(function () {
+      global.requestAnimationFrame(function () {
+        hero.classList.add('ttf-hero--entered');
+      });
+    });
+  }
+
+  function bootstrapRoot(root) {
+    if (!root || root.__ttfBootstrapped) return false;
+    root.__ttfBootstrapped = true;
+
+    if (global.TTF && typeof global.TTF.initNavigation === 'function') {
+      global.TTF.initNavigation(root);
+    }
+    if (global.TTF && typeof global.TTF.initInteractions === 'function') {
+      global.TTF.initInteractions(root);
+    }
+
+    initHeroEntrance(root);
+    initZiko();
+    return true;
+  }
+
+  function tryInitApp() {
+    var root = document.getElementById('ttf-app');
+    if (!root) return false;
+    return bootstrapRoot(root);
+  }
+
+  function scheduleInit() {
+    if (global.__ttfBootScheduled) return;
+    global.__ttfBootScheduled = true;
+
+    if (tryInitApp()) return;
+
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts += 1;
+      if (tryInitApp() || attempts >= BOOT_MAX_ATTEMPTS) {
+        clearInterval(timer);
+        if (!document.getElementById('ttf-app')) {
+          console.warn('[TTF] #ttf-app not found after delayed wait');
+        }
+      }
+    }, BOOT_INTERVAL_MS);
+  }
+
+  function initApp() {
+    scheduleInit();
+  }
+
+  global.TTF = global.TTF || {};
+  global.TTF.init = initApp;
+  global.TTF.initZiko = initZiko;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleInit, { once: true });
+  } else {
+    scheduleInit();
+  }
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>

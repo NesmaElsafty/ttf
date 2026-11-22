@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GHL host simulation — TTF fragment</title>
+    <style>
+      /* Simulated GHL page chrome — not part of the paste file */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0e1116;
+      }
+      .ghl-sim-shell {
+        max-width: 100%;
+        margin: 0 auto;
+        background: #1b2029;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ghl-sim-shell">
+      <!-- delayed mount simulates GHL Custom Code injection -->
+      <div id="ghl-slot"></div>
+    </div>
+    <script>
+      fetch('./TTF-HOMEPAGE-GHL.html')
+        .then(function (r) {
+          return r.text();
+        })
+        .then(function (html) {
+          setTimeout(function () {
+            document.getElementById('ghl-slot').innerHTML = html;
+            // Re-execute inline scripts (innerHTML does not run them)
+            var scripts = document.getElementById('ghl-slot').querySelectorAll('script');
+            scripts.forEach(function (old) {
+              var s = document.createElement('script');
+              if (old.src) s.src = old.src;
+              else s.textContent = old.textContent;
+              old.replaceWith(s);
+            });
+          }, 300);
+        });
+    </script>
+  </body>
+</html>

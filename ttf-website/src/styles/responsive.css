@@ -256,6 +256,19 @@
     padding: 24px 0 12px;
   }
 
+  #ttf-app .ttf-about-partners-band {
+    padding: 80px 0 20px;
+  }
+
+  #ttf-app .ttf-about-partners-band::before {
+    background-size: 100%;
+    background-position: 0% 0%;
+  }
+
+  #ttf-app .ttf-about {
+    padding: 0 20px;
+  }
+
   #ttf-app .ttf-about-text,
   #ttf-app .ttf-about-text p {
     font-size: 16px;
@@ -265,10 +278,6 @@
   #ttf-app .ttf-partners-heading,
   #ttf-app .ttf-about-heading {
     font-size: 32px;
-  }
-
-  #ttf-app .ttf-about-partners-band {
-    background-position: center top;
   }
 }
 
