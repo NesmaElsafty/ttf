@@ -1,0 +1,66 @@
+/* Tech Titans Factory design tokens — scoped to #ttf-app */
+#ttf-app {
+  --ttf-brand: #d3fd04;
+  --ttf-bg: #1b2029;
+  --ttf-text: #ffffff;
+  --ttf-script: #4d525d;
+  --ttf-muted: #bfc4c8;
+  --ttf-glass: rgba(255, 255, 255, 0.08);
+  --ttf-glass-soft: rgba(255, 255, 255, 0.05);
+  --ttf-line: rgba(255, 255, 255, 0.14);
+  --ttf-card: rgba(255, 255, 255, 0.06);
+  --ttf-radius: 16px;
+  --ttf-font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ttf-font-condensed: 'Roboto Condensed', 'Poppins', sans-serif;
+  --ttf-font-script: 'Charlotte Southern', cursive;
+  --ttf-font-display: 'Korolev Bold', 'Poppins', sans-serif;
+  --ttf-font-heavy: 'Korolev Heavy', 'Poppins', sans-serif;
+  --ttf-font-thin: 'Korolev Thin', 'Poppins', sans-serif;
+  --ttf-max: 1200px;
+
+  /* Crystal / partners */
+  --crystal-bg: rgba(255, 255, 255, 0.08);
+  --crystal-border: rgba(255, 255, 255, 0.18);
+  --crystal-accent: #d3fd04;
+  --crystal-text: #fff;
+}
+
+@font-face {
+  font-family: 'Korolev Bold';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc204fae2c5d2a22cf22.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korolev Heavy';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc5c4fae2c340722d69e.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Korolev Thin';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc752539060d0efcd9c1.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charlotte Southern';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd314fae2c741a22e88e.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charlotte Swash';
+  src: url('https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd1ceaa0581dc5ef4a2e.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

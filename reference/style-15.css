@@ -1,0 +1,60 @@
+
+    /* Section title */
+    .ttf-section-title{
+      margin:0 0 10px;
+      font-family:'Poppins',sans-serif;
+      font-weight:600;
+      font-size:26px;
+      line-height:1.2;
+      color:#fff;
+    }
+
+    /* Component */
+    .ttf-testimonials { display:grid; grid-template-columns:280px 1fr; gap:18px; --card: rgba(255,255,255,0.06); --glass: rgba(255,255,255,0.08); --line: rgba(255,255,255,0.14); --brand:#d3fd04; --radius:16px; font-family:'Roboto Condensed', sans-serif; color:#fff; }
+    .ttf-testimonials * { box-sizing:border-box; color:inherit; }
+
+    .ttf-side { position:sticky; top:0; align-self:start; display:flex; flex-direction:column; gap:12px; background:linear-gradient(180deg,var(--glass),transparent); border:1px solid var(--line); border-radius:var(--radius); padding:14px; }
+    .ttf-brand { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:14px; background:var(--glass); border:1px solid var(--line); }
+    .ttf-dot { width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 1px rgba(211,253,4,.4), 0 0 22px rgba(211,253,4,.25); }
+    .ttf-brand h1 { margin:0; font-size:16px; font-family:'Poppins', sans-serif; }
+    .ttf-note { margin:2px 2px 8px; font-size:12px; opacity:.7; }
+
+    .ttf-btn { appearance:none; border:1px solid var(--line); background:linear-gradient(180deg,var(--glass),transparent); border-radius:14px; padding:12px 14px; cursor:pointer; width:100%; text-align:left; display:flex; align-items:center; gap:10px; transition:.25s ease; font-family:'Roboto Condensed', sans-serif; }
+    .ttf-btn:hover { transform:translateY(-1px); box-shadow:inset 0 0 0 1px rgba(211,253,4,.5); }
+    .ttf-btn.ttf-active { box-shadow:inset 0 0 0 1px rgba(211,253,4,.85); }
+    .ttf-tag { margin-inline-start:auto; font-size:11px; background:var(--brand); color:#121212; padding:4px 8px; border-radius:999px; }
+    .ttf-sub { display:block; font-size:12px; opacity:.75; }
+
+    .ttf-main { border:1px solid var(--line); border-radius:var(--radius); padding:12px; min-height:300px; display:flex; flex-direction:column; overflow:hidden; }
+
+    /* ⛔️ إزالة الخلفية والبلور من شريط العنوان والشرائح */
+    .ttf-head { position:sticky; top:0; background:transparent !important; backdrop-filter:none !important; padding:8px 4px; border-bottom:1px solid var(--line); }
+
+    .ttf-title { display:flex; align-items:baseline; gap:8px; margin:0 6px 6px; }
+    .ttf-title h2 { margin:0; font-size:22px; font-family:'Poppins', sans-serif; }
+    .ttf-title small { opacity:.65; }
+    .ttf-chips { display:flex; flex-wrap:wrap; gap:8px; padding:0 6px 10px; }
+    .ttf-chip { font-size:12px; opacity:.8; border:1px dashed var(--line); padding:6px 10px; border-radius:999px; background:transparent; }
+
+    .ttf-scroll { overflow:auto; padding:10px; }
+    .ttf-grid { display:grid; grid-template-columns:repeat(2,minmax(260px,1fr)); gap:14px; }
+
+    /* بطاقات المراجعات تبقى كما هي */
+    .ttf-card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .ttf-card:hover { transform:translateY(-2px); border-color:rgba(211,253,4,.6); box-shadow:0 0 0 1px rgba(211,253,4,.35), 0 0 28px rgba(211,253,4,.2); }
+
+    .ttf-person { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+    .ttf-avatar { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.2); }
+    .ttf-name { font-weight:700; font-family:'Poppins', sans-serif; }
+    .ttf-role { font-size:12px; opacity:.8; }
+    .ttf-text { line-height:1.7; }
+    .ttf-rating { margin-top:10px; }
+
+    .ttf-audio { display:flex; flex-direction:column; gap:10px; }
+    .ttf-audio audio { width:100%; }
+
+    .ttf-video { position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#000; }
+    .ttf-video iframe, .ttf-video video { position:absolute; inset:0; width:100%; height:100%; }
+
+    @media (max-width: 860px){ .ttf-testimonials { grid-template-columns:1fr; } .ttf-side { position:static; } .ttf-grid { grid-template-columns:1fr; } }
+  

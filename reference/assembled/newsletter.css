@@ -1,0 +1,94 @@
+:root{
+    --ttf-bg:#d3fd04;
+    --ttf-fg:#1b2029;
+    --ttf-radius:16px;
+    --ttf-font:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+
+  body{
+    margin:0;
+    background:#121212;
+    font-family:var(--ttf-font);
+    color:#fff;
+  }
+
+  .ttf-cta{
+    width:100%;
+    padding:24px 12px; /* قللنا البادينغ */
+    display:flex;
+    justify-content:center;
+  }
+
+  .ttf-cta-box{
+    width:100%;
+    max-width:1000px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px; /* قللنا المسافة */
+    align-items:center;
+    padding:18px; /* قللنا المسافة الداخلية */
+    border-radius:var(--ttf-radius);
+    background:rgba(211,253,4,0.08);
+    border:1px solid rgba(211,253,4,0.25);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Left side */
+  .ttf-cta-text span{
+    display:inline-block;
+    font-size:12px; /* أصغر */
+    letter-spacing:.5px;
+    padding:3px 8px;
+    border:1px solid var(--ttf-bg);
+    color:var(--ttf-bg);
+    border-radius:999px;
+    margin-bottom:6px;
+    background:rgba(211,253,4,0.08);
+  }
+  .ttf-cta-text h2{
+    margin:0 0 6px 0;
+    font-size:20px; /* أصغر */
+    font-weight:600;
+    color:var(--ttf-bg);
+  }
+  .ttf-cta-text p{
+    margin:0;
+    font-size:14px;
+    line-height:1.5;
+    opacity:.85;
+    color:#eee;
+  }
+
+  /* Right media */
+  .ttf-cta-media{
+    padding:6px;
+    border-radius:var(--ttf-radius);
+    background:rgba(255,255,255,0.04);
+    text-align:center;
+    transition:transform .3s ease;
+  }
+  .ttf-cta-media:hover{
+    transform:scale(1.02);
+  }
+  .ttf-cta-media img{
+    width:100%;
+    max-height:150px; /* قللنا الارتفاع */
+    border-radius:10px;
+    object-fit:cover;
+    display:block;
+  }
+  .ttf-cta-media figcaption{
+    font-size:12px;
+    margin-top:6px;
+    opacity:.8;
+    color:#ccc;
+  }
+
+  /* Responsive */
+  @media (max-width:900px){
+    .ttf-cta-box{
+      grid-template-columns:1fr;
+      text-align:center;
+    }
+    .ttf-cta-media{ order:-1; }
+  }

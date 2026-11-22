@@ -1,0 +1,175 @@
+<div class="ghl-vlogs ttf-skin">
+  <div class="ghl-v-wrap">
+    <!-- Left column -->
+    <aside class="ghl-v-left">
+      <h2 class="ghl-v-heading" data-cursor-ref="e79">Latest Vlogs</h2>
+
+      <!-- buttons styled like TTF -->
+      <div class="ghl-v-list">
+        <button class="v-item-btn ttf-btn ttf-active" type="button" data-index="0" data-cursor-ref="e13">
+          <span>Video One</span>
+        </button>
+        <button class="v-item-btn ttf-btn" type="button" data-index="1" data-cursor-ref="e14">
+          <span>Video Two</span>
+        </button>
+        <button class="v-item-btn ttf-btn" type="button" data-index="2" data-cursor-ref="e15">
+          <span>Video Three</span>
+        </button>
+        <button class="v-item-btn ttf-btn" type="button" data-index="3" data-cursor-ref="e16">
+          <span>Video Four</span>
+        </button>
+      </div>
+
+      <p class="ghl-v-note" data-cursor-ref="e80">
+        Exclusive vlogs covering travels, behind-the-scenes, and life hacks.
+        Click a title to jump or scroll the videos.
+      </p>
+    </aside>
+
+    <!-- Right column -->
+    <section class="ghl-v-right" id="ghlVContainer">
+
+      <!-- Video 1 -->
+      <article class="ghl-v-card" data-index="0">
+        <div class="v-frame">
+          <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d982834c35d61ce38d414e.mov">
+            <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video One Thumbnail">
+            <div class="play-btn">▶</div>
+          </div>
+        </div>
+        <div class="ghl-v-content">
+          <h3 class="ghl-v-title" data-cursor-ref="e81">Video One</h3>
+          <p class="ghl-v-text" data-cursor-ref="e82">Join me on an incredible journey through breathtaking landscapes and hidden gems.</p>
+        </div>
+      </article>
+
+      <!-- Video 2 -->
+      <article class="ghl-v-card" data-index="1">
+        <div class="v-frame">
+          <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98283c79131a35b0f6775.mov">
+            <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Two Thumbnail">
+            <div class="play-btn">▶</div>
+          </div>
+        </div>
+        <div class="ghl-v-content">
+          <h3 class="ghl-v-title" data-cursor-ref="e83">Video Two</h3>
+          <p class="ghl-v-text" data-cursor-ref="e84">An exclusive look at how ideas turn into content, from sketches to final edits.</p>
+        </div>
+      </article>
+
+      <!-- Video 3 -->
+      <article class="ghl-v-card" data-index="2">
+        <div class="v-frame">
+          <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98283337bbfd0da48cf11.mov">
+            <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Three Thumbnail">
+            <div class="play-btn">▶</div>
+          </div>
+        </div>
+        <div class="ghl-v-content">
+          <h3 class="ghl-v-title" data-cursor-ref="e85">Video Three</h3>
+          <p class="ghl-v-text" data-cursor-ref="e86">Practical tips and tricks that make everyday life easier and more efficient.</p>
+        </div>
+      </article>
+
+      <!-- Video 4 -->
+      <article class="ghl-v-card" data-index="3">
+        <div class="v-frame">
+          <div class="thumbnail" data-video="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d98298337bbf542148d079.mov">
+            <img src="https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg" alt="Video Four Thumbnail">
+            <div class="play-btn">▶</div>
+          </div>
+        </div>
+        <div class="ghl-v-content">
+          <h3 class="ghl-v-title" data-cursor-ref="e87">Video Four</h3>
+          <p class="ghl-v-text" data-cursor-ref="e88">Start your day right with this complete guide to a productive routine.</p>
+        </div>
+      </article>
+
+    </section>
+  </div>
+</div>
+
+<style>
+  .ttf-skin{
+    --brand:#d3fd04;
+    --card: rgba(255,255,255,0.06);
+    --glass: rgba(255,255,255,0.08);
+    --line: rgba(255,255,255,0.16);
+    --radius: 16px;
+    --fg: #ffffff;
+    font-family:'Roboto Condensed', sans-serif;
+    color:var(--fg);
+  }
+  .ttf-skin .ghl-v-wrap{ display:grid; grid-template-columns:1fr 1.5fr; gap:24px; align-items:start; padding:20px; }
+  .ttf-skin .ghl-v-left{ position:sticky; top:16px; align-self:start; background:linear-gradient(180deg,var(--glass),transparent); padding:14px; border:1px solid var(--line); border-radius:var(--radius); }
+  .ttf-skin .ghl-v-heading{ margin:0 0 12px; font-family:'Poppins',sans-serif; font-size:22px; font-weight:600; color:var(--fg); display:flex; align-items:center; gap:10px; }
+  .ttf-skin .ghl-v-heading::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 1px rgba(211,253,4,.4), 0 0 22px rgba(211,253,4,.25); }
+  .ttf-skin .ghl-v-list{ display:grid; gap:10px; margin-bottom:10px; }
+  .ttf-skin .ttf-btn{ border:1px solid var(--line); background:linear-gradient(180deg,var(--glass),transparent); border-radius:14px; padding:12px 14px; cursor:pointer; width:100%; text-align:left; display:flex; align-items:center; gap:10px; transition:.25s; color:var(--fg); font-size:15px; }
+  .ttf-skin .ttf-btn:hover{ transform:translateY(-1px); box-shadow:inset 0 0 0 1px rgba(211,253,4,.5); }
+  .ttf-skin .ttf-btn.ttf-active{ box-shadow:inset 0 0 0 1px rgba(211,253,4,.85); }
+  .ttf-skin .ghl-v-note{ font-size:12.5px; opacity:.8; margin:4px 2px 0; }
+  .ttf-skin .ghl-v-right{ display:grid; gap:20px; } /* بدون max-height أو overflow */
+  .ttf-skin .ghl-v-card{ display:flex; flex-direction:column; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; transition:.25s ease; }
+  .ttf-skin .ghl-v-card:hover{ transform:translateY(-2px); border-color:rgba(211,253,4,.6); box-shadow:0 0 0 1px rgba(211,253,4,.35), 0 0 28px rgba(211,253,4,.2); }
+  .ttf-skin .v-frame{ position:relative; width:100%; border-radius:10px; overflow:hidden; border:1px solid var(--line); background:#000; }
+  .ttf-skin video{ width:100%; height:260px; border:none; border-radius:10px; background:#000; display:block; }
+  .ttf-skin .thumbnail img{ width:100%; border-radius:10px; display:block; }
+  .ttf-skin .play-btn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); color:#fff; font-size:32px; padding:12px 18px; border-radius:50%; transition:.3s; }
+  .ttf-skin .thumbnail:hover .play-btn{ background:var(--brand); color:#000; }
+  .ttf-skin .ghl-v-title{ margin:0; font-size:18px; font-weight:600; font-family:'Poppins',sans-serif; color:var(--brand); }
+  .ttf-skin .ghl-v-text{ margin:0; font-size:15px; line-height:1.6; color:var(--fg); }
+  @media (max-width: 992px){
+    .ttf-skin .ghl-v-wrap{ grid-template-columns:1fr; padding:0; }
+    .ttf-skin .ghl-v-left{ position:static; border-radius:0; }
+    .ttf-skin .ghl-v-right{ border-radius:0; }
+    .ttf-skin video{ height:200px; }
+  }
+</style>
+
+<script>
+(function(){
+  const root = document.querySelector('.ttf-skin');
+  if(!root) return;
+
+  const buttons = root.querySelectorAll('.v-item-btn');
+  const cards = root.querySelectorAll('.ghl-v-card');
+
+  function setActive(idx){
+    buttons.forEach(b=>b.classList.remove('ttf-active'));
+    if(buttons[idx]) buttons[idx].classList.add('ttf-active');
+  }
+
+  // click buttons → scroll to card
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const idx = parseInt(btn.getAttribute('data-index'),10);
+      const target = root.querySelector(`.ghl-v-card[data-index="${idx}"]`);
+      if(target){
+        target.scrollIntoView({behavior:'smooth', block:'center'});
+        setActive(idx);
+      }
+    });
+  });
+
+  // hover card → highlight
+  cards.forEach(card=>{
+    const idx = parseInt(card.getAttribute('data-index'),10);
+    card.addEventListener('mouseenter', ()=> setActive(idx));
+  });
+
+  // click thumbnail → replace with <video>
+  const thumbs = root.querySelectorAll('.thumbnail');
+  thumbs.forEach(thumb=>{
+    thumb.addEventListener('click', ()=>{
+      const videoUrl = thumb.getAttribute('data-video');
+      const video = document.createElement('video');
+      video.src = videoUrl;
+      video.controls = true;
+      video.autoplay = true;
+      video.setAttribute('playsinline','true');
+      thumb.replaceWith(video);
+    });
+  });
+})();
+</script>

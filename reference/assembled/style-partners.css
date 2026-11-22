@@ -1,0 +1,69 @@
+
+:root {
+  --ttf-glass-bg: rgba(255,255,255,0.07);  /* تعتيم متوسط */
+  --ttf-glass-border: rgba(255,255,255,0.18);
+  --ttf-text:#fff;
+  --ttf-accent:#d3fd04;
+}
+
+.ttf-partners-glass {
+  background: transparent;
+  color: var(--ttf-text);
+  font-family: 'Poppins', sans-serif;
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ttf-partners-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.ttf-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.ttf-partner-card {
+  backdrop-filter: blur(14px);
+  background: var(--ttf-glass-bg);
+  border: 1px solid var(--ttf-glass-border);
+  border-radius: 20px;
+  padding: 25px 20px;
+  transition: all 0.35s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ttf-partner-card:hover {
+  transform: scale(0.97); /* تصغير خفيف وأنيق */
+  border-color: var(--ttf-accent);
+  background: rgba(255,255,255,0.09);
+}
+
+.ttf-partner-card img {
+  width: 100%;
+  max-width: 130px;
+  filter: brightness(0) invert(1); /* لجعل الشعار أبيض بالكامل */
+  opacity: 0.95;
+  transition: all 0.35s ease;
+}
+
+.ttf-partner-card:hover img {
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .ttf-partner-card {
+    padding: 20px;
+  }
+  .ttf-partner-card img {
+    max-width: 100px;
+  }
+}

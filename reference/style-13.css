@@ -1,0 +1,88 @@
+
+:root {
+  --crystal-bg: rgba(255, 255, 255, 0.08);
+  --crystal-border: rgba(255, 255, 255, 0.18);
+  --crystal-accent: #d3fd04;
+  --crystal-text: #fff;
+}
+
+.ttf-crystal-partners {
+  background: transparent;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: var(--crystal-text);
+}
+
+.crystal-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.crystal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+.crystal-logo {
+  background: var(--crystal-bg);
+  border: 1px solid var(--crystal-border);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 18px;
+  transition: all 0.35s ease;
+}
+
+.crystal-logo:hover {
+  transform: scale(0.96);
+  background: rgba(255,255,255,0.12);
+  border-color: var(--crystal-accent);
+}
+
+.crystal-logo img {
+  width: 100%;
+  max-width: 130px;
+  filter: brightness(0) invert(1); /* يجعل الشعار أبيض بالكامل */
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.crystal-logo:hover img {
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+/* ✅ موبايل: ثلاث شعارات في كل صف دائماً */
+@media (max-width: 768px) {
+  .crystal-grid {
+    grid-template-columns: repeat(3, 1fr) !important; /* إجبار على 3 */
+    gap: 18px;
+  }
+
+  .crystal-logo {
+    padding: 14px;
+  }
+
+  .crystal-logo img {
+    max-width: 80px;
+  }
+}
+
+/* ✅ أصغر من 400px: نحافظ على الشكل النظيف */
+@media (max-width: 420px) {
+  .crystal-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px;
+  }
+  .crystal-logo img {
+    max-width: 70px;
+  }
+}

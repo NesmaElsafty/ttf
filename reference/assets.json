@@ -1,0 +1,20 @@
+{
+  "logo": "https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68c8d272f21b3134c4a0b881.png",
+  "heroPortrait": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ebc18f385c980b4d20f14c.png",
+  "heroBgSvg": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccd5f5a298134caf841aaa.svg",
+  "aboutBg": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68ccddce253906462602ff38.png",
+  "brandMark": "https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68d032da155259f31ca9a794.png",
+  "vlogThumb": "https://storage.googleapis.com/msgsndr/9LHVl0sw8gABEkuoMC1s/media/68ccd9d525390659c7ff5d0a.jpeg",
+  "fonts": {
+    "korolevBold": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc204fae2c5d2a22cf22.otf",
+    "korolevHeavy": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc5c4fae2c340722d69e.otf",
+    "korolevThin": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccc752539060d0efcd9c1.otf",
+    "charlotte": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd314fae2c741a22e88e.otf",
+    "charlotteSwash": "https://assets.cdn.filesafe.space/9LHVl0sw8gABEkuoMC1s/media/68cccd1ceaa0581dc5ef4a2e.otf"
+  },
+  "colors": {
+    "brand": "#d3fd04",
+    "bg": "#1b2029",
+    "textMuted": "#4d525d"
+  }
+}

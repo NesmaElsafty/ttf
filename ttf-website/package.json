@@ -1,0 +1,21 @@
+{
+  "name": "ttf-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tech Titans Factory — pixel-perfect recreation for GoHighLevel Custom HTML",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/assemble.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/assemble.mjs",
+    "build": "vite build && node scripts/build-ghl.mjs",
+    "build:vite": "vite build",
+    "build:ghl": "node scripts/assemble.mjs && node scripts/build-ghl.mjs",
+    "assemble": "node scripts/assemble.mjs",
+    "generate-from-reference": "node scripts/generate-from-reference.mjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

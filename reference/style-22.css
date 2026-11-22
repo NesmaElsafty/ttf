@@ -1,0 +1,127 @@
+
+    .ttfx-footer{
+      --ttfx-accent:#d3fd04;
+      --ttfx-bg:#1b2029;
+      --ttfx-fg:#f5f5f5;
+      --ttfx-muted:rgba(255,255,255,.7);
+      --ttfx-border:rgba(255,255,255,.12);
+      --ttfx-font:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+
+      font-family:var(--ttfx-font);
+      background:var(--ttfx-bg);
+      color:var(--ttfx-fg);
+      padding:50px 20px 20px;
+      position:relative;
+    }
+    .ttfx-footer::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;
+      width:100%;height:4px;
+      background:var(--ttfx-accent);
+    }
+
+    .ttfx-wrap{
+      max-width:1280px;
+      margin:auto;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:40px;
+    }
+
+    .ttfx-brand-title{
+      margin:0 0 14px 0;
+      font-size:22px;
+      font-weight:600;
+    }
+    .ttfx-brand-desc{
+      font-size:14px;
+      line-height:1.6;
+      color:var(--ttfx-muted);
+      margin:0;
+      max-width:420px;
+    }
+
+    .ttfx-social{
+      margin-top:22px;
+      display:flex;
+      gap:14px;
+    }
+    .ttfx-social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      color:var(--ttfx-fg);
+      font-size:16px;
+      text-decoration:none;
+      transition:.25s ease;
+    }
+    .ttfx-social-link:hover{
+      background:var(--ttfx-accent);
+      color:#000;
+      transform:translateY(-2px);
+    }
+
+    .ttfx-links{
+      display:grid;
+      grid-template-columns: repeat(2,1fr);
+      gap:20px 32px;
+    }
+    .ttfx-links-title{
+      margin:0 0 10px 0;
+      font-size:15px;
+      font-weight:600;
+      color:var(--ttfx-accent);
+    }
+    .ttfx-list{ list-style:none;padding:0;margin:0; }
+    .ttfx-item{ margin:0 0 8px 0; }
+
+    /* روابط مع البوينت */
+    .ttfx-link{
+      text-decoration:none;
+      color:var(--ttfx-fg);
+      font-size:14px;
+      opacity:.8;
+      transition:.25s ease;
+      position:relative;
+      padding-left:0; /* space for bullet */
+    }
+    .ttfx-link::before{
+      content:"•";
+      position:absolute;
+      left:-12px;
+      top:50%;
+      transform:translateY(-50%) translateX(-6px);
+      color:var(--ttfx-accent);
+      font-size:14px;
+      opacity:0;
+      transition:.25s ease;
+    }
+    .ttfx-link:hover{
+      opacity:1;
+      color:var(--ttfx-accent);
+      padding-left:8px; /* slight slide when hover */
+    }
+    .ttfx-link:hover::before{
+      opacity:1;
+      transform:translateY(-50%) translateX(0);
+    }
+
+    .ttfx-bottom{
+      margin-top:32px;
+      font-size:13px;
+      text-align:center;
+      color:var(--ttfx-muted);
+      padding-top:14px;
+      border-top:1px solid var(--ttfx-border);
+    }
+
+    @media(max-width:900px){
+      .ttfx-wrap{ grid-template-columns:1fr; gap:28px; }
+      .ttfx-links{ grid-template-columns:1fr; }
+    }
+  

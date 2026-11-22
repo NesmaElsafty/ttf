@@ -1,0 +1,211 @@
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TTF – Glass CTA (No Background)</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* كل شيء داخل .ttfns لضمان العزل */
+    .ttfns{
+      --brand:#d3fd04;
+      --line:rgba(255,255,255,0.16);
+      --glass:rgba(255,255,255,0.08);
+      --text:#fff;
+      --radius:14px;
+      --muted:#bfc4c8;
+
+      font-family:'Poppins',sans-serif;
+      color:var(--text);
+      background:transparent;
+      padding:0;
+    }
+
+    .ttfns-wrap{
+      max-width:1000px;
+      margin:60px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .ttfns-title{
+      margin:0 0 16px;
+      font-size:22px;
+      font-weight:600;
+      color:var(--brand);
+    }
+
+    .ttfns-links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .ttfns-link{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:var(--radius);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:500;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--glass),transparent);
+      border:1px solid var(--line);
+      backdrop-filter:blur(10px);
+      transition:border-color .25s ease, transform .25s ease;
+    }
+
+    .ttfns-link i{
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    .ttfns-link:hover{
+      border-color:var(--brand);
+      transform:translateY(-1px);
+    }
+
+    .ttfns-form-note{
+      font-size:13px;
+      margin:0 0 10px;
+      color:var(--muted);
+    }
+
+    .ttfns-input{
+      width:100%;
+      padding:11px;
+      margin-bottom:14px;
+      border-radius:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      color:var(--text);
+      font-size:13px;
+      outline:none;
+      transition:border .3s ease;
+    }
+
+    .ttfns-input:focus{
+      border-color:var(--brand);
+    }
+
+    .ttfns-btn{
+      width:100%;
+      padding:12px;
+      background:var(--brand);
+      color:#000;
+      border:none;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      transition:opacity .3s ease;
+    }
+
+    .ttfns-btn:hover{ opacity:.9; }
+
+    @media (max-width:768px){
+      .ttfns-wrap{
+        grid-template-columns:1fr;
+        text-align:center;
+        margin:40px auto;
+      }
+      .ttfns-links{
+        align-items:stretch;
+      }
+      .ttfns-link{
+        justify-content:center;
+        font-size:15px;
+        padding:12px;
+        border-radius:20px;
+      }
+    }
+  </style>
+
+
+
+
+<section class="ttfns" id="ttfns-cta">
+  <div class="ttfns-wrap">
+
+    <!-- يسار -->
+    <div class="ttfns-left">
+      <h3 class="ttfns-title" data-cursor-ref="e120">Take Action with TTF</h3>
+      <div class="ttfns-links">
+        <a href="https://www.instagram.com/tech_titans_factory/?hl=en" target="_blank" class="ttfns-link">
+          <i class="fab fa-instagram"></i> Get daily motivation
+        </a>
+        <a href="https://www.youtube.com/channel/UCpQLscnjM-OkMTsZCnqChaw" target="_blank" class="ttfns-link">
+          <i class="fab fa-youtube"></i> Watch TTF Show
+        </a>
+        <a href="#ttfns-form" class="ttfns-link">
+          <i class="fa-regular fa-envelope"></i> Video to your email
+        </a>
+      </div>
+    </div>
+
+    <!-- يمين -->
+    <form id="ttfns-form" class="ttfns-form" novalidate="">
+      <p class="ttfns-form-note" data-cursor-ref="e121">
+        Enter your contact details below to receive TTF’s latest updates and valuable insights instantly.
+      </p>
+
+      <input type="text" name="name" placeholder="Full Name" class="ttfns-input" required="">
+      <input type="email" name="email" placeholder="Email Address" class="ttfns-input" required="">
+      <input type="tel" name="whatsapp" placeholder="WhatsApp Number (with country code)" class="ttfns-input" required="">
+
+      <button type="submit" class="ttfns-btn">Register Now</button>
+    </form>
+  </div>
+</section>
+
+<script>
+(function(){
+  const form = document.getElementById('ttfns-form');
+  const webhookURL = "https://services.leadconnectorhq.com/hooks/9LHVl0sw8gABEkuoMC1s/webhook-trigger/28d257a9-5c8b-42fd-9279-3d3e72166ef7"; // 🔗 ضع رابطك هنا
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: form.name.value?.trim(),
+      email: form.email.value?.trim(),
+      whatsapp: form.whatsapp.value?.trim(),
+      source: "TTF Glass CTA (no-bg)"
+    };
+
+    if(!payload.name || !payload.email || !payload.whatsapp){
+      alert("⚠️ Please fill in all required fields.");
+      return;
+    }
+
+    try {
+      const res = await fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        alert("✅ Thank you! Your info has been sent successfully.");
+        form.reset();
+      } else {
+        alert("⚠️ Submission failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Network error. Please check your connection.");
+    }
+  });
+})();
+</script>
+
+
+

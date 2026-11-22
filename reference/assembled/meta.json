@@ -1,0 +1,65 @@
+{
+  "styleKeys": [
+    "header",
+    "crystal",
+    "partners",
+    "testimonials",
+    "vlogs",
+    "programs",
+    "newsletter",
+    "cta",
+    "footer"
+  ],
+  "blockKeys": [
+    "vlogs",
+    "programs",
+    "newsletter",
+    "registration",
+    "footer",
+    "registrationMobile",
+    "ziko",
+    "footerMobile"
+  ],
+  "lengths": {
+    "vlogs": {
+      "body": 3860,
+      "styles": 3073,
+      "scripts": 1368
+    },
+    "programs": {
+      "body": 1902,
+      "styles": 2410,
+      "scripts": 0
+    },
+    "newsletter": {
+      "body": 661,
+      "styles": 1950,
+      "scripts": 0
+    },
+    "registration": {
+      "body": 1379,
+      "styles": 2446,
+      "scripts": 1131
+    },
+    "footer": {
+      "body": 2407,
+      "styles": 2899,
+      "scripts": 0
+    },
+    "registrationMobile": {
+      "body": 1372,
+      "styles": 2446,
+      "scripts": 1131
+    },
+    "ziko": {
+      "body": 0,
+      "styles": 0,
+      "scripts": 3076
+    },
+    "footerMobile": {
+      "body": 2395,
+      "styles": 2899,
+      "scripts": 0
+    }
+  }
+}
