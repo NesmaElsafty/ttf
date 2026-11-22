@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TTF delayed init test</title>
+    <style>
+      body { margin: 0; background: #1b2029; color: #fff; font-family: sans-serif; }
+      #log { padding: 12px; white-space: pre-wrap; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div id="log">Loading scripts… awaiting delayed #ttf-app mount…</div>
+    <script src="./ttf.js"></script>
+    <script>
+      (function () {
+        var log = document.getElementById('log');
+        function line(msg) {
+          log.textContent += '\n' + msg;
+        }
+        line('t0 scripts loaded; #ttf-app present=' + !!document.getElementById('ttf-app'));
+        setTimeout(function () {
+          var root = document.createElement('div');
+          root.id = 'ttf-app';
+          root.innerHTML =
+            '<header class="navbar"><button class="burger" type="button" data-ttf-burger aria-expanded="false">☰</button><ul class="menu" id="menu"><li><a href="#">Home</a></li></ul></header><div id="ttf-ziko" data-ttf-ziko></div>';
+          document.body.appendChild(root);
+          line('t+800ms injected #ttf-app');
+          setTimeout(function () {
+            var app = document.getElementById('ttf-app');
+            line('bootstrapped=' + !!(app && app.__ttfBootstrapped));
+            line('navInit=' + !!(app && app.__ttfNavInit));
+            line('zikoInitFlag=' + !!window.__ttfZikoInit);
+            line('zikoWidgets=' + document.querySelectorAll('n8nchatui-popup').length);
+            window.TTF && window.TTF.init();
+            window.TTF && window.TTF.init();
+            setTimeout(function () {
+              line('after double TTF.init() zikoWidgets=' + document.querySelectorAll('n8nchatui-popup').length);
+              line('DONE');
+              document.title = 'TTF delayed init test DONE';
+            }, 2500);
+          }, 1200);
+        }, 800);
+      })();
+    </script>
+  </body>
+</html>
